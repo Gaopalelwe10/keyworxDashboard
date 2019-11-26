@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const firebaseConfig = {
   apiKey: "AIzaSyA4CMD51Wz_G564J0h4HJeFG27-UI12Kkw",
@@ -34,6 +35,7 @@ const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    ReactiveFormsModule 
   ],
   providers: [
     StatusBar,
