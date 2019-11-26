@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-propertylistings',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PropertylistingsPage implements OnInit {
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit() {
   }
-
+  
+  addproperty() {
+    this.route.navigateByUrl("addproperty")
+  }
 }
