@@ -8,21 +8,19 @@ import { AngularFireAuth } from '@angular/fire/auth';
   providedIn: 'root'
 })
 export class AuthGuard implements  CanActivate{
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    throw new Error("Method not implemented.");
-  }
+ 
   constructor(public nav: NavController, public afAuth: AngularFireAuth) { }
 
-  // canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-  //   return new Promise((resolve, reject) => {
-  //     this.afAuth.user.subscribe((user) => {
-  //       if (user) {
-  //         resolve(true);
-  //       } else {
-  //         this.nav.navigateRoot(['']);
-  //         resolve(false);
-  //       }
-  //     })
-  //   });
-  // }
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+    return new Promise((resolve, reject) => {
+      this.afAuth.user.subscribe((user) => {
+        if (user) {
+          resolve(true);
+        } else {
+          this.nav.navigateRoot(['']);
+          resolve(false);
+        }
+      })
+    });
+  }
 }

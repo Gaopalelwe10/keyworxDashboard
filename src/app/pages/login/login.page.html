@@ -1,4 +1,4 @@
-<ion-content class="ion-padding" class="forms">
+<ion-content padding>
     <!-- <ion-list lines="none"> -->
     <form [formGroup]="loginForm" *ngIf="isForgotPassword">
 
@@ -30,7 +30,7 @@
         <br>
         <ion-button expand="block" color="primary" [disabled]="!loginForm.valid" (click)="login()">login</ion-button>
         <p (click)="isForgotPassword = false">Forgot Password</p>
-        <p (click)="registerPage()"> Dont have account? Sign Up</p>
+        <!-- <p (click)="registerPage()"> Dont have account? Sign Up</p> -->
 
     </form>
 
