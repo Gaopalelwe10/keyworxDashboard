@@ -8,5 +8,10 @@
 </ion-header>
 
 <ion-content>
+  
+    <img src="{{agentList?.photoURL}}">
+    <input id="file-input1" class="input" type="file" (change)="uploadProfilePic($event)" />
+<br>
+    {{agentList?.companyName}}
 
 </ion-content>
