@@ -6,4 +6,5 @@ class User {
     surname?: string;
     companyName?:string;
     number?:string;
+    key?: string;
 }
