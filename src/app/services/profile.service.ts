@@ -3,7 +3,8 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { NavController, AlertController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { finalize } from 'rxjs/operators';
+import { finalize, switchMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 
 @Injectable({
@@ -11,6 +12,8 @@ import { finalize } from 'rxjs/operators';
 })
 
 export class ProfileService {
+
+  user: Observable<User>
 
   private agentDoc: AngularFirestoreDocument<User>
 
@@ -38,6 +41,16 @@ export class ProfileService {
         this.nav.navigateRoot("");
       }
     })
+
+    this.user = this.afAuth.authState.pipe(
+      switchMap(user => {
+        if (user) {
+          return this.afs.doc<User>(`agent/${user.uid}`).valueChanges()
+        } else {
+          return of(null)
+        }
+      })
+    )
   }
 
   async login(email: string, password: string) {
@@ -69,8 +82,8 @@ export class ProfileService {
   }
 
   update(User, key){
-    this.agentDoc = this.afs.doc<User>('agent/' + key);
-    return this.agentDoc.update(User);
+    this.afs.doc<User>('agent/' + key);
+    this.agentDoc.update(User);
   }
 
   getUID(): string {

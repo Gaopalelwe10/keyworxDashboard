@@ -3,12 +3,12 @@
         <ion-menu contentId="main-content" type="overlay">
 
 
-
+<div *ngIf="profileService.user | async as user">
             <ion-item lines="none">
                 <ion-avatar>
                     <div class="profile-image">
                         <div>
-                            <img src="/assets/img/avatar.svg">
+                            <img src="{{user.photoURL}}">
                         </div>
                         <!-- <div *ngIf="user.photoURL !='' ">
                                     <img data-src="{{user.photoURL}}">
@@ -20,13 +20,12 @@
                 </h2>
                 <ion-label>
                     <h3>
-                        <!-- {{user.displayName}} -->
-                        Gaopalelwe
+                        {{user.name}}
                     </h3>
-                    <p>Keyworx</p>
+                    <p>{{user.companyName}}</p>
                 </ion-label>
             </ion-item>
-
+</div>
 
             <ion-content>
                 <ion-list>
