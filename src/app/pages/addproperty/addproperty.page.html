@@ -24,16 +24,14 @@
             <form [formGroup]="AddpropertyForm">
                 <div class="profile-image">
                     Main image
-                    <div>
+                    <div *ngIf="mainImage =='' ">
                         <img src="/assets/img/1.jpg">
 
                     </div>
-                    <!-- <div *ngIf="user.photoURL !='' ">
-                              <img data-src="{{user.photoURL}}">
-                          </div> -->
-                    <!-- <ion-img class="profile-pic" (change)="uploadFile($event)" src="{{photoURL}}.jpeg"></ion-img> -->
-                    <!-- <input class="input" type="file" (change)="uploadFile($event)" />
-                          <ion-icon name="reverse-camera" class="input"> </ion-icon> -->
+                    <div *ngIf="mainImage !='' ">
+                        <img data-src="{{mainImage}}">
+                    </div>
+
 
                     <div class="image-upload">
                         <label for="file-input">
@@ -92,7 +90,7 @@
                             <ion-item>
                                 <ion-label>Bedrooms</ion-label>
                                 <ion-select interface="popover" formControlName="bedrooms">
-                                    <ion-select-option value="1">0</ion-select-option>
+                                    <ion-select-option value="0">0</ion-select-option>
                                     <ion-select-option value="1">1</ion-select-option>
                                     <ion-select-option value="2">2</ion-select-option>
                                     <ion-select-option value="3">3</ion-select-option>
@@ -105,7 +103,7 @@
                             <ion-item>
                                 <ion-label>Bathrooms</ion-label>
                                 <ion-select interface="popover" formControlName="bathrooms">
-                                    <ion-select-option value="1">0</ion-select-option>
+                                    <ion-select-option value="0">0</ion-select-option>
                                     <ion-select-option value="1">1</ion-select-option>
                                     <ion-select-option value="2">2</ion-select-option>
                                     <ion-select-option value="3">3</ion-select-option>
@@ -122,7 +120,7 @@
                             <ion-item>
                                 <ion-label>Kitchens</ion-label>
                                 <ion-select interface="popover" formControlName="kitchens">
-                                    <ion-select-option value="1">0</ion-select-option>
+                                    <ion-select-option value="0">0</ion-select-option>
                                     <ion-select-option value="1">1</ion-select-option>
                                     <ion-select-option value="2">2</ion-select-option>
                                     <ion-select-option value="3">3+</ion-select-option>
@@ -133,7 +131,7 @@
                             <ion-item>
                                 <ion-label>Dining Room </ion-label>
                                 <ion-select interface="popover" formControlName="diningroom">
-                                    <ion-select-option value="1">0</ion-select-option>
+                                    <ion-select-option value="0">0</ion-select-option>
                                     <ion-select-option value="1">1</ion-select-option>
                                     <ion-select-option value="2">2</ion-select-option>
                                     <ion-select-option value="3">3+</ion-select-option>
@@ -147,7 +145,7 @@
                             <ion-item>
                                 <ion-label>Garage</ion-label>
                                 <ion-select interface="popover" formControlName="garage">
-                                    <ion-select-option value="1">0</ion-select-option>
+                                    <ion-select-option value="0">0</ion-select-option>
                                     <ion-select-option value="1">1</ion-select-option>
                                     <ion-select-option value="2">2</ion-select-option>
                                     <ion-select-option value="3">3+</ion-select-option>
@@ -158,7 +156,7 @@
                             <ion-item>
                                 <ion-label>Garden</ion-label>
                                 <ion-select interface="popover" formControlName="garden">
-                                    <ion-select-option value="1">0</ion-select-option>
+                                    <ion-select-option value="0">0</ion-select-option>
                                     <ion-select-option value="1">1</ion-select-option>
                                     <ion-select-option value="2">2</ion-select-option>
                                     <ion-select-option value="3">3+</ion-select-option>
@@ -172,7 +170,7 @@
                             <ion-item>
                                 <ion-label>Lounges</ion-label>
                                 <ion-select interface="popover" formControlName="lounges">
-                                    <ion-select-option value="1">0</ion-select-option>
+                                    <ion-select-option value="0">0</ion-select-option>
                                     <ion-select-option value="1">1</ion-select-option>
                                     <ion-select-option value="2">2</ion-select-option>
                                     <ion-select-option value="3">3+</ion-select-option>
@@ -183,7 +181,7 @@
                             <ion-item>
                                 <ion-label>Pool</ion-label>
                                 <ion-select interface="popover" formControlName="pool">
-                                    <ion-select-option value="1">0</ion-select-option>
+                                    <ion-select-option value="0">0</ion-select-option>
                                     <ion-select-option value="1">1</ion-select-option>
                                     <ion-select-option value="2">2</ion-select-option>
                                     <ion-select-option value="3">3+</ion-select-option>
@@ -213,7 +211,7 @@
 
 
 
-
+                <ion-button (click)="Addproperty()">add</ion-button>
 
 
 
@@ -226,67 +224,55 @@
             <div class="row">
                 <div class="col">
                     Multi image upload
-                    <div class="image-upload">
+                    <!-- <div class="image-upload">
                         <label for="file-multi">
                             <ion-icon name="camera" class="input" color="medium"> </ion-icon>
                         </label>
 
                         <input id="file-multi" class="input" type="file" (change)="uploadFile($event)" multiple>
+                    </div> -->
+                    <!-- 
+                    <label>
+                        <input type="file" (change)="detectFiles($event)" multiple>
+                     </label>
+
+                    <button (click)="uploadMulti()">
+                 
+                         Upload Multiple
+                       </button> -->
+
+                    <div *ngIf="currentUpload">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+                        </div>
+                        Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
                     </div>
+
+                    <label>
+                               <input type="file" (change)="detectFiles($event)">
+                            </label>
+
+                    <button [disabled]="!selectedFiles" (click)="uploadSingle()">
+                        
+                              Upload Single
+                            </button>
+
+                    <label>
+                               <input type="file" (change)="detectFiles($event)" multiple>
+                            </label>
+
+                    <button [disabled]="!selectedFiles" (click)="uploadMulti()">
+                        
+                                Upload Multiple
+                              </button>
+
+
+
+
                     <div class="row">
-                        <div class="column">
-                            <img src="/assets/img/1.jpg" style="width:100%">
-
+                        <div class="column" *ngFor="let image of imageList">
+                            <img src="{{image.downloadURL}}" style="width:100%">
                         </div>
-
-                        <div class="column">
-                            <img src="/assets/img/2.jpg" style="width:100%">
-
-                        </div>
-
-                        <div class="column">
-                            <img src="/assets/img/1.jpg" style="width:100%">
-
-                        </div>
-                        <div class="column">
-                            <img src="/assets/img/2.jpg" style="width:100%">
-
-                        </div>
-                        <div class="column">
-                            <img src="/assets/img/1.jpg" style="width:100%">
-
-                        </div>
-                        <div class="column">
-                            <img src="/assets/img/2.jpg" style="width:100%">
-
-                        </div>
-                        <div class="column">
-                            <img src="/assets/img/1.jpg" style="width:100%">
-
-                        </div>
-                        <div class="column">
-                            <img src="/assets/img/2.jpg" style="width:100%">
-
-                        </div>
-                        <div class="column">
-                            <img src="/assets/img/1.jpg" style="width:100%">
-
-                        </div>
-                        <div class="column">
-                            <img src="/assets/img/2.jpg" style="width:100%">
-
-                        </div>
-                        <div class="column">
-                            <img src="/assets/img/1.jpg" style="width:100%">
-
-                        </div>
-                        <div class="column">
-                            <img src="/assets/img/2.jpg" style="width:100%">
-
-                        </div>
-
-
-
                     </div>
                     view all
                 </div>
