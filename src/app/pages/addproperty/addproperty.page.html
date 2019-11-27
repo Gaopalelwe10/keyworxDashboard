@@ -7,7 +7,7 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="ion-padding">
 
     <!-- <ion-item color="transparent">
         <ion-label position="floating">Price</ion-label>
@@ -21,141 +21,215 @@
 
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-6">
-            <ion-item>
-                <ion-label position="floating">Description</ion-label>
-                <ion-textarea></ion-textarea>
-            </ion-item>
+            <form [formGroup]="AddpropertyForm">
+                <div class="profile-image">
+                    Main image
+                    <div>
+                        <img src="/assets/img/1.jpg">
 
-            <ion-item>
-                <ion-label position="floating">Price</ion-label>
-                <ion-input type="text"></ion-input>
-            </ion-item>
+                    </div>
+                    <!-- <div *ngIf="user.photoURL !='' ">
+                              <img data-src="{{user.photoURL}}">
+                          </div> -->
+                    <!-- <ion-img class="profile-pic" (change)="uploadFile($event)" src="{{photoURL}}.jpeg"></ion-img> -->
+                    <!-- <input class="input" type="file" (change)="uploadFile($event)" />
+                          <ion-icon name="reverse-camera" class="input"> </ion-icon> -->
 
-            <ion-item>
-                <ion-label position="floating">Location</ion-label>
-                <ion-input type="text"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label>Type of Property</ion-label>
-                <ion-select interface="popover">
-                    <ion-select-option value="House">House</ion-select-option>
-                    <ion-select-option value="Townhouse">Townhouse</ion-select-option>
-                    <ion-select-option value="2">2</ion-select-option>
-                    <ion-select-option value="3">3+</ion-select-option>
-                </ion-select>
-            </ion-item>
+                    <div class="image-upload">
+                        <label for="file-input">
+                            <ion-icon name="camera" class="input" color="medium"> </ion-icon>
+                        </label>
 
-            <ion-item>
-                <ion-label>Bedrooms</ion-label>
-                <ion-select interface="popover">
-                    <ion-select-option value="1">0</ion-select-option>
-                    <ion-select-option value="1">1</ion-select-option>
-                    <ion-select-option value="2">2</ion-select-option>
-                    <ion-select-option value="3">3</ion-select-option>
-                    <ion-select-option value="4">4</ion-select-option>
-                    <ion-select-option value="5">5+</ion-select-option>
-                </ion-select>
-            </ion-item>
-            <ion-item>
-                <ion-label>Bathrooms</ion-label>
-                <ion-select interface="popover">
-                    <ion-select-option value="1">0</ion-select-option>
-                    <ion-select-option value="1">1</ion-select-option>
-                    <ion-select-option value="2">2</ion-select-option>
-                    <ion-select-option value="3">3</ion-select-option>
-                    <ion-select-option value="4">4</ion-select-option>
-                    <ion-select-option value="5">5+</ion-select-option>
-
-                </ion-select>
-            </ion-item>
-
-
-            <ion-item>
-                <ion-label>Kitchens</ion-label>
-                <ion-select interface="popover">
-                    <ion-select-option value="1">0</ion-select-option>
-                    <ion-select-option value="1">1</ion-select-option>
-                    <ion-select-option value="2">2</ion-select-option>
-                    <ion-select-option value="3">3+</ion-select-option>
-
-                </ion-select>
-            </ion-item>
-
-            <ion-item>
-                <ion-label>Garage</ion-label>
-                <ion-select interface="popover">
-                    <ion-select-option value="1">0</ion-select-option>
-                    <ion-select-option value="1">1</ion-select-option>
-                    <ion-select-option value="2">2</ion-select-option>
-                    <ion-select-option value="3">3+</ion-select-option>
-                </ion-select>
-            </ion-item>
-
-            <ion-item>
-                <ion-label>Lounges</ion-label>
-                <ion-select interface="popover">
-                    <ion-select-option value="1">0</ion-select-option>
-                    <ion-select-option value="1">1</ion-select-option>
-                    <ion-select-option value="2">2</ion-select-option>
-                    <ion-select-option value="3">3+</ion-select-option>
-                </ion-select>
-            </ion-item>
-
-            <ion-item>
-                <ion-label>Garden</ion-label>
-                <ion-select interface="popover">
-                    <ion-select-option value="1">0</ion-select-option>
-                    <ion-select-option value="1">1</ion-select-option>
-                    <ion-select-option value="2">2</ion-select-option>
-                    <ion-select-option value="3">3+</ion-select-option>
-                </ion-select>
-            </ion-item>
-            <ion-item>
-                <ion-label>Pets Allowed</ion-label>
-                <ion-select interface="popover">
-                    <ion-select-option value="Yes">yes</ion-select-option>
-                    <ion-select-option value="No">No</ion-select-option>
-                </ion-select>
-            </ion-item>
-
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6">
-
-            <div class="row">
-                <div class="col">
-                    <div class="profile-image">
-                        Main image
-                        <div>
-                            <img src="/assets/img/1.jpg">
-
-                        </div>
-                        <!-- <div *ngIf="user.photoURL !='' ">
-                          <img data-src="{{user.photoURL}}">
-                      </div> -->
-                        <!-- <ion-img class="profile-pic" (change)="uploadFile($event)" src="{{photoURL}}.jpeg"></ion-img> -->
-                        <!-- <input class="input" type="file" (change)="uploadFile($event)" />
-                      <ion-icon name="reverse-camera" class="input"> </ion-icon> -->
-
-                        <div class="image-upload">
-                            <label for="file-input">
-                                  <ion-icon name="camera"  class="input" color="medium"> </ion-icon>
-                              </label>
-
-                            <input id="file-input" class="input" type="file" (change)="uploadFile($event)" />
-                        </div>
+                        <input id="file-input" class="input" type="file" (change)="uploadFile($event)" />
                     </div>
                 </div>
 
-            </div>
+                <ion-grid>
+
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label position="floating">Description</ion-label>
+                                <ion-textarea formControlName="description"></ion-textarea>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label position="floating">Price</ion-label>
+                                <ion-input type="text" formControlName="price"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label position="floating">Location</ion-label>
+                                <ion-input type="text" formControlName="location"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label>Type of Property</ion-label>
+                                <ion-select interface="popover" formControlName="typeofproperty">
+                                    <ion-select-option value="House">House</ion-select-option>
+                                    <ion-select-option value="Townhouse">Townhouse</ion-select-option>
+                                    <ion-select-option value="2">2</ion-select-option>
+                                    <ion-select-option value="3">3+</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label>Bedrooms</ion-label>
+                                <ion-select interface="popover" formControlName="bedrooms">
+                                    <ion-select-option value="1">0</ion-select-option>
+                                    <ion-select-option value="1">1</ion-select-option>
+                                    <ion-select-option value="2">2</ion-select-option>
+                                    <ion-select-option value="3">3</ion-select-option>
+                                    <ion-select-option value="4">4</ion-select-option>
+                                    <ion-select-option value="5">5+</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label>Bathrooms</ion-label>
+                                <ion-select interface="popover" formControlName="bathrooms">
+                                    <ion-select-option value="1">0</ion-select-option>
+                                    <ion-select-option value="1">1</ion-select-option>
+                                    <ion-select-option value="2">2</ion-select-option>
+                                    <ion-select-option value="3">3</ion-select-option>
+                                    <ion-select-option value="4">4</ion-select-option>
+                                    <ion-select-option value="5">5+</ion-select-option>
+
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label>Kitchens</ion-label>
+                                <ion-select interface="popover" formControlName="kitchens">
+                                    <ion-select-option value="1">0</ion-select-option>
+                                    <ion-select-option value="1">1</ion-select-option>
+                                    <ion-select-option value="2">2</ion-select-option>
+                                    <ion-select-option value="3">3+</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label>Dining Room </ion-label>
+                                <ion-select interface="popover" formControlName="diningroom">
+                                    <ion-select-option value="1">0</ion-select-option>
+                                    <ion-select-option value="1">1</ion-select-option>
+                                    <ion-select-option value="2">2</ion-select-option>
+                                    <ion-select-option value="3">3+</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label>Garage</ion-label>
+                                <ion-select interface="popover" formControlName="garage">
+                                    <ion-select-option value="1">0</ion-select-option>
+                                    <ion-select-option value="1">1</ion-select-option>
+                                    <ion-select-option value="2">2</ion-select-option>
+                                    <ion-select-option value="3">3+</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label>Garden</ion-label>
+                                <ion-select interface="popover" formControlName="garden">
+                                    <ion-select-option value="1">0</ion-select-option>
+                                    <ion-select-option value="1">1</ion-select-option>
+                                    <ion-select-option value="2">2</ion-select-option>
+                                    <ion-select-option value="3">3+</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label>Lounges</ion-label>
+                                <ion-select interface="popover" formControlName="lounges">
+                                    <ion-select-option value="1">0</ion-select-option>
+                                    <ion-select-option value="1">1</ion-select-option>
+                                    <ion-select-option value="2">2</ion-select-option>
+                                    <ion-select-option value="3">3+</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label>Pool</ion-label>
+                                <ion-select interface="popover" formControlName="pool">
+                                    <ion-select-option value="1">0</ion-select-option>
+                                    <ion-select-option value="1">1</ion-select-option>
+                                    <ion-select-option value="2">2</ion-select-option>
+                                    <ion-select-option value="3">3+</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
 
 
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label>Pets Allowed</ion-label>
+                                <ion-select interface="popover" formControlName="pets">
+                                    <ion-select-option value="Yes">yes</ion-select-option>
+                                    <ion-select-option value="No">No</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+
+                </ion-grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </form>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
             <div class="row">
                 <div class="col">
                     Multi image upload
                     <div class="image-upload">
                         <label for="file-multi">
-                              <ion-icon name="camera"  class="input" color="medium"> </ion-icon>
-                          </label>
+                            <ion-icon name="camera" class="input" color="medium"> </ion-icon>
+                        </label>
 
                         <input id="file-multi" class="input" type="file" (change)="uploadFile($event)" multiple>
                     </div>
@@ -222,97 +296,4 @@
         </div>
     </div>
 
-
-
-
-    <!-- <ion-item color="transparent">
-        <ion-label position="floating">Price</ion-label>
-        <ion-input type="number"></ion-input>
-    </ion-item>
-
-    <ion-item color="transparent" class="group">
-        <ion-label position="floating">Location</ion-label>
-        <ion-input type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label>Type of Property</ion-label>
-        <ion-select interface="popover">
-            <ion-select-option value="House">House</ion-select-option>
-            <ion-select-option value="Townhouse">Townhouse</ion-select-option>
-            <ion-select-option value="2">2</ion-select-option>
-            <ion-select-option value="3">3+</ion-select-option>
-        </ion-select>
-    </ion-item>
-    <ion-item>
-        <ion-label>Bedrooms</ion-label>
-        <ion-select interface="popover">
-            <ion-select-option value="1">0</ion-select-option>
-            <ion-select-option value="1">1</ion-select-option>
-            <ion-select-option value="2">2</ion-select-option>
-            <ion-select-option value="3">3</ion-select-option>
-            <ion-select-option value="4">4</ion-select-option>
-            <ion-select-option value="5">5+</ion-select-option>
-        </ion-select>
-    </ion-item>
-    <ion-item>
-        <ion-label>Bathrooms</ion-label>
-        <ion-select interface="popover">
-            <ion-select-option value="1">0</ion-select-option>
-            <ion-select-option value="1">1</ion-select-option>
-            <ion-select-option value="2">2</ion-select-option>
-            <ion-select-option value="3">3</ion-select-option>
-            <ion-select-option value="4">4</ion-select-option>
-            <ion-select-option value="5">5+</ion-select-option>
-
-        </ion-select>
-    </ion-item> -->
-
-    <!-- <ion-item>
-        <ion-label>Kitchens</ion-label>
-        <ion-select interface="popover">
-            <ion-select-option value="1">0</ion-select-option>
-            <ion-select-option value="1">1</ion-select-option>
-            <ion-select-option value="2">2</ion-select-option>
-            <ion-select-option value="3">3+</ion-select-option>
-
-        </ion-select>
-    </ion-item>
-
-    <ion-item>
-        <ion-label>Garage</ion-label>
-        <ion-select interface="popover">
-            <ion-select-option value="1">0</ion-select-option>
-            <ion-select-option value="1">1</ion-select-option>
-            <ion-select-option value="2">2</ion-select-option>
-            <ion-select-option value="3">3+</ion-select-option>
-        </ion-select>
-    </ion-item>
-
-    <ion-item>
-        <ion-label>Lounges</ion-label>
-        <ion-select interface="popover">
-            <ion-select-option value="1">0</ion-select-option>
-            <ion-select-option value="1">1</ion-select-option>
-            <ion-select-option value="2">2</ion-select-option>
-            <ion-select-option value="3">3+</ion-select-option>
-        </ion-select>
-    </ion-item>
-
-
-    <ion-item>
-        <ion-label>Garden</ion-label>
-        <ion-select interface="popover">
-            <ion-select-option value="1">0</ion-select-option>
-            <ion-select-option value="1">1</ion-select-option>
-            <ion-select-option value="2">2</ion-select-option>
-            <ion-select-option value="3">3+</ion-select-option>
-        </ion-select>
-    </ion-item>
-    <ion-item>
-        <ion-label>Pets Allowed</ion-label>
-        <ion-select interface="popover">
-            <ion-select-option value="Yes">yes</ion-select-option>
-            <ion-select-option value="No">No</ion-select-option>
-        </ion-select>
-    </ion-item> -->
 </ion-content>
