@@ -21,7 +21,8 @@ export class AddpropertyPage implements OnInit {
   mainImage = "";
   propertyid
   imageList
-
+  
+  isporpetyDetails: boolean= true;
   property = {
     uid: '',
     description: '',
@@ -40,7 +41,7 @@ export class AddpropertyPage implements OnInit {
     mainImage: '',
     propertyid: ""
   }
-  
+
   constructor(
     private fb: FormBuilder,
     private storage: AngularFireStorage,
@@ -101,26 +102,27 @@ export class AddpropertyPage implements OnInit {
   }
 
   Addproperty() {
-    this.property.uid = this.profileService.getUID();
-    this.property.description = this.AddpropertyForm.value.description;
-    this.property.price = this.AddpropertyForm.value.price;
-    this.property.location = this.AddpropertyForm.value.location;
-    this.property.typeofproperty = this.AddpropertyForm.value.typeofproperty;
-    this.property.bedrooms = this.AddpropertyForm.value.bedrooms;
-    this.property.bathrooms = this.AddpropertyForm.value.bathrooms;
-    this.property.kitchens = this.AddpropertyForm.value.kitchens;
-    this.property.garage = this.AddpropertyForm.value.garage;
-    this.property.lounges = this.AddpropertyForm.value.lounges;
-    this.property.garden = this.AddpropertyForm.value.garden;
-    this.property.pets = this.AddpropertyForm.value.garden;
-    this.property.pool = this.AddpropertyForm.value.pool;
-    this.property.diningroom = this.AddpropertyForm.value.diningroom;
-    this.property.mainImage = this.mainImage;
-    this.property.propertyid = this.propertyid;
-    console.log(this.property)
+    this.isporpetyDetails=false
+    // this.property.uid = this.profileService.getUID();
+    // this.property.description = this.AddpropertyForm.value.description;
+    // this.property.price = this.AddpropertyForm.value.price;
+    // this.property.location = this.AddpropertyForm.value.location;
+    // this.property.typeofproperty = this.AddpropertyForm.value.typeofproperty;
+    // this.property.bedrooms = this.AddpropertyForm.value.bedrooms;
+    // this.property.bathrooms = this.AddpropertyForm.value.bathrooms;
+    // this.property.kitchens = this.AddpropertyForm.value.kitchens;
+    // this.property.garage = this.AddpropertyForm.value.garage;
+    // this.property.lounges = this.AddpropertyForm.value.lounges;
+    // this.property.garden = this.AddpropertyForm.value.garden;
+    // this.property.pets = this.AddpropertyForm.value.garden;
+    // this.property.pool = this.AddpropertyForm.value.pool;
+    // this.property.diningroom = this.AddpropertyForm.value.diningroom;
+    // this.property.mainImage = this.mainImage;
+    // this.property.propertyid = this.propertyid;
+    // console.log(this.property)
 
 
-    this.propertyService.addproperty(this.propertyid, this.property)
+    // this.propertyService.addproperty(this.propertyid, this.property)
   }
   selectedFiles: FileList;
   currentUpload: Upload;
