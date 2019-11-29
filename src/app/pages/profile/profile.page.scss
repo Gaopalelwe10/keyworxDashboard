@@ -1,0 +1,44 @@
+.profile img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 40px;
+    text-align: center;
+}
+
+.profile {
+    img {
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+     }
+}
+
+.profile-upload {
+    margin-top: 70px;
+    top:180px;
+}
+
+.profile-upload>input {
+    display: none;
+}
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+
+}
+@media screen and (max-width: 991px) {
+    .center{
+        
+        width: 100%;
+    
+    }
+}
