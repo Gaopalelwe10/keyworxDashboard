@@ -7,6 +7,7 @@ import { Upload } from '../uploads/shared/upload';
 import * as firebase from 'firebase'
 import { AngularFireList } from '@angular/fire/database';
 import { ProfileService } from './profile.service';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -19,13 +20,32 @@ export class PropertyService {
     private afs: AngularFirestore,
     private alertCtrl: AlertController,
     private storage: AngularFireStorage,
-    private profileService: ProfileService 
+    private profileService: ProfileService,
+    private router: Router 
   ) {
 
   }
 
   addproperty(propertyid, property) {
     return this.afs.collection("properties").doc(propertyid).set(property)
+  }
+
+  deleteproperty(propertyid){
+    return this.afs.collection("properties").doc(propertyid).delete().then(() => {
+      this.alertCtrl.create({
+        subHeader: 'Property successfully deleted',
+        buttons: [
+          {
+            text: 'ok',
+            handler: () => {
+              this.router.navigateByUrl('propertylistings');
+            }
+          }
+        ]
+      }).then (
+        alert => alert.present()
+      );
+    })
   }
 
   imageList(propertyid){
