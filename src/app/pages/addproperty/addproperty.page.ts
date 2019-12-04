@@ -114,7 +114,7 @@ export class AddpropertyPage implements OnInit {
     this.property.garage = this.AddpropertyForm.value.garage;
     this.property.lounges = this.AddpropertyForm.value.lounges;
     this.property.garden = this.AddpropertyForm.value.garden;
-    this.property.pets = this.AddpropertyForm.value.garden;
+    this.property.pets = this.AddpropertyForm.value.pets;
     this.property.pool = this.AddpropertyForm.value.pool;
     this.property.diningroom = this.AddpropertyForm.value.diningroom;
     this.property.mainImage = this.mainImage;

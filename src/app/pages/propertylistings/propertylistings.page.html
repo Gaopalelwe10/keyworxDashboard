@@ -4,6 +4,9 @@
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
         <ion-title>Property listing</ion-title>
+        <ion-buttons slot="end" (click)="addproperty()">
+            <ion-icon name="add"></ion-icon>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -20,7 +23,7 @@
                 <ion-card-content>
                     <div class="action">
                         <ion-icon name="trash" (click)="deleteproperty(details)" color="danger"></ion-icon>
-                        <ion-icon name="create"></ion-icon>
+                        <ion-icon name="create" (click)="upadate(details)"></ion-icon>
                     </div>
                     <p>{{details.price}}</p>
                     <p>{{details.location}}</p>

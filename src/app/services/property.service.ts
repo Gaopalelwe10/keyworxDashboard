@@ -30,6 +30,14 @@ export class PropertyService {
     return this.afs.collection("properties").doc(propertyid).set(property)
   }
 
+  update2property(propertyid){
+    return this.afs.collection("properties").doc(propertyid).valueChanges();
+  }
+  
+  updateproperty(propertyid, property){
+    return this.afs.collection("properties").doc(propertyid).update(property)
+  }
+
   deleteproperty(propertyid){
     return this.afs.collection("properties").doc(propertyid).delete().then(() => {
       this.alertCtrl.create({

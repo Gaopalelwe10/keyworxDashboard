@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'addproperty',
     loadChildren: () => import('./pages/addproperty/addproperty.module').then( m => m.AddpropertyPageModule)
+  },
+  {
+    path: 'updateproperty',
+    loadChildren: () => import('./pages/updateproperty/updateproperty.module').then( m => m.UpdatepropertyPageModule)
   }
 ];
 

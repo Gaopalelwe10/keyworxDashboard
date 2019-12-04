@@ -14,6 +14,22 @@
     clear: both;
 }
 
+@media screen and (max-width: 1650px) {
+    .column {
+        float: left;
+        width: 33.33%;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .column {
+        float: left;
+        width: 50%;
+        padding: 10px;
+    }
+}
+
 @media screen and (max-width: 600px) {
     .column {
         float: left;
@@ -47,4 +63,11 @@ i {
 
 ion-card {
     border-radius: 10px;
+}
+
+ion-card img {
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 300px;
 }
