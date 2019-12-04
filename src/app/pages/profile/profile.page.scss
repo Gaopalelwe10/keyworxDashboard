@@ -4,7 +4,8 @@
     margin-right: auto;
 }
 
-.input {
+.profile-upload {
+    padding-top: -20px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -17,28 +18,22 @@
         height: 200px;
         width: 200px;
         border-radius: 50%;
-     }
-}
-
-.profile-upload {
-    margin-top: 70px;
-    top:180px;
+    }
 }
 
 .profile-upload>input {
     display: none;
 }
-.center{
+
+.center {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-
 }
+
 @media screen and (max-width: 991px) {
-    .center{
-        
+    .center {
         width: 100%;
-    
     }
 }

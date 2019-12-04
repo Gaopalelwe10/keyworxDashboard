@@ -204,7 +204,7 @@
                     </ion-row>
                 </ion-grid>
             </form>
-            <ion-button expand="full" (click)="Addproperty()">add</ion-button>
+            <ion-button expand="full" (click)="Addproperty()" [disabled]="!AddpropertyForm.valid">Next</ion-button>
         </div>
 
 
@@ -212,35 +212,32 @@
 
 
 
-    <div class="d-flex  justify-content-center align-items-center" style="height: 100%;" *ngIf="!isporpetyDetails">
-        <p>
-            Multi image upload
-        </p>
+    <div *ngIf="!isporpetyDetails" class="uploadMulti">
+        <div class="dropzone">
+            <p>
+                Multi image upload
+            </p>
 
-
-
-        <div *ngIf="currentUpload">
-            <div class="progress">
-                <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+            <div class="image-upload">
+                <label for="file-multiple">
+                    <ion-icon name="document"  color="medium"> </ion-icon>
+                </label>
+                <input id="file-multiple" type="file" (change)="detectFiles($event)" multiple>
             </div>
-            Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+
+            <ion-button (click)="uploadMulti()">
+
+                Upload Multiple
+            </ion-button>
+
+            <div *ngIf="currentUpload">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+                </div>
+                Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+            </div>
+
         </div>
-
-        <div class="image-upload">
-            <label for="file-multiple">
-                <ion-icon name="document" class="input" color="medium"> </ion-icon>
-            </label>
-            <input id="file-multiple" class="input" type="file" (change)="detectFiles($event)" multiple>
-        </div>
-
-        <ion-button (click)="uploadMulti()">
-
-            Upload Multiple
-        </ion-button>
-
-
-
-
         <div class="row">
             <div class="column" *ngFor="let image of imageList">
                 <img src="{{image.downloadURL}}" style="width:100%">

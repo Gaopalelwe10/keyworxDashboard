@@ -30,4 +30,7 @@ export class PropertylistingsPage implements OnInit {
   addproperty() {
     this.route.navigateByUrl("addproperty")
   }
+  deleteproperty(details){
+    // this.propertyService.deleteproperty(details.key)
+  }
 }
