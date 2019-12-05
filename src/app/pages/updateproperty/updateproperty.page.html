@@ -37,11 +37,11 @@
 
 
                     <div class="image-upload">
-                        <label for="file-input">
+                        <label for="file-input3">
                                 <ion-icon name="camera" class="input" color="medium"> </ion-icon>
                             </label>
 
-                        <input id="file-input" class="input" type="file" (change)="uploadFile($event)" />
+                        <input id="file-input3" class="input" type="file" (change)="uploadFile($event)" />
                     </div>
                 </div>
 
@@ -204,6 +204,18 @@
                             </ion-item>
                         </ion-col>
                     </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label>Category</ion-label>
+                                <ion-select interface="popover" formControlName="category">
+                                    <ion-select-option value="none">None</ion-select-option>
+                                    <ion-select-option value="sale">Sale</ion-select-option>
+                                    <ion-select-option value="show">On Show</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
                 </ion-grid>
             </form>
             <ion-button expand="full" (click)="update()" [disabled]="!UpdatepropertyForm.valid">Update</ion-button>
@@ -221,10 +233,10 @@
             </p>
 
             <div class="image-upload">
-                <label for="file-multiple">
+                <label for="file-multip">
                         <ion-icon name="document"  color="medium"> </ion-icon>
                     </label>
-                <input id="file-multiple" type="file" (change)="detectFiles($event)" multiple>
+                <input id="file-multip" type="file" (change)="detectFiles($event)" multiple>
             </div>
 
             <ion-button (click)="uploadMulti()">

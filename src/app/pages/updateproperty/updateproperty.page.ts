@@ -6,6 +6,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ProfileService } from 'src/app/services/profile.service';
 import { PropertyService } from 'src/app/services/property.service';
 import { ActivatedRoute } from '@angular/router';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-updateproperty',
@@ -37,6 +38,7 @@ export class UpdatepropertyPage implements OnInit {
     pool: '',
     diningroom: '',
     mainImage: '',
+    category:''
   }
   key: any;
   constructor(
@@ -67,6 +69,7 @@ export class UpdatepropertyPage implements OnInit {
       pets: ['', Validators.required],
       pool: ['', Validators.required],
       diningroom: ['', Validators.required],
+      category:['', Validators.required],
     });
 
 
@@ -89,10 +92,32 @@ export class UpdatepropertyPage implements OnInit {
         pets: [data.pets, Validators.required],
         pool: [data.pool, Validators.required],
         diningroom: [data.diningroom, Validators.required],
+        category:[data.category, Validators.required],
       });
     })
   }
+  uploadFile(event) {
+    const file = event.target.files[0];
 
+    const filePath = 'PIC' + Math.random().toString(36).substring(2);
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    // observe percentage changes
+    this.uploadPercent = task.percentageChanges();
+
+
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        this.downloadU = fileRef.getDownloadURL().subscribe(url => {
+          console.log(url);
+          this.mainImage = url
+          this.uploadPercent = null;
+        });
+      })
+    ).subscribe();
+  }
+  
   update() {
     this.isporpetyDetails = false
     this.property.description = this.UpdatepropertyForm.value.description;
@@ -108,6 +133,7 @@ export class UpdatepropertyPage implements OnInit {
     this.property.pets = this.UpdatepropertyForm.value.pets;
     this.property.pool = this.UpdatepropertyForm.value.pool;
     this.property.diningroom = this.UpdatepropertyForm.value.diningroom;
+    this.property.category=this.UpdatepropertyForm.value.category;
     this.property.mainImage = this.mainImage;
 
     console.log(this.property)
@@ -125,4 +151,6 @@ export class UpdatepropertyPage implements OnInit {
       console.log(this.imageList);
     })
   }
+
+
 }
