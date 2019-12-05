@@ -39,7 +39,8 @@ export class AddpropertyPage implements OnInit {
     pool: '',
     diningroom: '',
     mainImage: '',
-    propertyid: ""
+    propertyid: "",
+    category:'',
   }
 
   constructor(
@@ -63,6 +64,7 @@ export class AddpropertyPage implements OnInit {
       pets: ['', Validators.required],
       pool: ['', Validators.required],
       diningroom: ['', Validators.required],
+      category:['', Validators.required],
     });
   }
 
@@ -117,8 +119,10 @@ export class AddpropertyPage implements OnInit {
     this.property.pets = this.AddpropertyForm.value.pets;
     this.property.pool = this.AddpropertyForm.value.pool;
     this.property.diningroom = this.AddpropertyForm.value.diningroom;
+    this.property.category=this.AddpropertyForm.value.category;
     this.property.mainImage = this.mainImage;
     this.property.propertyid = this.propertyid;
+
     console.log(this.property)
 
 

@@ -202,6 +202,17 @@
                             </ion-item>
                         </ion-col>
                     </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-label>Category</ion-label>
+                                <ion-select interface="popover" formControlName="category">
+                                    <ion-select-option value="sale">Sale</ion-select-option>
+                                    <ion-select-option value="show">On Show</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
                 </ion-grid>
             </form>
             <ion-button expand="full" (click)="Addproperty()" [disabled]="!AddpropertyForm.valid">Next</ion-button>
