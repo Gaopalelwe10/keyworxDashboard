@@ -63,6 +63,10 @@ export class PropertyService {
   propertyList(){
     return this.afs.collection("properties" ,ref=>ref.where('uid', '==' ,this.profileService.getUID() )).snapshotChanges()
   }
+
+  getProperty(){
+    return this.afs.collection('properties').valueChanges();
+  }
   pushUpload(upload: Upload, propertyid) {
     let storageRef = firebase.storage().ref();
     let uploadTask = storageRef.child(`${this.basePath}/${upload.file.name}`).put(upload.file);
