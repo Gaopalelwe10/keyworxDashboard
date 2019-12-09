@@ -21,7 +21,8 @@ export class AddpropertyPage implements OnInit {
   mainImage = "";
   propertyid
   imageList
-
+  
+  isporpetyDetails: boolean= true;
   property = {
     uid: '',
     description: '',
@@ -38,9 +39,10 @@ export class AddpropertyPage implements OnInit {
     pool: '',
     diningroom: '',
     mainImage: '',
-    propertyid: ""
+    propertyid: "",
+    category:'',
   }
-  
+
   constructor(
     private fb: FormBuilder,
     private storage: AngularFireStorage,
@@ -62,6 +64,7 @@ export class AddpropertyPage implements OnInit {
       pets: ['', Validators.required],
       pool: ['', Validators.required],
       diningroom: ['', Validators.required],
+      category:['', Validators.required],
     });
   }
 
@@ -101,6 +104,7 @@ export class AddpropertyPage implements OnInit {
   }
 
   Addproperty() {
+    this.isporpetyDetails=false
     this.property.uid = this.profileService.getUID();
     this.property.description = this.AddpropertyForm.value.description;
     this.property.price = this.AddpropertyForm.value.price;
@@ -112,11 +116,13 @@ export class AddpropertyPage implements OnInit {
     this.property.garage = this.AddpropertyForm.value.garage;
     this.property.lounges = this.AddpropertyForm.value.lounges;
     this.property.garden = this.AddpropertyForm.value.garden;
-    this.property.pets = this.AddpropertyForm.value.garden;
+    this.property.pets = this.AddpropertyForm.value.pets;
     this.property.pool = this.AddpropertyForm.value.pool;
     this.property.diningroom = this.AddpropertyForm.value.diningroom;
+    this.property.category=this.AddpropertyForm.value.category;
     this.property.mainImage = this.mainImage;
     this.property.propertyid = this.propertyid;
+
     console.log(this.property)
 
 

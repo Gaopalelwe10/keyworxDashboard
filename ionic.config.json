@@ -1,5 +1,7 @@
 {
   "name": "keyworxDashboard",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
