@@ -65,7 +65,7 @@ export class PropertyService {
   }
 
   getProperty(){
-    return this.afs.collection('properties').valueChanges();
+    return this.afs.collection('properties' ,ref=>ref.where('uid', '==' ,this.profileService.getUID() )).valueChanges();
   }
   pushUpload(upload: Upload, propertyid) {
     let storageRef = firebase.storage().ref();
