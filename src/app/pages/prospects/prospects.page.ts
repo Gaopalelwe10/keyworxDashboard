@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProspectsService } from 'src/app/services/prospects.service';
 
 @Component({
   selector: 'app-prospects',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProspectsPage implements OnInit {
 
-  constructor() { }
+  prospectList
+
+  constructor( private prosServ: ProspectsService) {
+
+    this.prosServ.getFavourite().subscribe((data )=> {
+      this.prospectList = data;
+
+      console.log(data)
+    })
+
+  }
 
   ngOnInit() {
   }
