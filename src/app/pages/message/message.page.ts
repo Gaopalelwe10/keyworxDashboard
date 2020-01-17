@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Contacts, Contact, ContactField, ContactName} from '@ionic-native/contacts/ngx';
 
 @Component({
   selector: 'app-message',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessagePage implements OnInit {
 
-  constructor() { }
+  constructor(private contacts: Contacts) { 
+
+    let contact: Contact = this.contacts.create();
+
+    contact.name = new ContactName (null, '', '');
+    contact.phoneNumbers = [new ContactField('mobile', '')];
+    contact.save().then(
+      () => console.log('Contact saved!', contact),
+      (error: any) => console.error('Error saving contact.', error)
+    );
+  }
 
   ngOnInit() {
   }
