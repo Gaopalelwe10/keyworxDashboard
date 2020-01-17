@@ -7,4 +7,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class MessageService {
 
   constructor(private afs : AngularFirestore) { }
+
+  getMessages(){
+    return this.afs.collection('message').valueChanges();
+  }
 }
