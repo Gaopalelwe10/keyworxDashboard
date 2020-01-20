@@ -41,6 +41,10 @@ export class AddpropertyPage implements OnInit {
     mainImage: '',
     propertyid: "",
     category:'',
+    reactionCount:0,
+    userReaction: 0,
+    created:'',
+
   }
 
   constructor(

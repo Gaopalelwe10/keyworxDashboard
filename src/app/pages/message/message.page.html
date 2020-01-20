@@ -3,10 +3,39 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>message</ion-title>
+        <ion-title>Message</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <br>
+
+    <div class="card1">
+            <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header card-header-warning card-header-icon">
+                                    <div class="card-icon"><i class="material-icons">mail-unread</i></div>
+                                    <p class="card-category">Unread</p>
+                                    <h3 class="card-title">{{property}}</h3>
+                                </div>
+                            </div>
+                        </div>
+
+    
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-warning card-header-icon">
+                                <div class="card-icon"><i class="material-icons">mail-read</i></div>
+                                <p class="card-category">Opened</p>
+                                <h3 class="card-title">{{users}}</h3>
+                            </div>
+                        </div>
+                    </div>
+    
+            </div>
+        </div>
+    
+    <br>
 
 </ion-content>
