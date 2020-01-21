@@ -56,7 +56,9 @@
 
                 <ion-item>
                     <ion-label position="floating">Location</ion-label>
-                    <ion-input type="text" formControlName="location"></ion-input>
+                    <!-- <ion-input type="text" formControlName="location"></ion-input> -->
+                    <ion-input type="text" formControlName="location" (ionInput)="search($event)" [value]="selectedAddress" clearInput></ion-input>
+
                 </ion-item>
 
 

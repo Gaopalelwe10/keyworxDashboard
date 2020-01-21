@@ -7,6 +7,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { PropertyService } from 'src/app/services/property.service';
 import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs/operators';
+import { MapboxService, Feature } from 'src/app/services/mapbox.service';
 
 @Component({
   selector: 'app-updateproperty',
@@ -38,16 +39,29 @@ export class UpdatepropertyPage implements OnInit {
     pool: '',
     diningroom: '',
     mainImage: '',
-    category:''
+    category:'',
+    lng:'',
+    lat:'',
   }
   key: any;
+
+  addresses: string[] = [];
+  coodinateses: string[] = [];
+
+  selectedAddress = null;
+  selectedcoodinates = null;
+  listMabox: any;
+  lng;
+  lat;
+
   constructor(
     private fb: FormBuilder,
     private storage: AngularFireStorage,
     private afs: AngularFirestore,
     private profileService: ProfileService,
     private propertyService: PropertyService,
-    private routeA: ActivatedRoute
+    private routeA: ActivatedRoute,
+    public mapboxService: MapboxService,
   ) {
     this.routeA.queryParams
       .subscribe(params => {
@@ -78,6 +92,8 @@ export class UpdatepropertyPage implements OnInit {
   ngOnInit() {
     this.propertyService.update2property(this.key).subscribe((data: any) => {
       this.mainImage = data.mainImage
+      this.lng=data.lng;
+      this.lat=data.lat;
       this.UpdatepropertyForm = this.fb.group({
         description: new FormControl(data.description, Validators.required),
         price: [data.price, Validators.required],
@@ -95,6 +111,48 @@ export class UpdatepropertyPage implements OnInit {
         category:[data.category, Validators.required],
       });
     })
+  }
+
+  search(event: any) {
+    const searchTerm = event.target.value.toLowerCase();
+    if (searchTerm && searchTerm.length > 0) {
+      this.mapboxService.search_word(searchTerm)
+        .subscribe((features: Feature[]) => {
+          this.coodinateses = features.map(feat => feat.geometry)
+          this.addresses = features.map(feat => feat.place_name)
+          this.listMabox = features;
+          console.log(this.listMabox)
+        });
+    } else {
+      this.addresses = [];
+    }
+  }
+
+  onSelect(address, i) {
+    this.selectedAddress = address;
+    //  selectedcoodinates=
+
+    console.log("lng:" + JSON.stringify(this.listMabox[i].geometry.coordinates[0]))
+    console.log("lat:" + JSON.stringify(this.listMabox[i].geometry.coordinates[1]))
+    this.lng = JSON.stringify(this.listMabox[i].geometry.coordinates[0])
+    this.lat = JSON.stringify(this.listMabox[i].geometry.coordinates[1])
+
+    console.log("index =" + i)
+    console.log(this.selectedAddress)
+
+    //add to FireBase
+    // this.dog.collection('coordinate').add({
+    //   lat: this.temp.coordinates[1],
+    //   lng: this.temp.coordinates[0],
+    //   address: address,
+    // }).then(function (ref) {
+    //   console.log("document was written with ID : " + ref);
+    //   alert("physical address : " + address + " , saved successful..")
+    // }).catch(function (ee) {
+    //   console.log(ee)
+    //   console.log("error while processing ..")
+    // });
+    this.addresses = [];
   }
   uploadFile(event) {
     const file = event.target.files[0];
@@ -135,7 +193,8 @@ export class UpdatepropertyPage implements OnInit {
     this.property.diningroom = this.UpdatepropertyForm.value.diningroom;
     this.property.category=this.UpdatepropertyForm.value.category;
     this.property.mainImage = this.mainImage;
-
+    this.property.lat=this.lat;
+    this.property.lng=this.lng;
     console.log(this.property)
 
 
