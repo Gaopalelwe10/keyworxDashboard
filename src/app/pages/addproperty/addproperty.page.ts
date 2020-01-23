@@ -8,6 +8,7 @@ import { PropertyService } from 'src/app/services/property.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Upload } from 'src/app/uploads/shared/upload';
 import * as _ from "lodash";
+import { MapboxService, Feature } from 'src/app/services/mapbox.service';
 @Component({
   selector: 'app-addproperty',
   templateUrl: './addproperty.page.html',
@@ -44,15 +45,25 @@ export class AddpropertyPage implements OnInit {
     reactionCount:0,
     userReaction: 0,
     created:'',
-
+    lng:'',
+    lat:'',
   }
 
+  addresses: string[] = [];
+  coodinateses: string[] = [];
+
+  selectedAddress = null;
+  selectedcoodinates = null;
+  listMabox: any;
+  lng;
+  lat;
   constructor(
     private fb: FormBuilder,
     private storage: AngularFireStorage,
     private afs: AngularFirestore,
     private profileService: ProfileService,
-    private propertyService: PropertyService
+    private propertyService: PropertyService,
+    public mapboxService: MapboxService,
   ) {
     this.AddpropertyForm = fb.group({
       description: ['', Validators.required],
@@ -85,6 +96,50 @@ export class AddpropertyPage implements OnInit {
       console.log(this.imageList);
     })
   }
+
+
+  search(event: any) {
+    const searchTerm = event.target.value.toLowerCase();
+    if (searchTerm && searchTerm.length > 0) {
+      this.mapboxService.search_word(searchTerm)
+        .subscribe((features: Feature[]) => {
+          this.coodinateses = features.map(feat => feat.geometry)
+          this.addresses = features.map(feat => feat.place_name)
+          this.listMabox = features;
+          console.log(this.listMabox)
+        });
+    } else {
+      this.addresses = [];
+    }
+  }
+
+  onSelect(address, i) {
+    this.selectedAddress = address;
+    //  selectedcoodinates=
+
+    console.log("lng:" + JSON.stringify(this.listMabox[i].geometry.coordinates[0]))
+    console.log("lat:" + JSON.stringify(this.listMabox[i].geometry.coordinates[1]))
+    this.lng = JSON.stringify(this.listMabox[i].geometry.coordinates[0])
+    this.lat = JSON.stringify(this.listMabox[i].geometry.coordinates[1])
+
+    console.log("index =" + i)
+    console.log(this.selectedAddress)
+
+    //add to FireBase
+    // this.dog.collection('coordinate').add({
+    //   lat: this.temp.coordinates[1],
+    //   lng: this.temp.coordinates[0],
+    //   address: address,
+    // }).then(function (ref) {
+    //   console.log("document was written with ID : " + ref);
+    //   alert("physical address : " + address + " , saved successful..")
+    // }).catch(function (ee) {
+    //   console.log(ee)
+    //   console.log("error while processing ..")
+    // });
+    this.addresses = [];
+  }
+
   uploadFile(event) {
     const file = event.target.files[0];
 
@@ -126,7 +181,8 @@ export class AddpropertyPage implements OnInit {
     this.property.category=this.AddpropertyForm.value.category;
     this.property.mainImage = this.mainImage;
     this.property.propertyid = this.propertyid;
-
+    this.property.lat=this.lat;
+    this.property.lng=this.lng;
     console.log(this.property)
 
 
