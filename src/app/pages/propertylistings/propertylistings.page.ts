@@ -15,7 +15,7 @@ export class PropertylistingsPage implements OnInit {
     private propertyService: PropertyService,
     private navCtrl : NavController
     ) { 
-      this.propertyService.propertyList().subscribe(data=>{
+      this.propertyService.propertyList().subscribe((data:any)=>{
           this.propertyList = data.map(e => {
             return {
               key: e.payload.doc.id,

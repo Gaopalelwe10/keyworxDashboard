@@ -27,11 +27,11 @@ export class AppComponent {
       url: '/propertylistings',
       icon: 'home'
     },
-    {
-      title: 'Prospects',
-      url: '/prospects',
-      icon: 'people'
-    },
+    // {
+    //   title: 'Prospects',
+    //   url: '/prospects',
+    //   icon: 'people'
+    // },
     {
       title: 'Profile',
       url: '/profile',
