@@ -76,6 +76,10 @@ export class ProfileService {
     })
   }
 
+  async sendPasswordResetEmail(passwordResetEmail: string) {
+    return await this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail);
+  }
+  
   getAgent(key){
     this.agentDoc = this.afs.doc<User>('agent/' + key);
     return this.agentDoc.valueChanges();
