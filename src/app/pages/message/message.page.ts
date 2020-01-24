@@ -11,6 +11,9 @@ import { ProfileService } from 'src/app/services/profile.service';
 export class MessagePage implements OnInit {
 
   messageList;
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev);
+  }
   
   constructor(
     private contacts: Contacts,
@@ -23,7 +26,9 @@ export class MessagePage implements OnInit {
         this.messageList = data;
         console.log(data)
       })
+ 
 
+   
   //   let contact: Contact = this.contacts.create();
 
   //   contact.name = new ContactName (null, '', '');

@@ -1,9 +1,9 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="primary">
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
-        <ion-title>addproperty</ion-title>
+        <ion-title>Add Property</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -39,7 +39,7 @@
                             <ion-icon name="camera" class="input" color="medium"> </ion-icon>
                         </label>
 
-                        <input id="file-input" class="input" type="file" (change)="uploadFile($event)" />
+                        <input id="file-input" class="input" type="file" (change)="uploadFile($event)" accept="image/x-png,image/gif,image/jpeg" />
                     </div>
                 </div>
 
@@ -62,7 +62,13 @@
                 </ion-item>
 
 
+                <ion-list position="floating">
+                    <!-- <ion-item *ngFor="let album of albums | filtro: textBuscar: 'title'"> -->
 
+                    <ion-item *ngFor="let address of addresses ; let i=index" (click)="onSelect(address, i)">
+                        <ion-label>{{ address}}</ion-label>
+                    </ion-item>
+                </ion-list>
 
 
 
@@ -235,7 +241,7 @@
                 <label for="file-multiple">
                     <ion-icon name="document"  color="medium"> </ion-icon>
                 </label>
-                <input id="file-multiple" type="file" (change)="detectFiles($event)" multiple>
+                <input id="file-multiple" type="file" (change)="detectFiles($event)" multiple accept="image/x-png,image/gif,image/jpeg">
             </div>
 
             <ion-button (click)="uploadMulti()">
