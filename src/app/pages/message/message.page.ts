@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Contacts, Contact, ContactField, ContactName} from '@ionic-native/contacts/ngx';
+import { MessageService } from 'src/app/services/message.service';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-message',
@@ -8,12 +10,25 @@ import { Contacts, Contact, ContactField, ContactName} from '@ionic-native/conta
 })
 export class MessagePage implements OnInit {
 
+  messageList;
   segmentChanged(ev: any) {
     console.log('Segment changed', ev);
   }
+  
+  constructor(
+    private contacts: Contacts,
+    private messageServ: MessageService,
+    private profileServ: ProfileService,) {
+      
+      const uid = this.profileServ.getUID();
 
-  constructor(private contacts: Contacts) { 
+      this.messageServ.getMessages().subscribe(data => {
+        this.messageList = data;
+        console.log(data)
+      })
+ 
 
+   
   //   let contact: Contact = this.contacts.create();
 
   //   contact.name = new ContactName (null, '', '');

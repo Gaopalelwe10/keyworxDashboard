@@ -28,7 +28,6 @@ export class AppComponent {
       url: '/propertylistings',
       icon: 'home'
     },
-
   ];
 
   constructor(
