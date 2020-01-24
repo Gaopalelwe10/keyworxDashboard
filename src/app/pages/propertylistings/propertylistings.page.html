@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="primary">
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
@@ -18,14 +18,21 @@
         <div class="column" *ngFor="let details of propertyList">
 
             <ion-card class="card">
-                <img src="{{details.mainImage}}" style="width:100%">
 
-                <ion-card-content>
-                    <div class="action">
+
+                <div class="IMGcontainers">
+                    <img src="{{details.mainImage}}" style="width:100%">
+                    <div class="bottom-right">
                         <ion-icon name="trash" (click)="deleteproperty(details)" color="danger"></ion-icon>
                         <ion-icon name="create" (click)="upadate(details)"></ion-icon>
                     </div>
-                    <p>{{details.price}}</p>
+                </div>
+
+                <ion-card-content>
+                    <div class="action">
+
+                    </div>
+                    <p>{{details.price | currency:'R'}}</p>
                     <p>{{details.location}}</p>
                     <div>
                         <i class="fa fa-bed" aria-hidden="true">

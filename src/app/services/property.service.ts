@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { AlertController } from '@ionic/angular';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Upload } from '../uploads/shared/upload';

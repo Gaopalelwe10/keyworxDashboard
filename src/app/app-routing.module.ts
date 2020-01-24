@@ -27,10 +27,7 @@ const routes: Routes = [
     path: 'message',
     loadChildren: () => import('./pages/message/message.module').then( m => m.MessagePageModule)
   },
-  {
-    path: 'prospects',
-    loadChildren: () => import('./pages/prospects/prospects.module').then( m => m.ProspectsPageModule)
-  },
+ 
   {
     path: 'propertylistings',
     loadChildren: () => import('./pages/propertylistings/propertylistings.module').then( m => m.PropertylistingsPageModule)

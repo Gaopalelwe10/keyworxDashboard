@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="primary">
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
@@ -20,7 +20,7 @@
                 <ion-icon name="image" class="input" color="medium"> </ion-icon>
             </label>
 
-            <input id="file-input" class="input" type="file" (change)="uploadProfilePic($event)" />
+            <input id="file-input" class="input" type="file" (change)="uploadProfilePic($event)" accept="image/x-png,image/gif,image/jpeg" />
         </div>
     </div>
     <div class="center">

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ProfileService } from './services/profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -27,23 +28,15 @@ export class AppComponent {
       url: '/propertylistings',
       icon: 'home'
     },
-    {
-      title: 'Prospects',
-      url: '/prospects',
-      icon: 'people'
-    },
-    {
-      title: 'Profile',
-      url: '/profile',
-      icon: 'person'
-    }
   ];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private router:Router,
+    private menuCtrl: MenuController,
   ) {
     this.initializeApp();
   }
@@ -53,6 +46,10 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+  profile(){
+  this.menuCtrl.close()
+  this.router.navigateByUrl('profile')
   }
   logout(){
     this.profileService.logout();

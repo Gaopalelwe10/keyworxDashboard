@@ -50,10 +50,6 @@ i {
     top: 50%;
     transform: translate(-5%, -80%);
     -ms-transform: translate(-5%, -80%);
-    background-color: #fff;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
     ion-icon {
         padding-left: 15px;
         font-size: 15px;
@@ -61,8 +57,28 @@ i {
     }
 }
 
+.IMGcontainers {
+    position: relative;
+    .bottom-right {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: #fff;
+        padding: 12px 24px;
+        border: none;
+        // border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+        ion-icon {
+            padding-left: 10px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    }
+}
+
 ion-card {
     border-radius: 10px;
+    color: black;
 }
 
 ion-card img {

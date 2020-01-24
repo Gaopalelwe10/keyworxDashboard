@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="primary">
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
@@ -47,21 +47,26 @@
         </div>
     </div>
 
-    <br>
+    <div class="card1">
+        <div class="row">
+            <div class="column">
+                <ion-card>
+                    <div style="text-align:center">
 
-    <!-- <ion-grid>
-        <ion-row>
-            <ion-col>
-                <div>
-                    <canvas id="Line" width="600" height="370">Line Chart</canvas>
-                </div>
-            </ion-col>
-            <ion-col>
-                <div>
-                    <canvas id="Pie" width="600" height="370">Pie Chart</canvas>
-                </div>
-            </ion-col>
-        </ion-row>
-    </ion-grid> -->
+                        <canvas id="lineChart1"></canvas>
+                        <!-- <canvas id="lineChart" width="700" height="390"></canvas> -->
+                    </div>
+                </ion-card>
+            </div>
+            <div class="column">
+                <ion-card>
+                    <div style="text-align:center">
 
+                        <canvas id="lineChart2"></canvas>
+                        <!-- <canvas id="lineChart" width="700" height="390"></canvas> -->
+                    </div>
+                </ion-card>
+            </div>
+        </div>
+    </div>
 </ion-content>
