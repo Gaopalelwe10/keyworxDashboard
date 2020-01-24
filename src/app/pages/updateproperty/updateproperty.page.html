@@ -61,13 +61,7 @@
                     <!-- <ion-input type="text" formControlName="location"></ion-input> -->
                     <ion-input type="text" formControlName="location" (ionInput)="search($event)" [value]="selectedAddress" clearInput></ion-input>
                 </ion-item>
-                <ion-list position="floating">
-                    <!-- <ion-item *ngFor="let album of albums | filtro: textBuscar: 'title'"> -->
 
-                    <ion-item *ngFor="let address of addresses ; let i=index" (click)="onSelect(address, i)">
-                        <ion-label>{{ address}}</ion-label>
-                    </ion-item>
-                </ion-list>
 
 
 

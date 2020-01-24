@@ -50,14 +50,23 @@ i {
     top: 50%;
     transform: translate(-5%, -80%);
     -ms-transform: translate(-5%, -80%);
-    background-color: #fff;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
     ion-icon {
         padding-left: 15px;
         font-size: 15px;
         cursor: pointer;
+    }
+}
+
+.container {
+    position: relative;
+    .bottom-right {
+        position: absolute;
+        bottom: 8px;
+        right: 16px;
+        background-color: #fff;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 5px;
     }
 }
 

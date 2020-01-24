@@ -18,12 +18,18 @@
         <div class="column" *ngFor="let details of propertyList">
 
             <ion-card class="card">
-                <img src="{{details.mainImage}}" style="width:100%">
 
-                <ion-card-content>
-                    <div class="action">
+
+                <div class="container">
+                    <img src="{{details.mainImage}}" style="width:100%">
+                    <div class="bottom-right">
                         <ion-icon name="trash" (click)="deleteproperty(details)" color="danger"></ion-icon>
                         <ion-icon name="create" (click)="upadate(details)"></ion-icon>
+                    </div>
+                </div>
+                <ion-card-content>
+                    <div class="action">
+
                     </div>
                     <p>{{details.price}}</p>
                     <p>{{details.location}}</p>

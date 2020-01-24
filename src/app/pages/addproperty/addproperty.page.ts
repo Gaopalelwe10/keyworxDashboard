@@ -167,7 +167,7 @@ export class AddpropertyPage implements OnInit {
     this.property.uid = this.profileService.getUID();
     this.property.description = this.AddpropertyForm.value.description;
     this.property.price = this.AddpropertyForm.value.price;
-    this.property.location = this.AddpropertyForm.value.location;
+    this.property.location = this.selectedAddress ;
     this.property.typeofproperty = this.AddpropertyForm.value.typeofproperty;
     this.property.bedrooms = this.AddpropertyForm.value.bedrooms;
     this.property.bathrooms = this.AddpropertyForm.value.bathrooms;
