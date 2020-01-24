@@ -17,6 +17,8 @@ import * as _ from "lodash";
   styleUrls: ['./updateproperty.page.scss'],
 })
 export class UpdatepropertyPage implements OnInit {
+
+  Segment="Property"
   UpdatepropertyForm: FormGroup;
 
   uploadPercent: Observable<number>;
@@ -114,6 +116,16 @@ export class UpdatepropertyPage implements OnInit {
         category:[data.category, Validators.required],
       });
     })
+
+    this.propertyService.imageList(this.key).subscribe(data=>{
+      this.imageList = data.map(e => {
+        return {
+          key: e.payload.doc.id,
+          ...e.payload.doc.data()
+        } 
+      });
+      console.log(this.imageList);
+    })
   }
 
   search(event: any) {
@@ -142,7 +154,7 @@ export class UpdatepropertyPage implements OnInit {
 
     console.log("index =" + i)
     console.log(this.selectedAddress)
-
+    this.property.location=  this.selectedAddress;
     //add to FireBase
     // this.dog.collection('coordinate').add({
     //   lat: this.temp.coordinates[1],
@@ -201,17 +213,25 @@ export class UpdatepropertyPage implements OnInit {
     console.log(this.property)
 
 
-    this.propertyService.updateproperty(this.key, this.property)
-    
-    this.propertyService.imageList(this.key).subscribe(data=>{
-      this.imageList = data.map(e => {
-        return {
-          key: e.payload.doc.id,
-          ...e.payload.doc.data()
-        } 
-      });
-      console.log(this.imageList);
+    this.propertyService.updateproperty(this.key, this.property).then(()=>{
+      this.alertCtrl.create({
+        // message: 'Upload doc, xlsx, pdf, accdb, docx',
+        subHeader: "Property Infor is updated successfully",
+        buttons: [
+
+          {
+            text: 'ok',
+            handler: () => {
+
+            }
+          }
+        ]
+      }).then(
+        alert => alert.present()
+      );
     })
+    
+  
   }
 
   selectedFiles: FileList;
