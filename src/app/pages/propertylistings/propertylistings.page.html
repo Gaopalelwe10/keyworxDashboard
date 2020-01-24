@@ -20,18 +20,19 @@
             <ion-card class="card">
 
 
-                <div class="container">
+                <div class="IMGcontainers">
                     <img src="{{details.mainImage}}" style="width:100%">
                     <div class="bottom-right">
                         <ion-icon name="trash" (click)="deleteproperty(details)" color="danger"></ion-icon>
                         <ion-icon name="create" (click)="upadate(details)"></ion-icon>
                     </div>
                 </div>
+
                 <ion-card-content>
                     <div class="action">
 
                     </div>
-                    <p>{{details.price}}</p>
+                    <p>{{details.price | currency:'R'}}</p>
                     <p>{{details.location}}</p>
                     <div>
                         <i class="fa fa-bed" aria-hidden="true">

@@ -3,6 +3,34 @@
         <ion-menu contentId="main-content" type="overlay">
 
 
+            <div *ngIf="profileService.user ==''" (click)="profile()">
+
+                <div class="profile-image">
+                    <br>
+                    <!-- <div *ngIf="user.photoURL =='' ">
+                        <img src="/assets/img/avatar.svg">
+
+                    </div>
+                    <div *ngIf="user.photoURL !='' ">
+                        <img data-src="{{user.photoURL}}">
+                    </div> -->
+
+                </div>
+                <ion-item lines="none">
+
+                    <h2 style="padding-left:20px;">
+                        dsfsdfsf
+                    </h2>
+                    <ion-label>
+                        <!-- <h3>
+                            {{user.name}}
+                        </h3>
+                        <p>{{user.companyName}}</p> -->
+                    </ion-label>
+                    <ion-icon name="arrow-dropdown" slot="end" color="primary"></ion-icon>
+                </ion-item>
+            </div>
+
             <div *ngIf="profileService.user | async as user" (click)="profile()">
 
                 <div class="profile-image">
@@ -27,7 +55,7 @@
                         </h3>
                         <p>{{user.companyName}}</p>
                     </ion-label>
-                    <ion-icon name="arrow-dropdown" slot="end"></ion-icon>
+                    <ion-icon name="arrow-dropdown" slot="end" color="primary"></ion-icon>
                 </ion-item>
             </div>
 
@@ -35,7 +63,7 @@
                 <ion-list>
                     <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
                         <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-                            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                            <ion-icon slot="start" [name]="p.icon" color="primary"></ion-icon>
                             <ion-label>
                                 {{p.title}}
                             </ion-label>
@@ -43,7 +71,7 @@
                     </ion-menu-toggle>
 
                     <ion-item (click)="logout()">
-                        <ion-icon slot="start" name="log-out"></ion-icon>
+                        <ion-icon slot="start" name="log-out" color="primary"></ion-icon>
                         <ion-label>
                             Logout
                         </ion-label>

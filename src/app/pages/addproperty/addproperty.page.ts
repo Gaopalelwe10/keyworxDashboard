@@ -42,7 +42,7 @@ export class AddpropertyPage implements OnInit {
     mainImage: '',
     propertyid: "",
     category:'',
-    reactionCount:0,
+    reactionCount:null,
     userReaction: 0,
     created:'',
     lng:'',
