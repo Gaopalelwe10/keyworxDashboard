@@ -50,7 +50,7 @@ export class PropertylistingsPage implements OnInit {
         {
           text: 'Confirm',
           handler: () => {
-            // this.propertyService.deleteproperty(details.key)
+            this.propertyService.deleteproperty(details.key)
           }
         }
       ]
