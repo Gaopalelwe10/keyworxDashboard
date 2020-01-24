@@ -22,12 +22,12 @@ export class LoginPage implements OnInit {
     private profileService: ProfileService) {
 
     this.loginForm = fb.group({
-      email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), Validators.required])],
+      email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z0-9-.]+$'), Validators.required])],
       password: ['', Validators.compose([Validators.minLength(6), Validators.maxLength(12), Validators.required])],
     });
 
     this.forgotpasswordForm = fb.group({
-      email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$'), Validators.required])],
+      email: ['', Validators.compose([Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z0-9-.]+$'), Validators.required])],
     })
   }
 
@@ -39,9 +39,9 @@ export class LoginPage implements OnInit {
 
   async login() {
     const loading = this.loadingCtrl.create({
-      message: 'Signing in, Please wait...',
-      // showBackdrop: false,
-      spinner: "dots",
+      // message: 'Signing in, Please wait...',
+      cssClass: 'custom-loader',
+      spinner: "crescent",
     });
     (await loading).present();
 
