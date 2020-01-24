@@ -8,6 +8,10 @@ import { Contacts, Contact, ContactField, ContactName} from '@ionic-native/conta
 })
 export class MessagePage implements OnInit {
 
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev);
+  }
+
   constructor(private contacts: Contacts) { 
 
   //   let contact: Contact = this.contacts.create();
