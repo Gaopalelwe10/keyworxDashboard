@@ -5,6 +5,9 @@
         </ion-buttons>
         <ion-title align="center">Message</ion-title>
     </ion-toolbar>
+    <ion-toolbar>
+        <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -39,16 +42,36 @@
     <ion-segment (ionChange)="segmentChanged($event)">
         <ion-segment-button value="unread">
             <ion-label>Unread</ion-label>
+
         </ion-segment-button>
+
         <ion-segment-button value="opened">
             <ion-label>Opened</ion-label>
         </ion-segment-button>
+
     </ion-segment>
+    <div *ngFor="let msg of messegeList">
+        <ion-item>
+            <table style="width:100%">
+                <tr>
+                    <th>
 
-    <div class="back-mail" align="center">
+                        <h6><i class="material-icons">mail</i>{{msg.name | slice:0:12}}</h6>
+                    </th>
+                    <th>
+                        <h6>{{msg.message | slice:0:20}}</h6>
+                    </th>
+                    <th>
+                        <h6 float-right>{{msg.date | date:'MMM D H:mm' }}</h6>
+                    </th>
+                </tr>
+            </table>
+        </ion-item>
+    </div>
+    <!-- <div class="back-mail" align="center">
+ -->
 
-
-        <main class="measure center tc sans-serif black-80 absolute absolute--fill">
+    <!-- <main class="measure center tc sans-serif black-80 absolute absolute--fill">
             <div class="flex flex-column justify-center items-center h-100">
                 <header>
                     <h1 class="animated fadeInUp ease-out-circ d2 a-1 f2 fw3">
@@ -56,8 +79,8 @@
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ2XeDhKV_ILzmXjhoZoSX4Po5cssIbK2OixEo6h6Bc4WU0EVD3">
                           </code>
                     </h1>
-                </header>
-                <!-- <h2 class="animated fadeInUp ease-out-circ d-1 a-2">
+                </header> -->
+    <!-- <h2 class="animated fadeInUp ease-out-circ d-1 a-2">
                       Designed for choreographing <span class="nowrap">CSS animations</span>
                     </h2>
                     <div class="animated bounceIn ease-in-quad d-2 mt4">
@@ -71,8 +94,8 @@
                                       Made by Andrew Nater
                                   </a>
                   </footer> -->
-            </div>
+    <!-- </div>
         </main>
 
-    </div>
+    </div> -->
 </ion-content>
