@@ -69,7 +69,7 @@ export class HomePage {
     this.messageServ.getMessages().subscribe((data: any) => {
       data.forEach(element => {
         this.value = this.datepipe.transform(element.Timestamp, 'MMM');
-
+  console.log(element)
         if (this.value === 'Jan') {
           this.Jan++;
         }
@@ -117,8 +117,8 @@ export class HomePage {
           labels: this.labels ,
           datasets: [{
             label: 'Messages per month',
-            // data: [this.Jan, this.Feb, this.Mar, this.Apr, this.May, this.June, this.July, this.Aug, this.Sept, this.Oct, this.Nov, this.Dec],
-            data: [12, 0, 0, this.Apr, this.May, this.June, this.July, this.Aug, this.Sept, this.Oct, this.Nov, this.Dec],
+            data: [this.Jan, this.Feb, this.Mar, this.Apr, this.May, this.June, this.July, this.Aug, this.Sept, this.Oct, this.Nov, this.Dec],
+            // data: [12, 0, 0, this.Apr, this.May, this.June, this.July, this.Aug, this.Sept, this.Oct, this.Nov, this.Dec],
             fill: true,
             lineTension: 0.2,
             borderColor: "blue",
