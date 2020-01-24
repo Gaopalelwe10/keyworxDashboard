@@ -8,7 +8,9 @@ import { PropertyService } from 'src/app/services/property.service';
 import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { MapboxService, Feature } from 'src/app/services/mapbox.service';
-
+import { AlertController } from '@ionic/angular';
+import { Upload } from 'src/app/uploads/shared/upload';
+import * as _ from "lodash";
 @Component({
   selector: 'app-updateproperty',
   templateUrl: './updateproperty.page.html',
@@ -62,6 +64,7 @@ export class UpdatepropertyPage implements OnInit {
     private propertyService: PropertyService,
     private routeA: ActivatedRoute,
     public mapboxService: MapboxService,
+    private alertCtrl: AlertController
   ) {
     this.routeA.queryParams
       .subscribe(params => {
@@ -211,5 +214,62 @@ export class UpdatepropertyPage implements OnInit {
     })
   }
 
+  selectedFiles: FileList;
+  currentUpload: Upload;
+
+  detectFiles(event) {
+    this.selectedFiles = event.target.files;
+  }
+
+  uploadMulti() {
+    let files = this.selectedFiles
+    let filesIndex = _.range(files.length)
+    _.each(filesIndex, (idx) => {
+      this.currentUpload = new Upload(files[idx]);
+      this.propertyService.pushUpload(this.currentUpload, this.key)
+    }
+    )
+  }
+  
+  delete(image) {
+    this.alertCtrl.create({
+      subHeader: 'Are you sure you to delete this image',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Confirm',
+          handler: () => {
+
+        
+              const storageRef = this.storage.storage.ref().child('/uploads/' + image.name);
+              console.log("delete " + storageRef)
+
+              this.propertyService.delete(this.key, image.key).then(() => {
+                storageRef.delete().then(() => {
+                  console.log(" File deleted successfully")
+                }).catch(function (error) {
+                  // Uh-oh, an error occurred!
+                  console.log("Uh-oh, an error occurred!")
+                });
+              })
+            
+
+          }
+        }
+      ]
+    }).then(
+      alert => alert.present()
+    );
+
+
+
+  }
 
 }

@@ -24,7 +24,7 @@ export class AppComponent {
       icon: 'mail'
     },
     {
-      title: 'Property Listings',
+      title: 'Properties',
       url: '/propertylistings',
       icon: 'home'
     },

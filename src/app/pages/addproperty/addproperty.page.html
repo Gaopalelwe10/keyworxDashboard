@@ -233,20 +233,20 @@
 
     <div *ngIf="!isporpetyDetails" class="uploadMulti">
         <div class="dropzone">
-            <p>
-                Multi image upload
-            </p>
+
 
             <div class="image-upload">
                 <label for="file-multiple">
-                    <ion-icon name="document"  color="medium"> </ion-icon>
+                    <ion-icon name="photos" color="primary"></ion-icon>
+                    <p>
+                        Select Images
+                    </p>
                 </label>
                 <input id="file-multiple" type="file" (change)="detectFiles($event)" multiple accept="image/x-png,image/gif,image/jpeg">
             </div>
 
             <ion-button (click)="uploadMulti()">
-
-                Upload Multiple
+                Upload
             </ion-button>
 
             <div *ngIf="currentUpload">
