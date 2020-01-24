@@ -43,7 +43,7 @@ export class AddpropertyPage implements OnInit {
     propertyid: "",
     category:'',
     reactionCount:null,
-    userReaction: 0,
+    userReaction: null,
     created:'',
     lng:'',
     lat:'',
