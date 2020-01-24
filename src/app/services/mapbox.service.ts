@@ -27,7 +27,6 @@ export class MapboxService {
   constructor(private http: HttpClient, private dog: AngularFirestore) { }
 
   search_word(query: string) {
-
     const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
     return this.http.get(url + query + '.json?types=address&country=ZA&access_token=pk.eyJ1IjoibmVvLXB1bGUiLCJhIjoiY2p4cTI0MGF0MGlnajNjbDMzMW9nMzJ6OSJ9.QgND5rJKyVYEmTjBJIrq3g')
       .pipe(map((res: MapboxOutput) => {
