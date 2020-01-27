@@ -9,6 +9,8 @@ import { ProfileService } from 'src/app/services/profile.service';
   styleUrls: ['./message.page.scss'],
 })
 export class MessagePage implements OnInit {
+ 
+  // Segment = "Property"
 
   messageList;
   segmentChanged(ev: any) {
@@ -25,6 +27,7 @@ export class MessagePage implements OnInit {
       this.messageServ.getMessages().subscribe(data => {
         this.messageList = data;
         console.log(data)
+        console.log(this.messageList);
       })
  
 
