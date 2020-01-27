@@ -39,7 +39,7 @@
         </div>
     </div> -->
 
-    <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment (ionChange)="segmentChanged($event)" [ngModel]="">
         <ion-segment-button value="unread">
             <ion-label>Unread</ion-label>
 
@@ -50,6 +50,7 @@
         </ion-segment-button>
 
     </ion-segment>
+
     <div *ngFor="let msg of messageList">
         <ion-item>
             <table style="width:100%">
@@ -58,11 +59,11 @@
 
                         <h6><i class="material-icons">mail</i>{{msg.name | slice:0:12}}</h6>
                     </th>
-                    <th>
-                        <h6>{{msg.message | slice:0:20}}</h6>
+                    <th float-left>
+                        <h6 float-left>{{msg.message | slice:0:20}}</h6>
                     </th>
                     <th>
-                        <h6 float-right>{{msg.date | date:'MMM D H:mm' }}</h6>
+                        <h6 float-right>{{msg.date | date:"MMM dd H:mm" }}</h6>
                     </th>
                 </tr>
             </table>
