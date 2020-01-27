@@ -17,7 +17,7 @@
 
         <div class="profile-upload">
             <label for="file-input">
-                <ion-icon name="image" class="input" color="medium"> </ion-icon>
+                <ion-icon name="image" class="input" color="primary"> </ion-icon>
             </label>
 
             <input id="file-input" class="input" type="file" (change)="uploadProfilePic($event)" accept="image/x-png,image/gif,image/jpeg" />
@@ -26,32 +26,32 @@
     <div class="center">
         <ion-item>
             <ion-label>{{agentList?.email}}</ion-label>
-            <ion-icon name="mail" color="dark" slot="start"></ion-icon>
+            <ion-icon name="mail" color="primary" slot="start"></ion-icon>
 
         </ion-item>
 
         <ion-item>
             <ion-label>{{agentList?.name}}</ion-label>
-            <ion-icon name="person" color="dark" slot="start"></ion-icon>
-            <ion-icon name="create" color="dark" slot="end" (click)="nameChange(agentList)"></ion-icon>
+            <ion-icon name="person" color="primary" slot="start"></ion-icon>
+            <ion-icon name="create" color="primary" slot="end" (click)="nameChange(agentList)"></ion-icon>
         </ion-item>
 
         <ion-item>
             <ion-label>{{agentList?.surname}}</ion-label>
-            <ion-icon name="person" color="dark" slot="start"></ion-icon>
-            <ion-icon name="create" color="dark" slot="end" (click)="surnameChange(agentList)"></ion-icon>
+            <ion-icon name="person" color="primary" slot="start"></ion-icon>
+            <ion-icon name="create" color="primary" slot="end" (click)="surnameChange(agentList)"></ion-icon>
         </ion-item>
 
         <ion-item>
             <ion-label>{{agentList?.companyName}}</ion-label>
-            <ion-icon name="briefcase" color="dark" slot="start"></ion-icon>
-            <ion-icon name="create" color="dark" slot="end" (click)="companyChange(agentList)"></ion-icon>
+            <ion-icon name="briefcase" color="primary" slot="start"></ion-icon>
+            <ion-icon name="create" color="primary" slot="end" (click)="companyChange(agentList)"></ion-icon>
         </ion-item>
 
         <ion-item>
             <ion-label>{{agentList?.number}}</ion-label>
-            <ion-icon name="call" color="dark" slot="start"></ion-icon>
-            <ion-icon name="create" color="dark" slot="end" (click)="numberChange(agentList)"></ion-icon>
+            <ion-icon name="call" color="primary" slot="start"></ion-icon>
+            <ion-icon name="create" color="primary" slot="end" (click)="numberChange(agentList)"></ion-icon>
         </ion-item>
     </div>
 </ion-content>
