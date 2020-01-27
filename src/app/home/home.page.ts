@@ -68,7 +68,7 @@ export class HomePage {
   lineChart(){
     this.messageServ.getMessages().subscribe((data: any) => {
       data.forEach(element => {
-        this.value = this.datepipe.transform(element.Timestamp, 'MMM');
+        this.value = this.datepipe.transform(element.date, 'MMM');
   console.log(element)
         if (this.value === 'Jan') {
           this.Jan++;
