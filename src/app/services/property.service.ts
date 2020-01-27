@@ -68,7 +68,8 @@ export class PropertyService {
   }
   pushUpload(upload: Upload, propertyid) {
     let storageRef = firebase.storage().ref();
-    let uploadTask = storageRef.child(`${this.basePath}/${upload.file.name}`).put(upload.file);
+    let imageName=upload.file.name + Date.now();
+    let uploadTask = storageRef.child(`${this.basePath}/${imageName}`).put(upload.file);
 
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       (snapshot) => {
@@ -82,14 +83,14 @@ export class PropertyService {
       () => {
         // upload success
         // upload.url = uploadTask.snapshot.downloadURL
-        upload.name = upload.file.name
+        upload.name = imageName
 
         uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
           console.log('File available at', downloadURL);
 
           this.afs.collection("properties").doc(propertyid).collection("images").add({
             downloadURL: downloadURL,
-            name: upload.file.name,
+            name: imageName,
 
           })
         });
@@ -98,5 +99,9 @@ export class PropertyService {
 
       }
     );
+  }
+
+  delete(propertyid,imageid){
+    return this.afs.collection('properties').doc(propertyid).collection("images").doc(imageid).delete()
   }
 }

@@ -8,13 +8,17 @@ import { PropertyService } from 'src/app/services/property.service';
 import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { MapboxService, Feature } from 'src/app/services/mapbox.service';
-
+import { AlertController } from '@ionic/angular';
+import { Upload } from 'src/app/uploads/shared/upload';
+import * as _ from "lodash";
 @Component({
   selector: 'app-updateproperty',
   templateUrl: './updateproperty.page.html',
   styleUrls: ['./updateproperty.page.scss'],
 })
 export class UpdatepropertyPage implements OnInit {
+
+  Segment = "Property"
   UpdatepropertyForm: FormGroup;
 
   uploadPercent: Observable<number>;
@@ -39,9 +43,9 @@ export class UpdatepropertyPage implements OnInit {
     pool: '',
     diningroom: '',
     mainImage: '',
-    category:'',
-    lng:'',
-    lat:'',
+    category: '',
+    lng: '',
+    lat: '',
   }
   key: any;
 
@@ -62,6 +66,7 @@ export class UpdatepropertyPage implements OnInit {
     private propertyService: PropertyService,
     private routeA: ActivatedRoute,
     public mapboxService: MapboxService,
+    private alertCtrl: AlertController
   ) {
     this.routeA.queryParams
       .subscribe(params => {
@@ -83,7 +88,7 @@ export class UpdatepropertyPage implements OnInit {
       pets: ['', Validators.required],
       pool: ['', Validators.required],
       diningroom: ['', Validators.required],
-      category:['', Validators.required],
+      category: ['', Validators.required],
     });
 
 
@@ -92,8 +97,8 @@ export class UpdatepropertyPage implements OnInit {
   ngOnInit() {
     this.propertyService.update2property(this.key).subscribe((data: any) => {
       this.mainImage = data.mainImage
-      this.lng=data.lng;
-      this.lat=data.lat;
+      this.lng = data.lng;
+      this.lat = data.lat;
       this.UpdatepropertyForm = this.fb.group({
         description: new FormControl(data.description, Validators.required),
         price: [data.price, Validators.required],
@@ -108,8 +113,18 @@ export class UpdatepropertyPage implements OnInit {
         pets: [data.pets, Validators.required],
         pool: [data.pool, Validators.required],
         diningroom: [data.diningroom, Validators.required],
-        category:[data.category, Validators.required],
+        category: [data.category, Validators.required],
       });
+    })
+
+    this.propertyService.imageList(this.key).subscribe(data => {
+      this.imageList = data.map(e => {
+        return {
+          key: e.payload.doc.id,
+          ...e.payload.doc.data()
+        }
+      });
+      console.log(this.imageList);
     })
   }
 
@@ -139,7 +154,7 @@ export class UpdatepropertyPage implements OnInit {
 
     console.log("index =" + i)
     console.log(this.selectedAddress)
-
+    this.property.location = this.selectedAddress;
     //add to FireBase
     // this.dog.collection('coordinate').add({
     //   lat: this.temp.coordinates[1],
@@ -175,7 +190,7 @@ export class UpdatepropertyPage implements OnInit {
       })
     ).subscribe();
   }
-  
+
   update() {
     this.isporpetyDetails = false
     this.property.description = this.UpdatepropertyForm.value.description;
@@ -191,25 +206,108 @@ export class UpdatepropertyPage implements OnInit {
     this.property.pets = this.UpdatepropertyForm.value.pets;
     this.property.pool = this.UpdatepropertyForm.value.pool;
     this.property.diningroom = this.UpdatepropertyForm.value.diningroom;
-    this.property.category=this.UpdatepropertyForm.value.category;
+    this.property.category = this.UpdatepropertyForm.value.category;
     this.property.mainImage = this.mainImage;
-    this.property.lat=this.lat;
-    this.property.lng=this.lng;
+    this.property.lat = this.lat;
+    this.property.lng = this.lng;
     console.log(this.property)
 
 
-    this.propertyService.updateproperty(this.key, this.property)
-    
-    this.propertyService.imageList(this.key).subscribe(data=>{
-      this.imageList = data.map(e => {
-        return {
-          key: e.payload.doc.id,
-          ...e.payload.doc.data()
-        } 
-      });
-      console.log(this.imageList);
+    this.propertyService.updateproperty(this.key, this.property).then(() => {
+      this.alertCtrl.create({
+        // message: 'Upload doc, xlsx, pdf, accdb, docx',
+        subHeader: "Property Infor is updated successfully",
+        buttons: [
+
+          {
+            text: 'ok',
+            handler: () => {
+
+            }
+          }
+        ]
+      }).then(
+        alert => alert.present()
+      );
     })
+
+
   }
 
+  selectedFiles: FileList;
+  currentUpload: Upload;
+
+  detectFiles(event) {
+    this.selectedFiles = event.target.files;
+  }
+
+  uploadMulti() {
+    let files = this.selectedFiles
+    if (this.selectedFiles != null) {
+
+
+      let filesIndex = _.range(files.length)
+      _.each(filesIndex, (idx) => {
+        this.currentUpload = new Upload(files[idx]);
+        this.propertyService.pushUpload(this.currentUpload, this.key)
+      })
+    } else {
+      this.alertCtrl.create({
+        subHeader: "Pleace select images",
+        buttons: [
+          {
+            text: 'ok',
+            handler: () => {
+            }
+          }
+        ]
+      }).then(
+        alert => alert.present()
+      );
+    }
+
+    this.selectedFiles=null
+  }
+
+  delete(image) {
+    this.alertCtrl.create({
+      subHeader: 'Are you sure you to delete this image',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Confirm',
+          handler: () => {
+
+
+            const storageRef = this.storage.storage.ref().child('/uploads/' + image.name);
+            console.log("delete " + storageRef)
+
+            this.propertyService.delete(this.key, image.key).then(() => {
+              storageRef.delete().then(() => {
+                console.log(" File deleted successfully")
+              }).catch(function (error) {
+                // Uh-oh, an error occurred!
+                console.log("Uh-oh, an error occurred!")
+              });
+            })
+
+
+          }
+        }
+      ]
+    }).then(
+      alert => alert.present()
+    );
+
+
+
+  }
 
 }
