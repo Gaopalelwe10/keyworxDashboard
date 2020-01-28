@@ -21,7 +21,7 @@ export class HomePage {
   labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   LineChart = [];
   date = [];
- 
+
   value: string;
 
   Jan = 0;
@@ -65,11 +65,11 @@ export class HomePage {
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
   }
-  lineChart(){
+  lineChart() {
     this.messageServ.getMessages().subscribe((data: any) => {
       data.forEach(element => {
         this.value = this.datepipe.transform(element.date, 'MMM');
-  console.log(element)
+        console.log(element)
         if (this.value === 'Jan') {
           this.Jan++;
         }
@@ -110,11 +110,11 @@ export class HomePage {
         }
         console.log(this.value)
       });
-      
+
       this.LineChart = new Chart('lineChart1', {
         type: 'line',
         data: {
-          labels: this.labels ,
+          labels: this.labels,
           datasets: [{
             label: 'Messages per month',
             data: [this.Jan, this.Feb, this.Mar, this.Apr, this.May, this.June, this.July, this.Aug, this.Sept, this.Oct, this.Nov, this.Dec],
@@ -125,7 +125,7 @@ export class HomePage {
             backgroundColor: 'rgba(105, 0, 132, .2)',
             borderWidth: 1
           }]
-          
+
         },
         options: {
           title: {
@@ -141,7 +141,7 @@ export class HomePage {
           }
         }
       });
-      this.value=null
+      this.value = null
       this.Jan = 0;
       this.Feb = 0;
       this.Mar = 0;
@@ -157,10 +157,10 @@ export class HomePage {
     })
   }
 
-  lineChart2(){
-    this.messageServ.getMessages().subscribe((data: any) => {
+  lineChart2() {
+    this.userService.getUsers().subscribe((data: any) => {
       data.forEach(element => {
-        this.value = this.datepipe.transform(element.Timestamp, 'MMM');
+        this.value = this.datepipe.transform(element.created, 'MMM');
 
         if (this.value === 'Jan') {
           this.Jan++;
@@ -202,22 +202,22 @@ export class HomePage {
         }
         console.log(this.value)
       });
-      
+
       this.LineChart = new Chart('lineChart2', {
         type: 'line',
         data: {
-          labels: this.labels ,
+          labels: this.labels,
           datasets: [{
-            label: 'Dummy data',
-            // data: [this.Jan, this.Feb, this.Mar, this.Apr, this.May, this.June, this.July, this.Aug, this.Sept, this.Oct, this.Nov, this.Dec],
-            data: [12, 0, 0, this.Apr, this.May, this.June, this.July, 9, this.Sept, this.Oct, this.Nov, this.Dec],
+            label: 'Users registered per month',
+            data: [this.Jan, this.Feb, this.Mar, this.Apr, this.May, this.June, this.July, this.Aug, this.Sept, this.Oct, this.Nov, this.Dec],
+            // data: [12, 0, 0, this.Apr, this.May, this.June, this.July, 9, this.Sept, this.Oct, this.Nov, this.Dec],
             fill: true,
             lineTension: 0.2,
             borderColor: "pink",
             backgroundColor: 'rgba(105, 0, 132, .2)',
             borderWidth: 1
           }]
-          
+
         },
         options: {
           title: {
@@ -233,7 +233,7 @@ export class HomePage {
           }
         }
       });
-      this.value=null
+      this.value = null
       this.Jan = 0;
       this.Feb = 0;
       this.Mar = 0;
@@ -248,5 +248,5 @@ export class HomePage {
       this.Dec = 0;
     })
   }
-  
+
 }

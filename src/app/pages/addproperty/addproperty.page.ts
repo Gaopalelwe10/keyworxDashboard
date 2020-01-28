@@ -9,6 +9,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Upload } from 'src/app/uploads/shared/upload';
 import * as _ from "lodash";
 import { MapboxService, Feature } from 'src/app/services/mapbox.service';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-addproperty',
   templateUrl: './addproperty.page.html',
@@ -63,6 +64,7 @@ export class AddpropertyPage implements OnInit {
     private profileService: ProfileService,
     private propertyService: PropertyService,
     public mapboxService: MapboxService,
+    private alertCtrl: AlertController
   ) {
     this.AddpropertyForm = fb.group({
       description: ['', Validators.required],
@@ -196,12 +198,27 @@ export class AddpropertyPage implements OnInit {
 
   uploadMulti() {
     let files = this.selectedFiles
-    let filesIndex = _.range(files.length)
-    _.each(filesIndex, (idx) => {
-      this.currentUpload = new Upload(files[idx]);
-      this.propertyService.pushUpload(this.currentUpload, this.propertyid)
+    if (this.selectedFiles != null) {
+      let filesIndex = _.range(files.length)
+      _.each(filesIndex, (idx) => {
+        this.currentUpload = new Upload(files[idx]);
+        this.propertyService.pushUpload(this.currentUpload, this.propertyid)
+      })
+    } else {
+      this.alertCtrl.create({
+        subHeader: "Pleace select images",
+        buttons: [
+          {
+            text: 'ok',
+            handler: () => {
+            }
+          }
+        ]
+      }).then(
+        alert => alert.present()
+      );
     }
-    )
+    this.selectedFiles == null
   }
 
 
