@@ -39,7 +39,11 @@ const routes: Routes = [
   {
     path: 'updateproperty',
     loadChildren: () => import('./pages/updateproperty/updateproperty.module').then( m => m.UpdatepropertyPageModule)
+  },  {
+    path: 'viewmessage',
+    loadChildren: () => import('./pages/viewmessage/viewmessage.module').then( m => m.ViewmessagePageModule)
   }
+
 ];
 
 @NgModule({

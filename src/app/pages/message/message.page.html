@@ -39,7 +39,7 @@
         </div>
     </div> -->
 
-    <ion-segment (ionChange)="segmentChanged($event)" [ngModel]="">
+    <ion-segment [(ngModel)]="Segment">
         <ion-segment-button value="unread">
             <ion-label>Unread</ion-label>
 
@@ -51,23 +51,55 @@
 
     </ion-segment>
 
-    <div *ngFor="let msg of messageList">
-        <ion-item>
-            <table style="width:100%">
-                <tr>
-                    <th>
+    <div [ngSwitch]="Segment">
+        <div *ngSwitchCase="'unread'">
+            <div *ngFor="let msg of messageUnReadList ">
+                <!-- <div *ngIf="msg.isRead; else elseBlock"> -->
 
-                        <h6><i class="material-icons">mail</i>{{msg.name | slice:0:12}}</h6>
-                    </th>
-                    <th float-left>
-                        <h6 float-left>{{msg.message | slice:0:20}}</h6>
-                    </th>
-                    <th>
-                        <h6 float-right>{{msg.date | date:"MMM dd H:mm" }}</h6>
-                    </th>
-                </tr>
-            </table>
-        </ion-item>
+                <ion-item tappable (click)="OpenPreview(msg)">
+                    <table style="width:100%">
+                        <tr>
+                            <th>
+
+                                <h6><i class="material-icons">mail</i>{{msg.name | slice:0:12}}</h6>
+                            </th>
+                            <th float-left>
+                                <h6 float-left>{{msg.message | slice:0:20}}</h6>
+                            </th>
+                            <th>
+                                <h6 float-right>{{msg.date | date:"MMM dd H:mm" }}</h6>
+                            </th>
+                        </tr>
+                    </table>
+                </ion-item>
+                <!-- </div> -->
+            </div>
+        </div>
+
+        <div *ngSwitchCase="'opened'">
+            hhh
+            <div *ngFor="let msg of messageReadList">
+                <!-- <ng-template *ngif="msg.isRead"> -->
+                <ion-item tappable (click)="OpenPreview(msg)">
+                    <table style="width:100%">
+                        <tr>
+                            <th>
+
+                                <h6><i class="material-icons">mail</i>{{msg.name | slice:0:12}}</h6>
+                            </th>
+                            <th float-left>
+                                <h6 float-left>{{msg.message | slice:0:20}}</h6>
+                            </th>
+                            <th>
+                                <h6 float-right>{{msg.date | date:"MMM dd H:mm" }}</h6>
+                            </th>
+                        </tr>
+                    </table>
+                </ion-item>
+
+                <!-- </ng-template> -->
+            </div>
+        </div>
     </div>
     <!-- <div class="back-mail" align="center">
  -->

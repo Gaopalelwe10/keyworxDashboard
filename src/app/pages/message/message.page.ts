@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Contacts, Contact, ContactField, ContactName} from '@ionic-native/contacts/ngx';
 import { MessageService } from 'src/app/services/message.service';
 import { ProfileService } from 'src/app/services/profile.service';
+import { ModalController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ViewmessagePage } from '../viewmessage/viewmessage.page';
+
 
 @Component({
   selector: 'app-message',
@@ -10,9 +14,11 @@ import { ProfileService } from 'src/app/services/profile.service';
 })
 export class MessagePage implements OnInit {
  
-  // Segment = "Property"
+  Segment = "unread"
 
   messageList;
+  messageReadList;
+  messageUnReadList;
   segmentChanged(ev: any) {
     console.log('Segment changed', ev);
   }
@@ -20,7 +26,10 @@ export class MessagePage implements OnInit {
   constructor(
     private contacts: Contacts,
     private messageServ: MessageService,
-    private profileServ: ProfileService,) {
+    private profileServ: ProfileService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private modalController: ModalController,) {
       
       const uid = this.profileServ.getUID();
 
@@ -28,6 +37,19 @@ export class MessagePage implements OnInit {
         this.messageList = data;
         console.log(data)
         console.log(this.messageList);
+      })
+
+      this.messageServ.getMessagesRead().subscribe(data => {
+        this.messageReadList = data;
+        console.log('tse')
+        console.log(data)
+        console.log(this.messageReadList);
+      })
+
+      this.messageServ.getMessagesUnRead().subscribe(data => {
+        this.messageUnReadList = data;
+        console.log(data)
+        console.log(this.messageUnReadList);
       })
  
 
@@ -44,6 +66,17 @@ export class MessagePage implements OnInit {
 
 
   ngOnInit() {
+  }
+
+  OpenPreview(msg) {
+    this.modalController.create({
+      component: ViewmessagePage,
+      componentProps: {
+        msg: msg
+      }
+    }).then(modal => modal.present())
+    
+
   }
 
 }
