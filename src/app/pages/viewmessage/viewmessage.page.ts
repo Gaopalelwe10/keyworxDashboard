@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavParams, ModalController, AlertController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'src/app/services/message.service';
+import { PropertyService } from 'src/app/services/property.service';
 
 @Component({
   selector: 'app-viewmessage',
@@ -16,6 +17,8 @@ export class ViewmessagePage implements OnInit {
     }
   };
   messageUnReadList: any;
+  propertyLink: unknown[];
+  messageList: unknown[];
   messageReadList(messageReadList: any) {
     throw new Error("Method not implemented.");
   }
@@ -25,6 +28,8 @@ export class ViewmessagePage implements OnInit {
       private modalController:ModalController,
       private messageServ: MessageService,
       private alertCtrl: AlertController,
+      private propertyService: PropertyService,
+
       ) {
 
         this.route.queryParams.subscribe(params => {
@@ -49,7 +54,23 @@ export class ViewmessagePage implements OnInit {
         });
 
         // this.messageServ.updateMessage().
+        // this.propertyService.propertyList().subscribe((data: any) => {
+        //   this.propertyLink = data.map(e => {
+        //     return {
+        //       key: e.payload.doc.id,
+        //       ...e.payload.doc.data()
+        //     }
+        //   })
+        //   // console.log("p")
+        //   console.log(this.propertyLink = this.messageList.propertyid);
+        // })
 
+        // this.messageServ.getMessages().subscribe(data => {
+        //   this.messageList = data;
+        //   // console.log('mggg')
+        //   console.log(data)
+        //   console.log(this.messageList);
+        // })
        }
 
   ngOnInit() {

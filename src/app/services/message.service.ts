@@ -48,4 +48,9 @@ export class MessageService {
       );
     })
   }
+
+  // getPropertyLink(){
+  //   return this.afs.collection('message' ,ref=>ref.where('propertyid', '==' ,this.profileService.getUID() )).valueChanges();
+  // }
+  
 }

@@ -1,40 +1,45 @@
-<ion-header>
+<!-- <ion-header>
     <ion-toolbar>
         <ion-title>viewmessage</ion-title>
     </ion-toolbar>
-</ion-header>
+</ion-header> -->
+
 
 <ion-content>
-    <ion-content>
-        <ion-item class="close-fake" lines="none" text-center>
-            <ion-button slot="end" (click)="close()" fill="clear" color="Light">
-                <ion-icon name="close" slot="start"></ion-icon>
-                <!-- Back -->
-            </ion-button>
+    <ion-item class="close-fake" lines="none" text-center>
+        <ion-button slot="end" (click)="close()" fill="clear" color="Light">
+            <ion-icon name="close" slot="start"></ion-icon>
+            <!-- Back -->
+        </ion-button>
 
-            <ion-button slot="start" fill="clear" color="Light">
-                <ion-icon name="trash" (click)="deleteMessage(msg)" color="danger"></ion-icon>
-            </ion-button>
+        <ion-button slot="start" fill="clear" color="Light">
+            <ion-icon name="trash" (click)="deleteMessage(msg)" color="danger"></ion-icon>
+        </ion-button>
 
-        </ion-item>
+    </ion-item>
 
-        <div align="center"> Property ID {{msg.propertyid}}
-        </div>
-        <br>
-        <ion-item float-left>
-            <ion-avatar slot="start">
-                <img src="/assets/img/avatar.svg">
-            </ion-avatar>
-            <h6> <b>{{msg.name}}</b>{{msg.email}}</h6>
-            <h6>to me</h6>
-        </ion-item>
-        <br><br><br><br>
-        <ion-slides [options]="sliderOpts" #slider>
-            <ion-slide float-left>
+    <br><br><br>
 
-                <h4>{{msg.message}}</h4>
+    <!-- <div align="center"> Property ID {{msg.propertyid}}
+    </div> -->
+    <br>
+    <ion-item float-left>
+        <ion-avatar slot="start">
+            <img src="/assets/img/avatar.svg">
+        </ion-avatar>
+        <h6> <b>{{msg.name}} &nbsp;&nbsp; </b>{{msg.email}}</h6>
+    </ion-item>
 
-            </ion-slide>
-        </ion-slides>
+    <br><br><br>
+    <ion-slides [options]="sliderOpts" #slider>
+        <ion-slide float-left>
 
-    </ion-content>
+            <h4>{{msg.message}}</h4>
+
+        </ion-slide>
+    </ion-slides>
+
+    <div *ngFor="let pl of propertyLink">
+        {{pl.location}}
+    </div>
+</ion-content>
