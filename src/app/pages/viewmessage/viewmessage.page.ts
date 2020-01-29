@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams, ModalController, AlertController } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'src/app/services/message.service';
 import { PropertyService } from 'src/app/services/property.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-viewmessage',
@@ -28,8 +29,9 @@ export class ViewmessagePage implements OnInit {
       private modalController:ModalController,
       private messageServ: MessageService,
       private alertCtrl: AlertController,
-      private propertyService: PropertyService,
-
+      private afs : AngularFirestore,
+      private propertyService: PropertyService, 
+      private router: Router ,
       ) {
 
         this.route.queryParams.subscribe(params => {
@@ -65,12 +67,12 @@ export class ViewmessagePage implements OnInit {
         //   console.log(this.propertyLink = this.messageList.propertyid);
         // })
 
-        // this.messageServ.getMessages().subscribe(data => {
-        //   this.messageList = data;
-        //   // console.log('mggg')
-        //   console.log(data)
-        //   console.log(this.messageList);
-        // })
+        this.messageServ.getMessages().subscribe(data => {
+          this.messageList = data;
+          // console.log('mggg')
+          console.log(data)
+          console.log(this.messageList);
+        })
        }
 
   ngOnInit() {
@@ -80,29 +82,30 @@ export class ViewmessagePage implements OnInit {
     this.modalController.dismiss();
   }
 
-  // deleteMessage(msg) {
+  deleteMessage(msg) {
 
-  //   this.alertCtrl.create({
-  //     // message: 'Total R ' + this.price*this.increment,
-  //     subHeader: 'Are you sure you want to delete this property',
-  //     buttons: [
-  //       {
-  //         text: 'Cancel',
-  //         role: 'cancel',
-  //         handler: () => {
+    this.alertCtrl.create({
+      subHeader: 'Are you sure you want to delete this message',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
 
-  //           console.log('Cancel clicked');
-  //         }
-  //       },
-  //       {
-  //         text: 'Confirm',
-  //         handler: () => {
-  //           this.messageServ.deleteMessage(msg.key)
-  //         }
-  //       }
-  //     ]
-  //   }).then(
-  //     alert => alert.present()
-  //   );
-  // }
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Confirm',
+          handler: () => {
+            this.messageServ.deleteMessage(msg.key)
+          }
+        }
+      ]
+    }).then(
+      alert => alert.present()
+    );
+  }
+
+ 
 }
