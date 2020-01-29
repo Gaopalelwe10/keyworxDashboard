@@ -35,13 +35,13 @@ export class MessagePage implements OnInit {
 
       this.messageServ.getMessages().subscribe(data => {
         this.messageList = data;
+        console.log('mggg')
         console.log(data)
         console.log(this.messageList);
       })
 
       this.messageServ.getMessagesRead().subscribe(data => {
         this.messageReadList = data;
-        console.log('tse')
         console.log(data)
         console.log(this.messageReadList);
       })
@@ -66,6 +66,7 @@ export class MessagePage implements OnInit {
 
 
   ngOnInit() {
+
   }
 
   OpenPreview(msg) {
@@ -78,5 +79,5 @@ export class MessagePage implements OnInit {
     
 
   }
-
+ 
 }

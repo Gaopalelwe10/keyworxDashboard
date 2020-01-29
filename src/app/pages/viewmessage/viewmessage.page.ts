@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, ModalController } from '@ionic/angular';
+import { NavParams, ModalController, AlertController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-viewmessage',
@@ -21,12 +22,15 @@ export class ViewmessagePage implements OnInit {
 
   constructor(private navParams:NavParams,  
     private route:ActivatedRoute,
-      private modalController:ModalController,) {
+      private modalController:ModalController,
+      private messageServ: MessageService,
+      private alertCtrl: AlertController,
+      ) {
 
         this.route.queryParams.subscribe(params => {
           if (params && params.messageReadList) {
             this.index=JSON.parse(params.index)
-            this.messageReadList = JSON.parse(params.messageReadList);
+            this.messageReadList = JSON.parse(params.messageReadList) ;
             
             console.log(this.messageReadList)
             console.log(this.index)
@@ -44,6 +48,8 @@ export class ViewmessagePage implements OnInit {
           
         });
 
+        // this.messageServ.updateMessage().
+
        }
 
   ngOnInit() {
@@ -51,5 +57,31 @@ export class ViewmessagePage implements OnInit {
 
   close(){
     this.modalController.dismiss();
+  }
+
+  deleteMessage(msg) {
+
+    this.alertCtrl.create({
+      // message: 'Total R ' + this.price*this.increment,
+      subHeader: 'Are you sure you want to delete this property',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Confirm',
+          handler: () => {
+            this.messageServ.deleteMessage(msg.key)
+          }
+        }
+      ]
+    }).then(
+      alert => alert.present()
+    );
   }
 }
