@@ -18,13 +18,13 @@ export class MessageService {
     ) { }
 
   getMessages(){
-    return this.afs.collection('message' ,ref=>ref.where('AgentUid', '==' ,this.profileService.getUID() )).valueChanges();
+    return this.afs.collection('message' ,ref=>ref.where('AgentUid', '==' ,this.profileService.getUID() )).snapshotChanges();
   }
   getMessagesUnRead(){
-    return this.afs.collection('message' ,ref=>ref.where('AgentUid', '==' ,this.profileService.getUID()).where('isRead', '==', false )).valueChanges();
+    return this.afs.collection('message' ,ref=>ref.where('AgentUid', '==' ,this.profileService.getUID()).where('isRead', '==', false )).snapshotChanges();
   }
   getMessagesRead(){
-    return this.afs.collection('message' ,ref=>ref.where('AgentUid', '==' ,this.profileService.getUID()).where('isRead', '==', true )).valueChanges();
+    return this.afs.collection('message' ,ref=>ref.where('AgentUid', '==' ,this.profileService.getUID()).where('isRead', '==', true )).snapshotChanges();
   }
 
   // updateMessage(uid, isRead){
@@ -49,6 +49,9 @@ export class MessageService {
     })
   }
 
+  updatedisRead(messageid){
+    return this.afs.collection("message").doc(messageid).update({isRead:true})
+  }
   // getPropertyLink(){
   //   return this.afs.collection('message' ,ref=>ref.where('propertyid', '==' ,this.profileService.getUID() )).valueChanges();
   // }
