@@ -66,6 +66,7 @@ export class ProfileService {
       );
     })
   }
+  
   async logout() {
     await this.afAuth.auth.signOut().then((success) => {
       console.log(success);

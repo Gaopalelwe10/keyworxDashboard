@@ -19,9 +19,9 @@ export class MessagePage implements OnInit {
   messageList;
   messageReadList;
   messageUnReadList;
-  segmentChanged(ev: any) {
-    console.log('Segment changed', ev);
-  }
+  // segmentChanged(ev: any) {
+  //   console.log('Segment changed', ev);
+  // }
   
   constructor(
     private contacts: Contacts,
@@ -31,7 +31,7 @@ export class MessagePage implements OnInit {
     private router: Router,
     private modalController: ModalController,) {
       
-      const uid = this.profileServ.getUID();
+      // const uid = this.profileServ.getUID();
 
       this.messageServ.getMessages().subscribe(data => {
         this.messageList = data;
@@ -62,6 +62,8 @@ export class MessagePage implements OnInit {
   //     () => console.log('Contact saved!', contact),
   //     (error: any) => console.error('Error saving contact.', error)
   //   );
+
+  
    }
 
 

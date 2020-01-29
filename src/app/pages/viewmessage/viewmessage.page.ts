@@ -59,29 +59,29 @@ export class ViewmessagePage implements OnInit {
     this.modalController.dismiss();
   }
 
-  deleteMessage(msg) {
+  // deleteMessage(msg) {
 
-    this.alertCtrl.create({
-      // message: 'Total R ' + this.price*this.increment,
-      subHeader: 'Are you sure you want to delete this property',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
+  //   this.alertCtrl.create({
+  //     // message: 'Total R ' + this.price*this.increment,
+  //     subHeader: 'Are you sure you want to delete this property',
+  //     buttons: [
+  //       {
+  //         text: 'Cancel',
+  //         role: 'cancel',
+  //         handler: () => {
 
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Confirm',
-          handler: () => {
-            this.messageServ.deleteMessage(msg.key)
-          }
-        }
-      ]
-    }).then(
-      alert => alert.present()
-    );
-  }
+  //           console.log('Cancel clicked');
+  //         }
+  //       },
+  //       {
+  //         text: 'Confirm',
+  //         handler: () => {
+  //           this.messageServ.deleteMessage(msg.key)
+  //         }
+  //       }
+  //     ]
+  //   }).then(
+  //     alert => alert.present()
+  //   );
+  // }
 }

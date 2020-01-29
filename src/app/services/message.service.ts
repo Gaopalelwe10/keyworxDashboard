@@ -18,13 +18,13 @@ export class MessageService {
     ) { }
 
   getMessages(){
-    return this.afs.collection('message' ,ref=>ref.where('uid', '==' ,this.profileService.getUID() )).valueChanges();
+    return this.afs.collection('message' ,ref=>ref.where('AgentUid', '==' ,this.profileService.getUID() )).valueChanges();
   }
   getMessagesUnRead(){
-    return this.afs.collection('message' ,ref=>ref.where('uid', '==' ,this.profileService.getUID()).where('isRead', '==', false )).valueChanges();
+    return this.afs.collection('message' ,ref=>ref.where('AgentUid', '==' ,this.profileService.getUID()).where('isRead', '==', false )).valueChanges();
   }
   getMessagesRead(){
-    return this.afs.collection('message' ,ref=>ref.where('uid', '==' ,this.profileService.getUID()).where('isRead', '==', true )).valueChanges();
+    return this.afs.collection('message' ,ref=>ref.where('AgentUid', '==' ,this.profileService.getUID()).where('isRead', '==', true )).valueChanges();
   }
 
   // updateMessage(uid, isRead){
