@@ -33,22 +33,37 @@ export class MessagePage implements OnInit {
       
       // const uid = this.profileServ.getUID();
 
-      this.messageServ.getMessages().subscribe(data => {
-        this.messageList = data;
+      this.messageServ.getMessages().subscribe((data:any )=> {
+        this.messageList = data.map(e => {
+          return {
+            key: e.payload.doc.id,
+            ...e.payload.doc.data()
+          }
+        })
         console.log('mggg')
-        console.log(data)
+       
         console.log(this.messageList);
       })
 
-      this.messageServ.getMessagesRead().subscribe(data => {
-        this.messageReadList = data;
-        console.log(data)
+      this.messageServ.getMessagesRead().subscribe((data:any ) => {
+        this.messageReadList = data.map(e => {
+          return {
+            key: e.payload.doc.id,
+            ...e.payload.doc.data()
+          }
+        })
+   
         console.log(this.messageReadList);
       })
 
-      this.messageServ.getMessagesUnRead().subscribe(data => {
-        this.messageUnReadList = data;
-        console.log(data)
+      this.messageServ.getMessagesUnRead().subscribe((data:any ) => {
+        this.messageUnReadList = data.map(e => {
+          return {
+            key: e.payload.doc.id,
+            ...e.payload.doc.data()
+          }
+        })
+
         console.log(this.messageUnReadList);
       })
  
@@ -72,6 +87,7 @@ export class MessagePage implements OnInit {
   }
 
   OpenPreview(msg) {
+    this.messageServ.updatedisRead(msg.key)
     this.modalController.create({
       component: ViewmessagePage,
       componentProps: {
