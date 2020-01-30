@@ -31,15 +31,15 @@ export class MessageService {
   //   return this.afs.collection("message").doc(uid).update(isRead == true )
   // }
 
-  deleteMessage(messageid){
+  deleteMessaged(messageid){
     return this.afs.collection("message").doc(messageid).delete().then(() => {
       this.alertCtrl.create({
-        subHeader: 'Property successfully deleted',
+        subHeader: 'Message successfully deleted',
         buttons: [
           {
             text: 'ok',
-            handler: () => {
-              this.router.navigateByUrl('message');
+            handler: (bluh) => {
+              this.router.navigateByUrl('pages/message');
             }
           }
         ]
@@ -49,11 +49,9 @@ export class MessageService {
     })
   }
 
-  updatedisRead(messageid){
-    return this.afs.collection("message").doc(messageid).update({isRead:true})
+
+  deletethis(messageid){
+    return this.afs.collection('message').doc(messageid).delete()
   }
-  // getPropertyLink(){
-  //   return this.afs.collection('message' ,ref=>ref.where('propertyid', '==' ,this.profileService.getUID() )).valueChanges();
-  // }
   
 }

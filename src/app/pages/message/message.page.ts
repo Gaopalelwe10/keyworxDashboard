@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Contacts, Contact, ContactField, ContactName} from '@ionic-native/contacts/ngx';
 import { MessageService } from 'src/app/services/message.service';
 import { ProfileService } from 'src/app/services/profile.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewmessagePage } from '../viewmessage/viewmessage.page';
 
@@ -29,7 +29,9 @@ export class MessagePage implements OnInit {
     private profileServ: ProfileService,
     private route: ActivatedRoute,
     private router: Router,
-    private modalController: ModalController,) {
+    private modalController: ModalController,
+    private alertCtrl: AlertController,
+    ) {
       
       // const uid = this.profileServ.getUID();
 
@@ -81,13 +83,11 @@ export class MessagePage implements OnInit {
   
    }
 
-
   ngOnInit() {
 
   }
 
   OpenPreview(msg) {
-    this.messageServ.updatedisRead(msg.key)
     this.modalController.create({
       component: ViewmessagePage,
       componentProps: {

@@ -20,9 +20,8 @@ export class ViewmessagePage implements OnInit {
   messageUnReadList: any;
   propertyLink: unknown[];
   messageList: unknown[];
-  messageReadList(messageReadList: any) {
-    throw new Error("Method not implemented.");
-  }
+  messageReadList: any;
+
 
   constructor(private navParams:NavParams,  
     private route:ActivatedRoute,
@@ -34,6 +33,7 @@ export class ViewmessagePage implements OnInit {
       private router: Router ,
       ) {
 
+        
         this.route.queryParams.subscribe(params => {
           if (params && params.messageReadList) {
             this.index=JSON.parse(params.index)
@@ -52,9 +52,18 @@ export class ViewmessagePage implements OnInit {
             console.log(this.messageUnReadList)
             console.log(this.index)
           }
-          
         });
 
+        this.route.queryParams.subscribe(params => {
+          if (params && params.messageList) {
+            this.index=JSON.parse(params.index)
+            this.messageList = JSON.parse(params.messageList);
+            
+            console.log(this.messageList)
+            console.log(this.index)
+          }
+          
+        });
         // this.messageServ.updateMessage().
         // this.propertyService.propertyList().subscribe((data: any) => {
         //   this.propertyLink = data.map(e => {
@@ -98,7 +107,9 @@ export class ViewmessagePage implements OnInit {
         {
           text: 'Confirm',
           handler: () => {
-            this.messageServ.deleteMessage(msg.key)
+            this.messageServ.deleteMessaged(msg.key).then(() => {
+              this.modalController.dismiss();;
+            });
           }
         }
       ]
@@ -107,5 +118,29 @@ export class ViewmessagePage implements OnInit {
     );
   }
 
- 
+
+  async delete(key) {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirm!',
+      message: 'Are you sure want to delete this info?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('cancel');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.afs.collection("message").doc('messageList/'+key).delete()
+            // firebase.database().ref('infos/'+key).remove();
+          }
+        }
+      ]
+    });
+  
+    await alert.present();
+  }
 }
