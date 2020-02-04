@@ -60,11 +60,22 @@ export class PropertyService {
   }
 
   propertyList(){
-    return this.afs.collection("properties" ,ref=>ref.where('uid', '==' ,this.profileService.getUID() )).snapshotChanges()
+    return this.afs.collection("properties" ,ref=>ref.where('uid', '==' ,this.profileService.getUID()).where('archived','==', false)).snapshotChanges()
   }
 
-  getProperty(){
-    return this.afs.collection('properties' ,ref=>ref.where('uid', '==' ,this.profileService.getUID() )).valueChanges();
+  propertyListArchived(){
+    return this.afs.collection("properties" ,ref=>ref.where('uid', '==' ,this.profileService.getUID() ).where('archived','==', true)).snapshotChanges()
+  }
+
+  sendToArchive(propertyid){
+    return this.afs.collection('properties').doc(propertyid).update({
+      archived:true
+    })
+  }
+  sendToPropertyList(propertyid){
+    return this.afs.collection('properties').doc(propertyid).update({
+      archived:false
+    })
   }
   pushUpload(upload: Upload, propertyid) {
     let storageRef = firebase.storage().ref();
@@ -104,4 +115,29 @@ export class PropertyService {
   delete(propertyid,imageid){
     return this.afs.collection('properties').doc(propertyid).collection("images").doc(imageid).delete()
   }
+
+  deletePermanently(propertyid){
+    const path= 'properties/'+propertyid+'/images'
+    firebase.firestore().collection(path).get()
+      .then(querySnapshot => {
+          querySnapshot.forEach(doc=> {
+              // doc.data() is never undefined for query doc snapshots
+              console.log(doc.id, " => ", doc.data());
+
+              const storageRef = this.storage.storage.ref().child('uploads/' + doc.data().name);
+              storageRef.delete().then(() => {
+                firebase.firestore().collection('properties').doc(propertyid).collection("images").doc(doc.id).delete().then(()=>{
+                  firebase.firestore().collection('properties').doc(propertyid).delete();
+                })
+                console.log(" File deleted successfully")
+              }).catch(function (error) {
+                // Uh-oh, an error occurred!
+                console.log("Uh-oh, an error occurred!")
+              });
+          });
+      })
+      .catch(error=> {
+          console.log("Error getting documents: ", error);
+      });
+   }
 }

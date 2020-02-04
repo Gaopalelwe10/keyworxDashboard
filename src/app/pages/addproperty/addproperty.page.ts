@@ -47,6 +47,7 @@ export class AddpropertyPage implements OnInit {
     created:'',
     lng:'',
     lat:'',
+    archived:false,
   }
 
   addresses: string[] = [];

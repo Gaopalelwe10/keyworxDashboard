@@ -9,7 +9,8 @@ import { NavController, AlertController } from '@ionic/angular';
   styleUrls: ['./propertylistings.page.scss'],
 })
 export class PropertylistingsPage implements OnInit {
-  propertyList
+  propertyList;
+  data=false;
   constructor(
     private route: Router,
     private propertyService: PropertyService,
@@ -24,7 +25,8 @@ export class PropertylistingsPage implements OnInit {
         }
       })
       console.log(this.propertyList);
-    })
+      this.data=true;
+    });
   }
 
   ngOnInit() {
@@ -33,11 +35,11 @@ export class PropertylistingsPage implements OnInit {
   addproperty() {
     this.route.navigateByUrl("addproperty")
   }
-  deleteproperty(details) {
+  sendToArchived(details) {
 
     this.alertCtrl.create({
       // message: 'Total R ' + this.price*this.increment,
-      subHeader: 'Are you sure you want to delete this property',
+      subHeader: 'Are you sure you want to Archive this property',
       buttons: [
         {
           text: 'Cancel',
@@ -50,7 +52,7 @@ export class PropertylistingsPage implements OnInit {
         {
           text: 'Confirm',
           handler: () => {
-            this.propertyService.deleteproperty(details.key)
+            this.propertyService.sendToArchive(details.key)
           }
         }
       ]

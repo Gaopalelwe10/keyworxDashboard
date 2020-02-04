@@ -16,7 +16,7 @@ export class HomePage {
   property = 0;
   users = 0;
   message = 0;
-
+  messagesList; 
 
   labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   LineChart = [];
@@ -46,7 +46,7 @@ export class HomePage {
     private messageServ: MessageService,
     public datepipe: DatePipe
   ) {
-    this.propertyService.getProperty().subscribe((data: any) => {
+    this.propertyService.propertyList().subscribe((data: any) => {
       this.property = data.length
     })
 
@@ -67,7 +67,13 @@ export class HomePage {
   }
   lineChart() {
     this.messageServ.getMessages().subscribe((data: any) => {
-      data.forEach(element => {
+      this.messagesList = data.map(e => {
+        return {
+          key: e.payload.doc.id,
+          ...e.payload.doc.data()
+        }
+      })
+      this.messagesList.forEach(element => {
         this.value = this.datepipe.transform(element.date, 'MMM');
 
         if (this.value === 'Jan') {

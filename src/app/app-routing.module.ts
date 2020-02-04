@@ -42,6 +42,10 @@ const routes: Routes = [
   },  {
     path: 'viewmessage',
     loadChildren: () => import('./pages/viewmessage/viewmessage.module').then( m => m.ViewmessagePageModule)
+  },
+  {
+    path: 'archived',
+    loadChildren: () => import('./pages/archived/archived.module').then( m => m.ArchivedPageModule)
   }
 
 ];

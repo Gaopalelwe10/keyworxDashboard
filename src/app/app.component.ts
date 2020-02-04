@@ -27,7 +27,11 @@ export class AppComponent {
       title: 'Properties',
       url: '/propertylistings',
       icon: 'home'
-    },
+    },{
+      title:'archived',
+      url: '/archived',
+      icon: 'archive'
+    }
   ];
 
   constructor(
