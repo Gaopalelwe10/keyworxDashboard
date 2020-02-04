@@ -164,30 +164,45 @@ export class AddpropertyPage implements OnInit {
   }
 
   Addproperty() {
-    this.isporpetyDetails=false
-    this.property.uid = this.profileService.getUID();
-    this.property.description = this.AddpropertyForm.value.description;
-    this.property.price = this.AddpropertyForm.value.price;
-    this.property.location = this.selectedAddress ;
-    this.property.typeofproperty = this.AddpropertyForm.value.typeofproperty;
-    this.property.bedrooms = this.AddpropertyForm.value.bedrooms;
-    this.property.bathrooms = this.AddpropertyForm.value.bathrooms;
-    this.property.kitchens = this.AddpropertyForm.value.kitchens;
-    this.property.garage = this.AddpropertyForm.value.garage;
-    this.property.lounges = this.AddpropertyForm.value.lounges;
-    this.property.garden = this.AddpropertyForm.value.garden;
-    this.property.pets = this.AddpropertyForm.value.pets;
-    this.property.pool = this.AddpropertyForm.value.pool;
-    this.property.diningroom = this.AddpropertyForm.value.diningroom;
-    this.property.category=this.AddpropertyForm.value.category;
-    this.property.mainImage = this.mainImage;
-    this.property.propertyid = this.propertyid;
-    this.property.lat=this.lat;
-    this.property.lng=this.lng;
-    console.log(this.property)
-
-
-    this.propertyService.addproperty(this.propertyid, this.property)
+    if(this.mainImage != ""){
+      this.isporpetyDetails=false
+      this.property.uid = this.profileService.getUID();
+      this.property.description = this.AddpropertyForm.value.description;
+      this.property.price = this.AddpropertyForm.value.price;
+      this.property.location = this.selectedAddress ;
+      this.property.typeofproperty = this.AddpropertyForm.value.typeofproperty;
+      this.property.bedrooms = this.AddpropertyForm.value.bedrooms;
+      this.property.bathrooms = this.AddpropertyForm.value.bathrooms;
+      this.property.kitchens = this.AddpropertyForm.value.kitchens;
+      this.property.garage = this.AddpropertyForm.value.garage;
+      this.property.lounges = this.AddpropertyForm.value.lounges;
+      this.property.garden = this.AddpropertyForm.value.garden;
+      this.property.pets = this.AddpropertyForm.value.pets;
+      this.property.pool = this.AddpropertyForm.value.pool;
+      this.property.diningroom = this.AddpropertyForm.value.diningroom;
+      this.property.category=this.AddpropertyForm.value.category;
+      this.property.mainImage = this.mainImage;
+      this.property.propertyid = this.propertyid;
+      this.property.lat=this.lat;
+      this.property.lng=this.lng;
+      console.log(this.property)
+  
+  
+      this.propertyService.addproperty(this.propertyid, this.property)
+    }else{
+      this.alertCtrl.create({
+        subHeader: "Pleace select upload main image",
+        buttons: [
+          {
+            text: 'ok',
+            handler: () => {
+            }
+          }
+        ]
+      }).then(
+        alert => alert.present()
+      );
+    }
   }
   selectedFiles: FileList;
   currentUpload: Upload;

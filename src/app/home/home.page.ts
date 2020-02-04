@@ -69,7 +69,7 @@ export class HomePage {
     this.messageServ.getMessages().subscribe((data: any) => {
       data.forEach(element => {
         this.value = this.datepipe.transform(element.date, 'MMM');
-        console.log(element)
+
         if (this.value === 'Jan') {
           this.Jan++;
         }
@@ -108,7 +108,7 @@ export class HomePage {
         if (this.value === "Dec") {
           this.Dec++;
         }
-        console.log(this.value)
+       
       });
 
       this.LineChart = new Chart('lineChart1', {
@@ -200,7 +200,7 @@ export class HomePage {
         if (this.value === "Dec") {
           this.Dec++;
         }
-        console.log(this.value)
+ 
       });
 
       this.LineChart = new Chart('lineChart2', {
