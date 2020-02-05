@@ -8,7 +8,14 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+    <ion-grid style="height: 100%" *ngIf="data == true && !(propertyList?.length >0) ">
+        <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column; text-align: center;">
 
+            <p class="centerT">
+                Your archived properties will move here
+            </p>
+        </ion-row>
+    </ion-grid>
     <div class="row" *ngIf="data ==true">
         <div class="column" *ngFor="let details of propertyList">
             <ion-card class="card">
@@ -28,15 +35,15 @@
                     <p>{{details.price | currency:'R'}}</p>
                     <p>{{details.location}}</p>
                     <div>
-                        <i class="fa fa-bed" aria-hidden="true">
-                                        <span class="pad-value">{{details.bedrooms}}</span>
-                                    </i>
-                        <i class="fa fa-bath" aria-hidden="true">
-                                        <span class="pad-value"> {{details.bathrooms}}</span>
-                                    </i>
-                        <i class="fa fa-car" aria-hidden="true">
-                                        <span class="pad-value">  {{details.garage}}</span>
-                                    </i>
+                        <i class="fa fa-bed" aria-hidden="true" *ngIf='details.bedrooms!=0'>
+                                            <span class="pad-value">{{details.bedrooms}}</span>
+                                        </i>
+                        <i class="fa fa-bath" aria-hidden="true" *ngIf='details.bathrooms!=0'>
+                                            <span class="pad-value"> {{details.bathrooms}}</span>
+                                        </i>
+                        <i class="fa fa-car" aria-hidden="true" *ngIf='details.garage!=0'>
+                                            <span class="pad-value">  {{details.garage}}</span>
+                                        </i>
                     </div>
                 </ion-card-content>
             </ion-card>
