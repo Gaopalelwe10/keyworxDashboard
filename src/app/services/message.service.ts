@@ -27,9 +27,11 @@ export class MessageService {
     return this.afs.collection('message' ,ref=>ref.where('AgentUid', '==' ,this.profileService.getUID()).where('isRead', '==', true )).snapshotChanges();
   }
 
-  // updateMessage(uid, isRead){
-  //   return this.afs.collection("message").doc(uid).update(isRead == true )
-  // }
+  updateMessage(uid){
+    return this.afs.collection("message").doc(uid).update({
+      isRead: true
+    })
+  }
 
   deleteMessaged(messageid){
     return this.afs.collection("message").doc(messageid).delete().then(() => {
