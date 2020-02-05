@@ -64,17 +64,15 @@ export class ViewmessagePage implements OnInit {
           }
           
         });
-        // this.messageServ.updateMessage().
-        // this.propertyService.propertyList().subscribe((data: any) => {
-        //   this.propertyLink = data.map(e => {
-        //     return {
-        //       key: e.payload.doc.id,
-        //       ...e.payload.doc.data()
-        //     }
-        //   })
-        //   // console.log("p")
-        //   console.log(this.propertyLink = this.messageList.propertyid);
-        // })
+        this.propertyService.propertyList().subscribe((data: any) => {
+          this.propertyLink = data.map(e => {
+            return {
+              key: e.payload.doc.id,
+              ...e.payload.doc.data()
+            }
+          })
+          console.log(this.propertyLink);
+        })
 
         this.messageServ.getMessages().subscribe(data => {
           this.messageList = data;
