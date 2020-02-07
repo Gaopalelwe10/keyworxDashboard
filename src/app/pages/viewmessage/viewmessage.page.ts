@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'src/app/services/message.service';
 import { PropertyService } from 'src/app/services/property.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Contacts, ContactName, ContactField } from '@ionic-native/contacts/ngx';
 
 @Component({
   selector: 'app-viewmessage',
@@ -12,80 +13,81 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class ViewmessagePage implements OnInit {
   index: any;
-  sliderOpts={ 
-    zoom: { 
+  sliderOpts = {
+    zoom: {
       maxRatio: 3
     }
   };
   messageUnReadList: any;
   propertyLink: unknown[];
-  messageList: unknown[];
+  messageList;
   messageReadList: any;
 
 
-  constructor(private navParams:NavParams,  
-    private route:ActivatedRoute,
-      private modalController:ModalController,
-      private messageServ: MessageService,
-      private alertCtrl: AlertController,
-      private afs : AngularFirestore,
-      private propertyService: PropertyService, 
-      private router: Router ,
-      ) {
+  constructor(private navParams: NavParams,
+    private route: ActivatedRoute,
+    private contacts: Contacts,
+    private modalController: ModalController,
+    private messageServ: MessageService,
+    private alertCtrl: AlertController,
+    private afs: AngularFirestore,
+    private propertyService: PropertyService,
+    private router: Router,
+  ) {
 
-        
-        this.route.queryParams.subscribe(params => {
-          if (params && params.messageReadList) {
-            this.index=JSON.parse(params.index)
-            this.messageReadList = JSON.parse(params.messageReadList) ;
-            
-            console.log(this.messageReadList)
-            console.log(this.index)
-          }
-          
-        });
-        this.route.queryParams.subscribe(params => {
-          if (params && params.messageUnReadList) {
-            this.index=JSON.parse(params.index)
-            this.messageUnReadList = JSON.parse(params.messageUnReadList);
-            
-            console.log(this.messageUnReadList)
-            console.log(this.index)
-          }
-        });
+    this.route.queryParams.subscribe(params => {
+      if (params && params.messageReadList) {
+        this.index = JSON.parse(params.index)
+        this.messageReadList = JSON.parse(params.messageReadList);
 
-        this.route.queryParams.subscribe(params => {
-          if (params && params.messageList) {
-            this.index=JSON.parse(params.index)
-            this.messageList = JSON.parse(params.messageList);
-            
-            console.log(this.messageList)
-            console.log(this.index)
-          }
-          
-        });
-        this.propertyService.propertyList().subscribe((data: any) => {
-          this.propertyLink = data.map(e => {
-            return {
-              key: e.payload.doc.id,
-              ...e.payload.doc.data()
-            }
-          })
-          console.log(this.propertyLink);
-        })
+        console.log(this.messageReadList)
+        console.log(this.index)
+      }
 
-        this.messageServ.getMessages().subscribe(data => {
-          this.messageList = data;
-          // console.log('mggg')
-          console.log(data)
-          console.log(this.messageList);
-        })
-       }
+    });
+    this.route.queryParams.subscribe(params => {
+      if (params && params.messageUnReadList) {
+        this.index = JSON.parse(params.index)
+        this.messageUnReadList = JSON.parse(params.messageUnReadList);
+
+        console.log(this.messageUnReadList)
+        console.log(this.index)
+      }
+    });
+
+    this.route.queryParams.subscribe(params => {
+      if (params && params.messageList) {
+        this.index = JSON.parse(params.index)
+        this.messageList = JSON.parse(params.messageList);
+
+        console.log(this.messageList)
+        console.log(this.index)
+      }
+
+    });
+    this.propertyService.propertyList().subscribe((data: any) => {
+      this.propertyLink = data.map(e => {
+        return {
+          key: e.payload.doc.id,
+          ...e.payload.doc.data()
+        }
+      })
+      console.log(this.propertyLink);
+    })
+
+    this.messageServ.getMessages().subscribe(data => {
+      this.messageList = data;
+      // console.log('mggg')
+      console.log(data)
+      console.log(this.messageList);
+    })
+
+  }
 
   ngOnInit() {
   }
 
-  close(){
+  close() {
     this.modalController.dismiss();
   }
 
@@ -132,13 +134,23 @@ export class ViewmessagePage implements OnInit {
         }, {
           text: 'Okay',
           handler: () => {
-            this.afs.collection("message").doc('messageList/'+key).delete()
+            this.afs.collection("message").doc('messageList/' + key).delete()
             // firebase.database().ref('infos/'+key).remove();
           }
         }
       ]
     });
-  
+
     await alert.present();
+  }
+
+  save(){
+    let contact = this.contacts.create();
+    contact.name = new ContactName(null, this.messageList.name);
+    contact.phoneNumbers = [new ContactField('mobile', this.messageList.number)];
+    contact.save().then(
+      () => console.log('contact saved!', contact),
+      (error: any) => console.error('Error saving contact.', error)
+    );
   }
 }

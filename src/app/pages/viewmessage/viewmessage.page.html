@@ -1,10 +1,4 @@
-<!-- <ion-header>
-    <ion-toolbar>
-        <ion-title>viewmessage</ion-title>
-    </ion-toolbar>
-</ion-header> -->
 
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <ion-content>
     <ion-item class="close-fake" lines="none" class="ion-text-center">
         <ion-button slot="end" (click)="close()" fill="clear" color="Light">
@@ -14,10 +8,10 @@
 
         <ion-button slot="start" fill="clear" color="Light" (click)="deleteMessage(msg)">
 
-            <!-- <div *ngFor="let msg of messageList "> -->
+         
             <ion-icon name="trash" color="danger">
             </ion-icon>
-            <!-- </div> -->
+
 
         </ion-button>
 
@@ -28,11 +22,11 @@
     <!-- <div align="center"> Property ID {{msg.propertyid}}
     </div> -->
     <br>
-    <ion-item class="ion-float-left">
+    <ion-item class="ion-float-left" (click)=save()>
         <ion-avatar slot="start">
             <img src="/assets/img/avatar.svg">
         </ion-avatar>
-        <h6> <b>{{msg.name}} &nbsp;&nbsp; </b>{{msg.email}}</h6>
+        <h6> <b>{{msg.name}} : </b>{{msg.number}} &nbsp;&nbsp; {{msg.email}}</h6>
     </ion-item>
 
     <br><br><br>
@@ -61,14 +55,14 @@
 
 
                     <i class="fa fa-bed" aria-hidden="true">
-      &nbsp;  <span class="pad-value">{{pl.bedrooms}}</span>
-    </i>
+                        &nbsp; <span class="pad-value">{{pl.bedrooms}}</span>
+                    </i>
                     <i class="fa fa-bath" aria-hidden="true">
-       &nbsp; <span class="pad-value"> {{pl.bathrooms}}</span>
-    </i>
-                    <i class="fa fa-car" aria-hidden="true"> 
-       &nbsp; <span class="pad-value">  {{pl.garage}}</span>
-    </i>
+                        &nbsp; <span class="pad-value"> {{pl.bathrooms}}</span>
+                    </i>
+                    <i class="fa fa-car" aria-hidden="true">
+                        &nbsp; <span class="pad-value"> {{pl.garage}}</span>
+                    </i>
                 </ion-card-content>
 
             </ion-card>
