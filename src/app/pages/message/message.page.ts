@@ -5,6 +5,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { ModalController, AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewmessagePage } from '../viewmessage/viewmessage.page';
+import {MatPaginatorIntl} from '@angular/material/paginator';
 
 
 @Component({

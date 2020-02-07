@@ -10,12 +10,15 @@
     </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
     <br>
 
+
+
     <ion-segment [(ngModel)]="Segment">
         <ion-segment-button value="unread">
-            <ion-label>Unread</ion-label>
+            <ion-label>New</ion-label>
 
         </ion-segment-button>
 
@@ -31,6 +34,7 @@
                 <!-- <div *ngIf="msg.isRead; else elseBlock"> -->
 
                 <ion-item tappable (click)="OpenPreview(msg)">
+                    <!-- <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"> -->
                     <table style="width:100%">
                         <tr>
                             <th>
@@ -45,6 +49,8 @@
                             </th>
                         </tr>
                     </table>
+                    <!-- </mat-paginator> -->
+
                 </ion-item>
                 <!-- </div> -->
 
@@ -56,6 +62,8 @@
             <div *ngFor="let msg of messageReadList">
                 <!-- <ng-template *ngif="msg.isRead"> -->
                 <ion-item tappable (click)="OpenPreview(msg)">
+
+                    <!-- <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"> -->
                     <table style="width:100%">
                         <tr>
                             <th>
@@ -70,11 +78,11 @@
                             </th>
                         </tr>
                     </table>
+                    <!-- </mat-paginator> -->
                 </ion-item>
 
                 <!-- </ng-template> -->
             </div>
         </div>
     </div>
- 
 </ion-content>

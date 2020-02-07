@@ -4,7 +4,7 @@
     </ion-toolbar>
 </ion-header> -->
 
-
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <ion-content>
     <ion-item class="close-fake" lines="none" class="ion-text-center">
         <ion-button slot="end" (click)="close()" fill="clear" color="Light">
@@ -23,7 +23,7 @@
 
     </ion-item>
 
-    <br><br><br>
+
 
     <!-- <div align="center"> Property ID {{msg.propertyid}}
     </div> -->
@@ -45,6 +45,33 @@
     </ion-slides>
 
     <div *ngFor="let pl of propertyLink">
-        {{pl.location}}
+        <div *ngIf="msg.propertyid == pl.propertyid">
+
+            <ion-card class="cat" align="center">
+                <div class="container">
+                    <img src="{{pl.mainImage}}">
+
+
+
+                </div>
+                <p class="top-left"><b>{{pl.price | currency:'R'}}</b></p>
+                <p class="centered"><b>{{pl.location }}...</b></p>
+
+                <ion-card-content class="bottom-right">
+
+
+                    <i class="fa fa-bed" aria-hidden="true">
+      &nbsp;  <span class="pad-value">{{pl.bedrooms}}</span>
+    </i>
+                    <i class="fa fa-bath" aria-hidden="true">
+       &nbsp; <span class="pad-value"> {{pl.bathrooms}}</span>
+    </i>
+                    <i class="fa fa-car" aria-hidden="true"> 
+       &nbsp; <span class="pad-value">  {{pl.garage}}</span>
+    </i>
+                </ion-card-content>
+
+            </ion-card>
+        </div>
     </div>
 </ion-content>

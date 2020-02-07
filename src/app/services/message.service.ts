@@ -29,8 +29,8 @@ export class MessageService {
 
   updateMessage(uid){
     return this.afs.collection("message").doc(uid).update({
-      isRead : true
-    } )
+      isRead: true
+    })
   }
 
   deleteMessaged(messageid){
