@@ -88,6 +88,7 @@ export class MessagePage implements OnInit {
   }
 
   OpenPreview(msg) {
+    this.messageServ.updateMessage(msg.key)
     this.modalController.create({
       component: ViewmessagePage,
       componentProps: {

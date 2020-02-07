@@ -6,7 +6,7 @@
 
 
 <ion-content>
-    <ion-item class="close-fake" lines="none" text-center>
+    <ion-item class="close-fake" lines="none" class="ion-text-center">
         <ion-button slot="end" (click)="close()" fill="clear" color="Light">
             <ion-icon name="close" slot="start"></ion-icon>
             <!-- Back -->
@@ -28,7 +28,7 @@
     <!-- <div align="center"> Property ID {{msg.propertyid}}
     </div> -->
     <br>
-    <ion-item float-left>
+    <ion-item class="ion-float-left">
         <ion-avatar slot="start">
             <img src="/assets/img/avatar.svg">
         </ion-avatar>
@@ -37,7 +37,7 @@
 
     <br><br><br>
     <ion-slides [options]="sliderOpts" #slider>
-        <ion-slide float-left>
+        <ion-slide class="ion-float-left">
 
             <h4>{{msg.message}}</h4>
 

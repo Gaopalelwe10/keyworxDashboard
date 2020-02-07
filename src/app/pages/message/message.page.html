@@ -13,32 +13,6 @@
 <ion-content>
     <br>
 
-    <!-- <div class="card1">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-warning card-header-icon">
-                        <div class="card-icon"><i class="material-icons">mail-unread</i></div>
-                        <p class="card-category">Unread</p>
-                        <h3 class="card-title">{{property}}</h3>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-warning card-header-icon">
-                        <div class="card-icon"><i class="material-icons">mail-read</i></div>
-                        <p class="card-category">Opened</p>
-                        <h3 class="card-title">{{users}}</h3>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div> -->
-
     <ion-segment [(ngModel)]="Segment">
         <ion-segment-button value="unread">
             <ion-label>Unread</ion-label>
@@ -63,11 +37,11 @@
 
                                 <h6><i class="i1" color="primary" style="zoom:0.7;" class="material-icons">mail</i>&nbsp;&nbsp;{{msg.name | slice:0:12}}</h6>
                             </th>
-                            <th float-left>
-                                <h6 float-left>{{msg.message | slice:0:20}}</h6>
+                            <th class="ion-float-left">
+                                <h6 class="ion-float-left">{{msg.message | slice:0:20}}</h6>
                             </th>
                             <th>
-                                <h6 float-right>{{msg.date | date:"MMM dd H:mm" }}</h6>
+                                <h6 class="ion-float-right">{{msg.date | date:"MMM dd H:mm" }}</h6>
                             </th>
                         </tr>
                     </table>
@@ -88,11 +62,11 @@
 
                                 <h6><i class="i2" color="secondary" style="zoom:0.7;" class="material-icons">mail</i>&nbsp;&nbsp;{{msg.name | slice:0:12}}</h6>
                             </th>
-                            <th float-left>
-                                <h6 float-left>{{msg.message | slice:0:20}}</h6>
+                            <th class="ion-float-left">
+                                <h6 class="ion-float-left">{{msg.message | slice:0:20}}</h6>
                             </th>
                             <th>
-                                <h6 float-right>{{msg.date | date:"MMM dd H:mm" }}</h6>
+                                <h6 class="ion-float-right">{{msg.date | date:"MMM dd H:mm" }}</h6>
                             </th>
                         </tr>
                     </table>
@@ -102,34 +76,5 @@
             </div>
         </div>
     </div>
-    <!-- <div class="back-mail" align="center">
- -->
-
-    <!-- <main class="measure center tc sans-serif black-80 absolute absolute--fill">
-            <div class="flex flex-column justify-center items-center h-100">
-                <header>
-                    <h1 class="animated fadeInUp ease-out-circ d2 a-1 f2 fw3">
-                        <code class="db black-40">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ2XeDhKV_ILzmXjhoZoSX4Po5cssIbK2OixEo6h6Bc4WU0EVD3">
-                          </code>
-                    </h1>
-                </header> -->
-    <!-- <h2 class="animated fadeInUp ease-out-circ d-1 a-2">
-                      Designed for choreographing <span class="nowrap">CSS animations</span>
-                    </h2>
-                    <div class="animated bounceIn ease-in-quad d-2 mt4">
-                      <a href="https://github.com/anater/tachyons-animate" class="dib link bw1 b--solid b--dark-blue dark-blue fw9 pa3 br3 hover-white hover-bg-dark-blue">
-                                          View on Github
-                                      </a>
-                    </div>
-                  
-                  <footer class="animated zoomInDown ease-out-quad d-2 a-1 absolute left-0 bottom-2 w-100">
-                    <a href="http://andrewnater.com" class="link fw9 dark-blue" target="_blank">
-                                      Made by Andrew Nater
-                                  </a>
-                  </footer> -->
-    <!-- </div>
-        </main>
-
-    </div> -->
+ 
 </ion-content>
