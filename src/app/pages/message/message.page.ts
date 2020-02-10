@@ -88,23 +88,21 @@ export class MessagePage implements OnInit {
       })
  
 
+    // let contact: Contact = this.contacts.create();
 
-   
-    let contact: Contact = this.contacts.create();
-
-    contact.name = new ContactName (null, '', '');
-    contact.phoneNumbers = [new ContactField('mobile', '')];
-    contact.save().then(
-      () => console.log('Contact saved!', contact),
-      (error: any) => console.error('Error saving contact.', error)
-    );
+    // contact.name = new ContactName (null, '', '');
+    // contact.phoneNumbers = [new ContactField('mobile', '')];
+    // contact.save().then(
+    //   () => console.log('Contact saved!', contact),
+    //   (error: any) => console.error('Error saving contact.', error)
+    // );
     }
 
     initializeItems(): void {
       this.messageReadList  = this.messageListLoad;
     }
     
-  search(event) {
+    search(event) {
   
     this.initializeItems();
     const searchTerm = event.srcElement.value;
