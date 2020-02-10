@@ -3,11 +3,14 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ProfileService } from './profile.service';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { MapboxOutput } from './mapbox.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
+  http: any;
 
   constructor(
     private afs : AngularFirestore,
@@ -55,5 +58,11 @@ export class MessageService {
   deletethis(messageid){
     return this.afs.collection('message').doc(messageid).delete()
   }
-  
+  search_word(query: string) {
+    const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
+    return this.http.get(url + query + '.json?types=address&country=ZA&access_token=pk.eyJ1IjoibmVvLXB1bGUiLCJhIjoiY2p4cTI0MGF0MGlnajNjbDMzMW9nMzJ6OSJ9.QgND5rJKyVYEmTjBJIrq3g')
+      .pipe(map((res: MapboxOutput) => {
+        return res.features;
+      }))
+    }
 }
