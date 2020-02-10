@@ -38,6 +38,8 @@ export class MessagePage implements OnInit {
   table: any;
   location: any;
   messageListLoad: any;
+  messageReadListLoad: any;
+  messageUnReadListLoad: any;
 
   constructor(
     private contacts: Contacts,
@@ -57,21 +59,21 @@ export class MessagePage implements OnInit {
             ...e.payload.doc.data()
           }
         })
-        console.log('mggg')
+        this.messageListLoad = this.messageList;
        
         console.log(this.messageList);
       })
 
       this.messageServ.getMessagesRead().subscribe((data:any ) => {
-          this.messageReadList = data;
-          this.messageListLoad = data;
+         
         this.messageReadList = data.map(e => {
           return {
             key: e.payload.doc.id,
             ...e.payload.doc.data()
           }
         })
-   
+        this.messageReadListLoad = this.messageReadList;
+
         console.log(this.messageReadList);
       })
 
@@ -82,6 +84,7 @@ export class MessagePage implements OnInit {
             ...e.payload.doc.data()
           }
         })
+        this.messageUnReadListLoad = this.messageUnReadList;
 
         console.log(this.messageUnReadList);
         
@@ -100,6 +103,8 @@ export class MessagePage implements OnInit {
 
     initializeItems(): void {
       this.messageReadList  = this.messageListLoad;
+      this.messageList = this.messageListLoad;
+      this.messageUnReadList = this.messageUnReadListLoad;
     }
     
     search(event) {
@@ -112,15 +117,33 @@ export class MessagePage implements OnInit {
       return;
     }  
 
-      this.messageReadList = this.messageReadList.filter(current => {
-        if (current.name && searchTerm) {
-          if (current.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+      this.messageList = this.messageList.filter(currentlist => {
+        if (currentlist.name && searchTerm) {
+          if (currentlist.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
             return true;
           }
           return false;
         }
       });
   
+      this.messageReadList = this.messageReadList.filter(currentRead => {
+        if (currentRead.name && searchTerm) {
+          if (currentRead.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+            return true;
+          }
+          return false;
+        }
+      });
+
+      this.messageUnReadList = this.messageUnReadList.filter(currentUnRead => {
+        if (currentUnRead.name && searchTerm) {
+          if (currentUnRead.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+            return true;
+          }
+          return false;
+        }
+      });
+
     }
     
   ngOnInit() {

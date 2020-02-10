@@ -6,7 +6,7 @@
         <ion-title align="center">Message</ion-title>
     </ion-toolbar>
     <ion-toolbar color="primary">
-        <ion-searchbar (ioninput)="search($event)"></ion-searchbar>
+        <ion-searchbar showcancelbutton="" (ionInput)="search($event)"></ion-searchbar>
     </ion-toolbar>
 
 </ion-header>
@@ -68,8 +68,8 @@
 
                                 <h6><i class="i2" color="secondary" style="zoom:0.7;" class="material-icons">mail</i>&nbsp;&nbsp;{{msg.name | slice:0:12}}</h6>
                             </th>
-                            <th class="ion-float-left">
-                                <h6 class="ion-float-left">{{msg.message | slice:0:20}}</h6>
+                            <th align="center" class="ii">
+                                <h6>{{msg.message | slice:0:5}}...</h6>
                             </th>
                             <th>
                                 <h6 class="ion-float-right">{{msg.date | date:"MMM dd H:mm" }}</h6>
