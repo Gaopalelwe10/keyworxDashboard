@@ -24,8 +24,7 @@
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
     "@capacitor/android": "^1.4.0",
-    "@capacitor/cli": "^1.4.0",
-    "@capacitor/core": "^1.4.0",
+    "@capacitor/core": "1.5.0",
     "@capacitor/ios": "^1.4.0",
     "@ionic-native/contacts": "^5.19.1",
     "@ionic-native/core": "^5.19.1",
@@ -35,7 +34,6 @@
     "@mapbox/mapbox-gl-geocoder": "^4.5.1",
     "angular-material": "^1.1.21",
     "chart.js": "^2.9.3",
-    "cordova-android": "8.1.0",
     "cordova-plugin-contacts": "^3.0.1",
     "core-js": "^2.6.11",
     "firebase": "^7.6.1",
@@ -55,6 +53,7 @@
     "@angular/compiler": "~8.1.2",
     "@angular/compiler-cli": "~8.1.2",
     "@angular/language-service": "~8.1.2",
+    "@capacitor/cli": "1.5.0",
     "@ionic/angular-toolkit": "^2.1.2",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
@@ -91,8 +90,6 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-contacts": {}
     },
-    "platforms": [
-      "android"
-    ]
+    "platforms": []
   }
 }

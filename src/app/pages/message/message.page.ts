@@ -87,13 +87,23 @@ export class MessagePage implements OnInit {
         
       })
  
-}
-
-   initializeItems(): void {
-    this.messageReadList = this.messageListLoad;
-  }
 
 
+   
+    let contact: Contact = this.contacts.create();
+
+    contact.name = new ContactName (null, '', '');
+    contact.phoneNumbers = [new ContactField('mobile', '')];
+    contact.save().then(
+      () => console.log('Contact saved!', contact),
+      (error: any) => console.error('Error saving contact.', error)
+    );
+    }
+
+    initializeItems(): void {
+      this.messageReadList  = this.messageListLoad;
+    }
+    
   search(event) {
   
     this.initializeItems();
@@ -104,7 +114,6 @@ export class MessagePage implements OnInit {
       return;
     }  
 
-    // this.messageReadList = this.messageReadList.filter((currentGoal) => {
       this.messageReadList = this.messageReadList.filter(current => {
         if (current.name && searchTerm) {
           if (current.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {

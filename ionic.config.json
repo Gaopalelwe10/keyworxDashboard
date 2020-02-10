@@ -1,7 +1,7 @@
 {
   "name": "keyworxDashboard",
   "integrations": {
-    "cordova": {}
+    "capacitor": {}
   },
   "type": "angular"
 }

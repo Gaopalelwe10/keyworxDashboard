@@ -5,7 +5,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ProfileService } from 'src/app/services/profile.service';
 import { PropertyService } from 'src/app/services/property.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { MapboxService, Feature } from 'src/app/services/mapbox.service';
 import { AlertController } from '@ionic/angular';
@@ -66,7 +66,8 @@ export class UpdatepropertyPage implements OnInit {
     private propertyService: PropertyService,
     private routeA: ActivatedRoute,
     public mapboxService: MapboxService,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private router: Router
   ) {
     this.routeA.queryParams
       .subscribe(params => {
@@ -216,13 +217,13 @@ export class UpdatepropertyPage implements OnInit {
     this.propertyService.updateproperty(this.key, this.property).then(() => {
       this.alertCtrl.create({
         // message: 'Upload doc, xlsx, pdf, accdb, docx',
-        subHeader: "Property Infor is updated successfully",
+        subHeader: "Information is updated successfully",
         buttons: [
 
           {
             text: 'ok',
             handler: () => {
-
+              this.router.navigateByUrl('propertylistings')
             }
           }
         ]
@@ -266,7 +267,7 @@ export class UpdatepropertyPage implements OnInit {
       );
     }
 
-    this.selectedFiles=null
+    this.selectedFiles = null
   }
 
   delete(image) {
