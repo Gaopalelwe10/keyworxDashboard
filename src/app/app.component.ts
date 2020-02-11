@@ -28,7 +28,7 @@ export class AppComponent {
       url: '/propertylistings',
       icon: 'home'
     },{
-      title:'archived',
+      title:'Archived',
       url: '/archived',
       icon: 'archive'
     }
