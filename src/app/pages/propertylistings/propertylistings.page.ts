@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PropertyService } from 'src/app/services/property.service';
-import { NavController, AlertController } from '@ionic/angular';
+import { NavController, AlertController, Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-propertylistings',
@@ -11,12 +11,19 @@ import { NavController, AlertController } from '@ionic/angular';
 export class PropertylistingsPage implements OnInit {
   propertyList;
   data=false;
+  isBrowser=false;
   constructor(
     private route: Router,
     private propertyService: PropertyService,
     private navCtrl: NavController,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private platform: Platform
   ) {
+
+    if (this.platform.is("desktop")) {
+     this.isBrowser=true
+
+    }
     this.propertyService.propertyList().subscribe((data: any) => {
       this.propertyList = data.map(e => {
         return {

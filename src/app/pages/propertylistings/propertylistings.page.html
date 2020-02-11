@@ -3,10 +3,11 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title align="center">Property listing</ion-title>
-        <ion-buttons slot="end" (click)="addproperty()">
-            <ion-icon name="add"></ion-icon>
+        <ion-title>Property listing</ion-title>
+        <ion-buttons class="add-property" *ngIf="isBrowser ==true" slot="end" (click)="addproperty()">
+            <ion-icon name="add"></ion-icon>Add &nbsp;
         </ion-buttons>
+
     </ion-toolbar>
 </ion-header>
 
@@ -101,7 +102,7 @@
         </div>
     </div>
 
-    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab *ngIf="isBrowser ==false" horizontal="end" vertical="bottom" slot="fixed">
         <ion-fab-button color="primary" (click)="addproperty()" size="small">
             <ion-icon name="add"></ion-icon>
         </ion-fab-button>
