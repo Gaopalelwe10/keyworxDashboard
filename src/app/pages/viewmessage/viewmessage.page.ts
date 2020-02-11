@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'src/app/services/message.service';
 import { PropertyService } from 'src/app/services/property.service';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Contacts, ContactName, ContactField } from '@ionic-native/contacts/ngx';
+import { Contacts, ContactName, ContactField, Contact } from '@ionic-native/contacts/ngx';
 
 @Component({
   selector: 'app-viewmessage',
@@ -85,6 +85,7 @@ export class ViewmessagePage implements OnInit {
   }
 
   ngOnInit() {
+ 
   }
 
   close() {
@@ -144,13 +145,31 @@ export class ViewmessagePage implements OnInit {
     await alert.present();
   }
 
-  save(){
-    let contact = this.contacts.create();
-    contact.name = new ContactName(null, this.messageList.name);
-    contact.phoneNumbers = [new ContactField('mobile', this.messageList.number)];
-    contact.save().then(
-      () => console.log('contact saved!', contact),
-      (error: any) => console.error('Error saving contact.', error)
+  updateMessage(msg){
+    this.messageServ.updateMessageUnread(msg.key).then(()=>{
+      this.modalController.dismiss();
+    })
+  }
+  // save(){
+  //   let contact = this.contacts.create();
+  //   contact.name = new ContactName(null, this.messageList.name);
+  //   contact.phoneNumbers = [new ContactField('mobile', this.messageList.number)];
+  //   contact.save().then(
+  //     () => console.log('contact saved!', contact),
+  //     (error: any) => console.error('Error saving contact.', error)
+  //   );
+  // }
+
+  createContact(){
+    let contact:Contact = this.contacts.create();
+
+    contact.name = new ContactName(null, 'gaopalelwe', 'gg');
+    contact.phoneNumbers = [new ContactField('mobile', '123456789')];
+    contact.save().then(() => 
+    console.log('contact saved!'),
+      (error: any) => 
+      console.error('Error saving contact.', error)
     );
+
   }
 }

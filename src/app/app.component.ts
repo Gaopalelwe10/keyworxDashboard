@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform, MenuController } from '@ionic/angular';
+import { Platform, MenuController, LoadingController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ProfileService } from './services/profile.service';
@@ -27,8 +27,8 @@ export class AppComponent {
       title: 'Properties',
       url: '/propertylistings',
       icon: 'home'
-    },{
-      title:'Archived',
+    }, {
+      title: 'Archived',
       url: '/archived',
       icon: 'archive'
     }
@@ -39,23 +39,38 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private profileService: ProfileService,
-    private router:Router,
+    private router: Router,
     private menuCtrl: MenuController,
+    public loadingCtrl: LoadingController,
   ) {
     this.initializeApp();
+    // this.loader()
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
+      this.statusBar.styleLightContent()
       this.splashScreen.hide();
     });
   }
-  profile(){
-  this.menuCtrl.close()
-  this.router.navigateByUrl('profile')
+  profile() {
+    this.menuCtrl.close()
+    this.router.navigateByUrl('profile')
   }
-  logout(){
+  logout() {
     this.profileService.logout();
+  }
+  async loader(){
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading',
+      cssClass: 'custom-loader2',
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+
+    console.log('Loading dismissed!');
   }
 }

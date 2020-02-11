@@ -38,7 +38,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { Contacts, Contact, ContactField, ContactName} from '@ionic-native/contacts/ngx';
+import { Contacts} from '@ionic-native/contacts/ngx';
 import { ModalController } from '@ionic/angular';
 
 import { AngularFireModule } from '@angular/fire';
@@ -110,7 +110,7 @@ const firebaseConfig = {
   ],
   providers: [
     StatusBar,
-    SplashScreen,Contacts, Contact,
+    SplashScreen,Contacts,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

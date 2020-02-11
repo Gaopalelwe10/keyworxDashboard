@@ -1,4 +1,3 @@
-
 <ion-content>
     <ion-item class="close-fake" lines="none" class="ion-text-center">
         <ion-button slot="end" (click)="close()" fill="clear" color="Light">
@@ -7,12 +6,10 @@
         </ion-button>
 
         <ion-button slot="start" fill="clear" color="Light" (click)="deleteMessage(msg)">
-
-         
-            <ion-icon name="trash" color="danger">
-            </ion-icon>
-
-
+            <ion-icon name="trash" color="danger"></ion-icon>
+        </ion-button>
+        <ion-button slot="start" fill="clear" color="Light" (click)="updateMessage(msg)">
+            <ion-icon name="mail"></ion-icon>
         </ion-button>
 
     </ion-item>
@@ -37,35 +34,36 @@
 
         </ion-slide>
     </ion-slides>
+    <ion-button (click)='createContact()'>save</ion-button>
+    <div *ngFor="let details of propertyLink">
 
-    <div *ngFor="let pl of propertyLink">
-        <div *ngIf="msg.propertyid == pl.propertyid">
-
-            <ion-card class="cat" align="center">
-                <div class="container">
-                    <img src="{{pl.mainImage}}">
-
-
+        <div *ngIf="msg.propertyid == details.propertyid">
+            <ion-card class="card">
+                <div class="IMGcontainers">
+                    <img src="{{details.mainImage}}" style="width:100%">
 
                 </div>
-                <p class="top-left"><b>{{pl.price | currency:'R'}}</b></p>
-                <p class="centered"><b>{{pl.location }}...</b></p>
 
-                <ion-card-content class="bottom-right">
+                <ion-card-content>
+                    <div class="action">
 
-
-                    <i class="fa fa-bed" aria-hidden="true">
-                        &nbsp; <span class="pad-value">{{pl.bedrooms}}</span>
-                    </i>
-                    <i class="fa fa-bath" aria-hidden="true">
-                        &nbsp; <span class="pad-value"> {{pl.bathrooms}}</span>
-                    </i>
-                    <i class="fa fa-car" aria-hidden="true">
-                        &nbsp; <span class="pad-value"> {{pl.garage}}</span>
-                    </i>
+                    </div>
+                    <p>{{details.price | currency:'R'}}</p>
+                    <p>{{details.location}}</p>
+                    <div>
+                        <i class="fa fa-bed" aria-hidden="true" *ngIf='details.bedrooms!=0'>
+                                            <span class="pad-value">{{details.bedrooms}}</span>
+                                        </i>
+                        <i class="fa fa-bath" aria-hidden="true" *ngIf='details.bathrooms!=0'>
+                                            <span class="pad-value"> {{details.bathrooms}}</span>
+                                        </i>
+                        <i class="fa fa-car" aria-hidden="true" *ngIf='details.garage!=0'>
+                                            <span class="pad-value">  {{details.garage}}</span>
+                                        </i>
+                    </div>
                 </ion-card-content>
-
             </ion-card>
+
         </div>
     </div>
 </ion-content>
