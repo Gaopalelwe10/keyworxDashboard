@@ -11,10 +11,7 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
-  {
-    path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
-  },
+
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
@@ -39,7 +36,8 @@ const routes: Routes = [
   {
     path: 'updateproperty',
     loadChildren: () => import('./pages/updateproperty/updateproperty.module').then( m => m.UpdatepropertyPageModule)
-  },  {
+  },
+  {
     path: 'viewmessage',
     loadChildren: () => import('./pages/viewmessage/viewmessage.module').then( m => m.ViewmessagePageModule)
   },
