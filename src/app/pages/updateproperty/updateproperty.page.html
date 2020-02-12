@@ -69,8 +69,9 @@
                 <ion-item>
                     <ion-label position="floating">Location</ion-label>
                     <!-- <ion-input type="text" formControlName="location"></ion-input> -->
-                    <ion-input type="text" formControlName="location" (ionInput)="search($event)" clearInput></ion-input>
+                    <ion-input type="text" formControlName="location" (ionInput)="search($event)" [value]="selectedAddress" clearInput></ion-input>
                 </ion-item>
+
                 <ion-list position="floating" style="position: absolute; max-width: 100%; min-width: 100%; z-index: 999; ">
                     <!-- <ion-item *ngFor="let album of albums | filtro: textBuscar: 'title'"> -->
 

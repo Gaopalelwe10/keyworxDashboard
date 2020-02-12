@@ -100,6 +100,7 @@ export class UpdatepropertyPage implements OnInit {
       this.mainImage = data.mainImage
       this.lng = data.lng;
       this.lat = data.lat;
+      this.selectedAddress=data.location
       this.UpdatepropertyForm = this.fb.group({
         description: new FormControl(data.description, Validators.required),
         price: [data.price, Validators.required],
@@ -117,7 +118,7 @@ export class UpdatepropertyPage implements OnInit {
         category: [data.category, Validators.required],
       });
     })
-
+  
     this.propertyService.imageList(this.key).subscribe(data => {
       this.imageList = data.map(e => {
         return {

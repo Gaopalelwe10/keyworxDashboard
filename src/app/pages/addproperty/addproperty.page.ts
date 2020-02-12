@@ -117,7 +117,6 @@ export class AddpropertyPage implements OnInit {
 
   onSelect(address, i) {
     this.selectedAddress = address;
-    //  selectedcoodinates=
 
     console.log("lng:" + JSON.stringify(this.listMabox[i].geometry.coordinates[0]))
     console.log("lat:" + JSON.stringify(this.listMabox[i].geometry.coordinates[1]))
@@ -126,19 +125,6 @@ export class AddpropertyPage implements OnInit {
 
     console.log("index =" + i)
     console.log(this.selectedAddress)
-
-    //add to FireBase
-    // this.dog.collection('coordinate').add({
-    //   lat: this.temp.coordinates[1],
-    //   lng: this.temp.coordinates[0],
-    //   address: address,
-    // }).then(function (ref) {
-    //   console.log("document was written with ID : " + ref);
-    //   alert("physical address : " + address + " , saved successful..")
-    // }).catch(function (ee) {
-    //   console.log(ee)
-    //   console.log("error while processing ..")
-    // });
     this.addresses = [];
   }
 
