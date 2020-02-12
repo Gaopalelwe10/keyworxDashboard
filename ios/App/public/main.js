@@ -785,7 +785,7 @@ var AppRoutingModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (":host .menu-pane-visible.split-pane-side {\n  max-width: 17%;\n}\n:host .split-pane-visible > .split-pane-side {\n  max-width: 17%;\n}\nion-card {\n  color: black;\n}\n.profile-image img {\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n.profile-image img {\n  max-height: 150px;\n  max-width: 150px;\n  border-radius: 50%;\n  border: 4px solid #a02b2d;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQzpcXFVzZXJzXFxDb2RlVHJpYmVcXERlc2t0b3BcXENvZGVUcmliZVxcaW9uaWNcXGtleXdvcnhEYXNoYm9hcmQvc3JjXFxhcHBcXGFwcC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNJO0VBQ0ksY0FBQTtBQ0FSO0FER0k7RUFDSSxjQUFBO0FDRFI7QURLQTtFQUNJLFlBQUE7QUNGSjtBREtBO0VBQ0ksY0FBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7QUNGSjtBRE1JO0VBQ0ksaUJBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0VBQ0EseUJBQUE7QUNIUiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcclxuICAgIC5tZW51LXBhbmUtdmlzaWJsZS5zcGxpdC1wYW5lLXNpZGUge1xyXG4gICAgICAgIG1heC13aWR0aDogMTclO1xyXG4gICAgfVxyXG4gICAgLy8gb3JcclxuICAgIC5zcGxpdC1wYW5lLXZpc2libGU+LnNwbGl0LXBhbmUtc2lkZSB7XHJcbiAgICAgICAgbWF4LXdpZHRoOiAxNyU7XHJcbiAgICB9XHJcbn1cclxuXHJcbmlvbi1jYXJkIHtcclxuICAgIGNvbG9yOiBibGFjaztcclxufVxyXG5cclxuLnByb2ZpbGUtaW1hZ2UgaW1nIHtcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XHJcbiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87XHJcbn1cclxuXHJcbi5wcm9maWxlLWltYWdlIHtcclxuICAgIGltZyB7XHJcbiAgICAgICAgbWF4LWhlaWdodDogMTUwcHg7XHJcbiAgICAgICAgbWF4LXdpZHRoOiAxNTBweDtcclxuICAgICAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICAgICAgYm9yZGVyOiA0cHggc29saWQgI2EwMmIyZDtcclxuICAgICAgICAvLyAtd2Via2l0LWJveC1zaGFkb3c6IDBweCAwcHggMTQycHggLTM3cHggcmdiKDMyLCAxMTQsIDEyNSk7XHJcbiAgICAgICAgLy8gLW1vei1ib3gtc2hhZG93OiAwcHggMHB4IDE0MnB4IC0zN3B4IHJnYigzMiwgMTE0LCAxMjUpO1xyXG4gICAgICAgIC8vIGJveC1zaGFkb3c6IDBweCAwcHggMTQycHggLTM3cHggcmdiKDMyLCAxMTQsIDEyNSk7XHJcbiAgICB9XHJcbn0iLCI6aG9zdCAubWVudS1wYW5lLXZpc2libGUuc3BsaXQtcGFuZS1zaWRlIHtcbiAgbWF4LXdpZHRoOiAxNyU7XG59XG46aG9zdCAuc3BsaXQtcGFuZS12aXNpYmxlID4gLnNwbGl0LXBhbmUtc2lkZSB7XG4gIG1heC13aWR0aDogMTclO1xufVxuXG5pb24tY2FyZCB7XG4gIGNvbG9yOiBibGFjaztcbn1cblxuLnByb2ZpbGUtaW1hZ2UgaW1nIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG59XG5cbi5wcm9maWxlLWltYWdlIGltZyB7XG4gIG1heC1oZWlnaHQ6IDE1MHB4O1xuICBtYXgtd2lkdGg6IDE1MHB4O1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG4gIGJvcmRlcjogNHB4IHNvbGlkICNhMDJiMmQ7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = (":host .menu-pane-visible.split-pane-side {\n  max-width: 17%;\n}\n:host .split-pane-visible > .split-pane-side {\n  max-width: 17%;\n}\nion-card {\n  color: black;\n}\n.profile-image img {\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n.profile-image img {\n  max-height: 150px;\n  max-width: 150px;\n  border-radius: 50%;\n  border: 4px solid #a02b2d;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQzpcXFVzZXJzXFxDb2RldHJpYmVcXERlc2t0b3BcXGtleXdvcnhEYXNoYm9hcmQvc3JjXFxhcHBcXGFwcC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNJO0VBQ0ksY0FBQTtBQ0FSO0FER0k7RUFDSSxjQUFBO0FDRFI7QURLQTtFQUNJLFlBQUE7QUNGSjtBREtBO0VBQ0ksY0FBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7QUNGSjtBRE1JO0VBQ0ksaUJBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0VBQ0EseUJBQUE7QUNIUiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcclxuICAgIC5tZW51LXBhbmUtdmlzaWJsZS5zcGxpdC1wYW5lLXNpZGUge1xyXG4gICAgICAgIG1heC13aWR0aDogMTclO1xyXG4gICAgfVxyXG4gICAgLy8gb3JcclxuICAgIC5zcGxpdC1wYW5lLXZpc2libGU+LnNwbGl0LXBhbmUtc2lkZSB7XHJcbiAgICAgICAgbWF4LXdpZHRoOiAxNyU7XHJcbiAgICB9XHJcbn1cclxuXHJcbmlvbi1jYXJkIHtcclxuICAgIGNvbG9yOiBibGFjaztcclxufVxyXG5cclxuLnByb2ZpbGUtaW1hZ2UgaW1nIHtcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XHJcbiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87XHJcbn1cclxuXHJcbi5wcm9maWxlLWltYWdlIHtcclxuICAgIGltZyB7XHJcbiAgICAgICAgbWF4LWhlaWdodDogMTUwcHg7XHJcbiAgICAgICAgbWF4LXdpZHRoOiAxNTBweDtcclxuICAgICAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICAgICAgYm9yZGVyOiA0cHggc29saWQgI2EwMmIyZDtcclxuICAgICAgICAvLyAtd2Via2l0LWJveC1zaGFkb3c6IDBweCAwcHggMTQycHggLTM3cHggcmdiKDMyLCAxMTQsIDEyNSk7XHJcbiAgICAgICAgLy8gLW1vei1ib3gtc2hhZG93OiAwcHggMHB4IDE0MnB4IC0zN3B4IHJnYigzMiwgMTE0LCAxMjUpO1xyXG4gICAgICAgIC8vIGJveC1zaGFkb3c6IDBweCAwcHggMTQycHggLTM3cHggcmdiKDMyLCAxMTQsIDEyNSk7XHJcbiAgICB9XHJcbn0iLCI6aG9zdCAubWVudS1wYW5lLXZpc2libGUuc3BsaXQtcGFuZS1zaWRlIHtcbiAgbWF4LXdpZHRoOiAxNyU7XG59XG46aG9zdCAuc3BsaXQtcGFuZS12aXNpYmxlID4gLnNwbGl0LXBhbmUtc2lkZSB7XG4gIG1heC13aWR0aDogMTclO1xufVxuXG5pb24tY2FyZCB7XG4gIGNvbG9yOiBibGFjaztcbn1cblxuLnByb2ZpbGUtaW1hZ2UgaW1nIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG59XG5cbi5wcm9maWxlLWltYWdlIGltZyB7XG4gIG1heC1oZWlnaHQ6IDE1MHB4O1xuICBtYXgtd2lkdGg6IDE1MHB4O1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG4gIGJvcmRlcjogNHB4IHNvbGlkICNhMDJiMmQ7XG59Il19 */");
 
 /***/ }),
 
@@ -844,12 +844,13 @@ var AppComponent = /** @class */ (function () {
             }
         ];
         this.initializeApp();
-        this.loader();
+        // this.loader()
     }
     AppComponent.prototype.initializeApp = function () {
         var _this = this;
         this.platform.ready().then(function () {
             _this.statusBar.styleDefault();
+            _this.statusBar.styleLightContent();
             _this.splashScreen.hide();
         });
     };
@@ -1187,7 +1188,7 @@ var ViewmessagePageModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("ion-card {\n  border-radius: 10px;\n  color: black;\n}\n\nion-card img {\n  background-size: auto 100%;\n  background-repeat: no-repeat;\n  background-position: center;\n  height: 200px;\n}\n\ni {\n  padding-right: 10px;\n}\n\ni .pad-value {\n  padding-left: 5px;\n}\n\n.IMGcontainers {\n  position: relative;\n}\n\n.IMGcontainers .bottom-right {\n  position: absolute;\n  bottom: 0;\n  right: 0;\n  background-color: #fff;\n  padding: 12px 24px;\n  border: none;\n  border-top-left-radius: 10px;\n}\n\n.IMGcontainers .bottom-right ion-icon {\n  padding-left: 10px;\n  font-size: 24px;\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvdmlld21lc3NhZ2UvQzpcXFVzZXJzXFxDb2RlVHJpYmVcXERlc2t0b3BcXENvZGVUcmliZVxcaW9uaWNcXGtleXdvcnhEYXNoYm9hcmQvc3JjXFxhcHBcXHBhZ2VzXFx2aWV3bWVzc2FnZVxcdmlld21lc3NhZ2UucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy92aWV3bWVzc2FnZS92aWV3bWVzc2FnZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxtQkFBQTtFQUNBLFlBQUE7QUNDSjs7QURFQTtFQUNJLDBCQUFBO0VBQ0EsNEJBQUE7RUFDQSwyQkFBQTtFQUNBLGFBQUE7QUNDSjs7QURFQTtFQUNJLG1CQUFBO0FDQ0o7O0FEQUk7RUFDSSxpQkFBQTtBQ0VSOztBREVBO0VBQ0ksa0JBQUE7QUNDSjs7QURBSTtFQUNJLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLFFBQUE7RUFDQSxzQkFBQTtFQUNBLGtCQUFBO0VBQ0EsWUFBQTtFQUVBLDRCQUFBO0FDQ1I7O0FEQVE7RUFDSSxrQkFBQTtFQUNBLGVBQUE7RUFDQSxlQUFBO0FDRVoiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy92aWV3bWVzc2FnZS92aWV3bWVzc2FnZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY2FyZCB7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG59XHJcblxyXG5pb24tY2FyZCBpbWcge1xyXG4gICAgYmFja2dyb3VuZC1zaXplOiBhdXRvIDEwMCU7XHJcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xyXG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xyXG4gICAgaGVpZ2h0OiAyMDBweDtcclxufVxyXG5cclxuaSB7XHJcbiAgICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xyXG4gICAgLnBhZC12YWx1ZSB7XHJcbiAgICAgICAgcGFkZGluZy1sZWZ0OiA1cHg7XHJcbiAgICB9XHJcbn1cclxuXHJcbi5JTUdjb250YWluZXJzIHtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIC5ib3R0b20tcmlnaHQge1xyXG4gICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgICAgICBib3R0b206IDA7XHJcbiAgICAgICAgcmlnaHQ6IDA7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcclxuICAgICAgICBwYWRkaW5nOiAxMnB4IDI0cHg7XHJcbiAgICAgICAgYm9yZGVyOiBub25lO1xyXG4gICAgICAgIC8vIGJvcmRlci1ib3R0b20tbGVmdC1yYWRpdXM6IDEwcHg7XHJcbiAgICAgICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMTBweDtcclxuICAgICAgICBpb24taWNvbiB7XHJcbiAgICAgICAgICAgIHBhZGRpbmctbGVmdDogMTBweDtcclxuICAgICAgICAgICAgZm9udC1zaXplOiAyNHB4O1xyXG4gICAgICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICAgICAgfVxyXG4gICAgfVxyXG59IiwiaW9uLWNhcmQge1xuICBib3JkZXItcmFkaXVzOiAxMHB4O1xuICBjb2xvcjogYmxhY2s7XG59XG5cbmlvbi1jYXJkIGltZyB7XG4gIGJhY2tncm91bmQtc2l6ZTogYXV0byAxMDAlO1xuICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XG4gIGhlaWdodDogMjAwcHg7XG59XG5cbmkge1xuICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xufVxuaSAucGFkLXZhbHVlIHtcbiAgcGFkZGluZy1sZWZ0OiA1cHg7XG59XG5cbi5JTUdjb250YWluZXJzIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuLklNR2NvbnRhaW5lcnMgLmJvdHRvbS1yaWdodCB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm90dG9tOiAwO1xuICByaWdodDogMDtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcbiAgcGFkZGluZzogMTJweCAyNHB4O1xuICBib3JkZXI6IG5vbmU7XG4gIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDEwcHg7XG59XG4uSU1HY29udGFpbmVycyAuYm90dG9tLXJpZ2h0IGlvbi1pY29uIHtcbiAgcGFkZGluZy1sZWZ0OiAxMHB4O1xuICBmb250LXNpemU6IDI0cHg7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-card {\n  border-radius: 10px;\n  color: black;\n}\n\nion-card img {\n  background-size: auto 100%;\n  background-repeat: no-repeat;\n  background-position: center;\n  height: 200px;\n}\n\ni {\n  padding-right: 10px;\n}\n\ni .pad-value {\n  padding-left: 5px;\n}\n\n.IMGcontainers {\n  position: relative;\n}\n\n.IMGcontainers .bottom-right {\n  position: absolute;\n  bottom: 0;\n  right: 0;\n  background-color: #fff;\n  padding: 12px 24px;\n  border: none;\n  border-top-left-radius: 10px;\n}\n\n.IMGcontainers .bottom-right ion-icon {\n  padding-left: 10px;\n  font-size: 24px;\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvdmlld21lc3NhZ2UvQzpcXFVzZXJzXFxDb2RldHJpYmVcXERlc2t0b3BcXGtleXdvcnhEYXNoYm9hcmQvc3JjXFxhcHBcXHBhZ2VzXFx2aWV3bWVzc2FnZVxcdmlld21lc3NhZ2UucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy92aWV3bWVzc2FnZS92aWV3bWVzc2FnZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxtQkFBQTtFQUNBLFlBQUE7QUNDSjs7QURFQTtFQUNJLDBCQUFBO0VBQ0EsNEJBQUE7RUFDQSwyQkFBQTtFQUNBLGFBQUE7QUNDSjs7QURFQTtFQUNJLG1CQUFBO0FDQ0o7O0FEQUk7RUFDSSxpQkFBQTtBQ0VSOztBREVBO0VBQ0ksa0JBQUE7QUNDSjs7QURBSTtFQUNJLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLFFBQUE7RUFDQSxzQkFBQTtFQUNBLGtCQUFBO0VBQ0EsWUFBQTtFQUVBLDRCQUFBO0FDQ1I7O0FEQVE7RUFDSSxrQkFBQTtFQUNBLGVBQUE7RUFDQSxlQUFBO0FDRVoiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy92aWV3bWVzc2FnZS92aWV3bWVzc2FnZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tY2FyZCB7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG59XHJcblxyXG5pb24tY2FyZCBpbWcge1xyXG4gICAgYmFja2dyb3VuZC1zaXplOiBhdXRvIDEwMCU7XHJcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xyXG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xyXG4gICAgaGVpZ2h0OiAyMDBweDtcclxufVxyXG5cclxuaSB7XHJcbiAgICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xyXG4gICAgLnBhZC12YWx1ZSB7XHJcbiAgICAgICAgcGFkZGluZy1sZWZ0OiA1cHg7XHJcbiAgICB9XHJcbn1cclxuXHJcbi5JTUdjb250YWluZXJzIHtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIC5ib3R0b20tcmlnaHQge1xyXG4gICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgICAgICBib3R0b206IDA7XHJcbiAgICAgICAgcmlnaHQ6IDA7XHJcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcclxuICAgICAgICBwYWRkaW5nOiAxMnB4IDI0cHg7XHJcbiAgICAgICAgYm9yZGVyOiBub25lO1xyXG4gICAgICAgIC8vIGJvcmRlci1ib3R0b20tbGVmdC1yYWRpdXM6IDEwcHg7XHJcbiAgICAgICAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMTBweDtcclxuICAgICAgICBpb24taWNvbiB7XHJcbiAgICAgICAgICAgIHBhZGRpbmctbGVmdDogMTBweDtcclxuICAgICAgICAgICAgZm9udC1zaXplOiAyNHB4O1xyXG4gICAgICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICAgICAgfVxyXG4gICAgfVxyXG59IiwiaW9uLWNhcmQge1xuICBib3JkZXItcmFkaXVzOiAxMHB4O1xuICBjb2xvcjogYmxhY2s7XG59XG5cbmlvbi1jYXJkIGltZyB7XG4gIGJhY2tncm91bmQtc2l6ZTogYXV0byAxMDAlO1xuICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XG4gIGhlaWdodDogMjAwcHg7XG59XG5cbmkge1xuICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xufVxuaSAucGFkLXZhbHVlIHtcbiAgcGFkZGluZy1sZWZ0OiA1cHg7XG59XG5cbi5JTUdjb250YWluZXJzIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuLklNR2NvbnRhaW5lcnMgLmJvdHRvbS1yaWdodCB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm90dG9tOiAwO1xuICByaWdodDogMDtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcbiAgcGFkZGluZzogMTJweCAyNHB4O1xuICBib3JkZXI6IG5vbmU7XG4gIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDEwcHg7XG59XG4uSU1HY29udGFpbmVycyAuYm90dG9tLXJpZ2h0IGlvbi1pY29uIHtcbiAgcGFkZGluZy1sZWZ0OiAxMHB4O1xuICBmb250LXNpemU6IDI0cHg7XG4gIGN1cnNvcjogcG9pbnRlcjtcbn0iXX0= */");
 
 /***/ }),
 
@@ -1234,16 +1235,6 @@ var ViewmessagePage = /** @class */ (function () {
                 maxRatio: 3
             }
         };
-        // save(){
-        //   let contact = this.contacts.create();
-        //   contact.name = new ContactName(null, this.messageList.name);
-        //   contact.phoneNumbers = [new ContactField('mobile', this.messageList.number)];
-        //   contact.save().then(
-        //     () => console.log('contact saved!', contact),
-        //     (error: any) => console.error('Error saving contact.', error)
-        //   );
-        // }
-        this.myContacts = [];
         this.route.queryParams.subscribe(function (params) {
             if (params && params.messageReadList) {
                 _this.index = JSON.parse(params.index);
@@ -1282,7 +1273,6 @@ var ViewmessagePage = /** @class */ (function () {
         });
     }
     ViewmessagePage.prototype.ngOnInit = function () {
-        this.loadContacts();
     };
     ViewmessagePage.prototype.close = function () {
         this.modalController.dismiss();
@@ -1353,18 +1343,15 @@ var ViewmessagePage = /** @class */ (function () {
             _this.modalController.dismiss();
         });
     };
-    ViewmessagePage.prototype.loadContacts = function () {
-        var _this = this;
-        var options = {
-            filter: '',
-            multiple: true,
-            hasPhoneNumber: true
-        };
-        this.contacts.find(['*']).then(function (contacts) {
-            _this.myContacts = contacts;
-            console.log('COntacts:', contacts);
-        });
-    };
+    // save(){
+    //   let contact = this.contacts.create();
+    //   contact.name = new ContactName(null, this.messageList.name);
+    //   contact.phoneNumbers = [new ContactField('mobile', this.messageList.number)];
+    //   contact.save().then(
+    //     () => console.log('contact saved!', contact),
+    //     (error: any) => console.error('Error saving contact.', error)
+    //   );
+    // }
     ViewmessagePage.prototype.createContact = function () {
         var contact = this.contacts.create();
         contact.name = new _ionic_native_contacts_ngx__WEBPACK_IMPORTED_MODULE_7__["ContactName"](null, 'gaopalelwe', 'gg');
@@ -1901,7 +1888,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_3__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\CodeTribe\Desktop\CodeTribe\ionic\keyworxDashboard\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Codetribe\Desktop\keyworxDashboard\src\main.ts */"./src/main.ts");
 
 
 /***/ })
