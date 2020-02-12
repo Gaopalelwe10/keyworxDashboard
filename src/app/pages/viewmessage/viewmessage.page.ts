@@ -19,8 +19,8 @@ export class ViewmessagePage implements OnInit {
     }
   };
   messageUnReadList: any;
-  propertyLink: unknown[];
-  messageList;
+  propertyLink:any;
+  messageList:any;
   messageReadList: any;
 
 
@@ -85,7 +85,7 @@ export class ViewmessagePage implements OnInit {
   }
 
   ngOnInit() {
- 
+
   }
 
   close() {
@@ -145,30 +145,24 @@ export class ViewmessagePage implements OnInit {
     await alert.present();
   }
 
-  updateMessage(msg){
-    this.messageServ.updateMessageUnread(msg.key).then(()=>{
+  updateMessage(msg) {
+    this.messageServ.updateMessageUnread(msg.key).then(() => {
       this.modalController.dismiss();
     })
   }
-  // save(){
-  //   let contact = this.contacts.create();
-  //   contact.name = new ContactName(null, this.messageList.name);
-  //   contact.phoneNumbers = [new ContactField('mobile', this.messageList.number)];
-  //   contact.save().then(
-  //     () => console.log('contact saved!', contact),
-  //     (error: any) => console.error('Error saving contact.', error)
-  //   );
-  // }
 
-  createContact(){
-    let contact:Contact = this.contacts.create();
 
-    contact.name = new ContactName(null, 'gaopalelwe', 'gg');
-    contact.phoneNumbers = [new ContactField('mobile', '123456789')];
-    contact.save().then(() => 
-    console.log('contact saved!'),
-      (error: any) => 
-      console.error('Error saving contact.', error)
+  createContact(msg,details) {
+    let contact: Contact = this.contacts.create();
+    // console.log(this.messageList.name + this.propertyLink.location)
+    console.log(msg.name)
+    console.log(details.location)
+    contact.name = new ContactName(null, details.location, msg.name);
+    contact.phoneNumbers = [new ContactField('mobile', msg.number)];
+    contact.save().then(() =>
+      console.log('contact saved!'),
+      (error: any) =>
+        console.error('Error saving contact.', error)
     );
 
   }
