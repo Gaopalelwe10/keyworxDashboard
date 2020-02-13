@@ -34,15 +34,17 @@
                 <ion-item tappable (click)="OpenPreview(msg)">
                     <!-- <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"> -->
                     <table style="width:100%">
-                        <tr>
-                            <th>
 
-                                <h6><i class="i1" color="primary" style="zoom:0.7;" class="material-icons">mail</i>&nbsp;&nbsp;{{msg.name | slice:0:12}}</h6>
+                        <tr>
+                            <th style="width:30%">
+
+                                <h6>
+                                    <ion-icon style="zoom:1.1;" color="primary" name="mail"></ion-icon>&nbsp;{{msg.name | slice:0:12}}</h6>
                             </th>
-                            <th class="ion-float-left">
-                                <h6 class="ion-float-left">{{msg.message | slice:0:20}}</h6>
+                            <th style="width:50%">
+                                <h6>{{msg.message | slice:0:15}}..</h6>
                             </th>
-                            <th>
+                            <th style="width:100%">
                                 <h6 class="ion-float-right">{{msg.date | date:"MMM dd H:mm" }}</h6>
                             </th>
                         </tr>
@@ -63,15 +65,17 @@
 
                     <!-- <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"> -->
                     <table style="width:100%">
-                        <tr>
-                            <th>
 
-                                <h6><i class="i2" color="secondary" style="zoom:0.7;" class="material-icons">mail</i>&nbsp;&nbsp;{{msg.name | slice:0:12}}</h6>
+                        <tr>
+                            <th style="width:30%">
+
+                                <h6>
+                                    <ion-icon style="zoom:1.1;" color="primary" name="mail-open"></ion-icon>&nbsp;{{msg.name | slice:0:12}}</h6>
                             </th>
-                            <th align="center" class="ii">
-                                <h6>{{msg.message | slice:0:5}}...</h6>
+                            <th style="width:50%">
+                                <h6>{{msg.message | slice:0:15}}..</h6>
                             </th>
-                            <th>
+                            <th style="width:100%">
                                 <h6 class="ion-float-right">{{msg.date | date:"MMM dd H:mm" }}</h6>
                             </th>
                         </tr>
