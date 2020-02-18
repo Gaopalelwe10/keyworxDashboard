@@ -154,13 +154,12 @@ export class ViewmessagePage implements OnInit {
 
   createContact(msg,details) {
     let contact: Contact = this.contacts.create();
-    // console.log(this.messageList.name + this.propertyLink.location)
-    console.log(msg.name)
     console.log(details.location)
-    contact.name = new ContactName(null, details.location, msg.name);
+    contact.name = new ContactName(null, '['+ details.location+']', msg.name);
     contact.phoneNumbers = [new ContactField('mobile', msg.number)];
-    contact.save().then(() =>
-      console.log('contact saved!'),
+    contact.save()
+    .then(() =>
+      console.log('contact saved!', contact),
       (error: any) =>
         console.error('Error saving contact.', error)
     );

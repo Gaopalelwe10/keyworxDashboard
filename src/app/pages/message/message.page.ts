@@ -158,7 +158,6 @@ export class MessagePage implements OnInit {
         msg: msg
       }
     }).then(modal => modal.present())
-    
 
   }
  

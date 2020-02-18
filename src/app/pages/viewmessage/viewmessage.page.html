@@ -23,7 +23,7 @@
         <ion-avatar slot="start">
             <img src="/assets/img/avatar.svg">
         </ion-avatar>
-        <h6> <b>{{msg.name}} : </b>{{msg.number}} &nbsp;&nbsp; {{msg.email}}</h6>
+        <h6> {{msg.name}} : &nbsp;&nbsp; {{msg.email}}</h6>
     </ion-item>
 
     <br><br><br>
@@ -34,11 +34,12 @@
 
         </ion-slide>
     </ion-slides>
-   
+
     <div *ngFor="let details of propertyLink">
 
         <div *ngIf="msg.propertyid == details.propertyid">
-            <ion-button (click)='createContact(msg,details)'>save</ion-button>
+            <ion-button float-right (click)='createContact(msg,details)'>save contact</ion-button>
+            <br><br>
             <ion-card class="card">
                 <div class="IMGcontainers">
                     <img src="{{details.mainImage}}" style="width:100%">
