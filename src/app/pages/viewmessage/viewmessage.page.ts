@@ -152,7 +152,12 @@ export class ViewmessagePage implements OnInit {
   }
 
 
-  createContact(msg,details) {
+ async createContact(msg,details) {
+   const alert = await this.alertCtrl.create({
+     message: 'Contact Saved!',
+     buttons: ['OK']
+   });
+   await alert.present();
     let contact: Contact = this.contacts.create();
     console.log(details.location)
     contact.name = new ContactName(null, '['+ details.location+']', msg.name);
