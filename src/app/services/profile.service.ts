@@ -27,6 +27,7 @@ export class ProfileService {
   dateTime = this.date + "" + this.time;
   progress
 
+ 
   constructor(
     private afs: AngularFirestore,
     private nav: NavController,
@@ -47,6 +48,7 @@ export class ProfileService {
       switchMap(user => {
         if (user) {
           return this.afs.doc<User>(`agent/${user.uid}`).valueChanges()
+          
         } else {
           return of(null)
         }

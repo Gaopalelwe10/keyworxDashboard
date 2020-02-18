@@ -35,6 +35,8 @@ export class AppComponent {
   ];
 
   user
+  loadProfile:any;
+  profileDidLoad=false;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -50,6 +52,12 @@ export class AppComponent {
 
   async ngOnInit() {
     this.user=localStorage.getItem("user");
+
+     this.profileService.user.subscribe((data:any)=>{
+      this.loadProfile=data
+      this.profileDidLoad=true
+    })
+
     console.log("user:  " +this.user)
     if (this.user !=null) {
       this.router.navigateByUrl("home");
