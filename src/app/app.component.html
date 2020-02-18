@@ -6,20 +6,42 @@
                     <ion-title>Keyworkx</ion-title>
                 </ion-toolbar>
             </ion-header>
-            <div *ngIf="profileService.user | async as user" (click)="profile()">
+
+            <div *ngIf="profileDidLoad == false">
                 <ion-card>
                     <ion-item>
-                        <ion-avatar slot="start" *ngIf="user.photoURL =='' ">
+                        <ion-avatar slot="start">
                             <img src="/assets/img/avatar.svg">
                         </ion-avatar>
-                        <ion-avatar slot="start" *ngIf="user.photoURL !='' ">
-                            <img data-src="{{user.photoURL}}">
+
+                        <ion-label>
+                            <h3>
+                                Name
+                            </h3>
+                            <p>companyName</p>
+                        </ion-label>
+                        <ion-icon name="arrow-dropright" slot="end" color="primary"></ion-icon>
+
+                    </ion-item>
+                </ion-card>
+            </div>
+
+
+            <div *ngIf="profileDidLoad == true" (click)="profile()">
+                <ion-card>
+                    <ion-item>
+                        <ion-avatar slot="start" *ngIf="loadProfile?.photoURL =='' ">
+                            <img src="/assets/img/avatar.svg">
+                        </ion-avatar>
+                        <ion-avatar slot="start" *ngIf="loadProfile?.photoURL !='' ">
+                            <!-- <img data-src="{{loadProfile?.photoURL}}"> -->
+                            <ion-img [src]="loadProfile?.photoURL"></ion-img>
                         </ion-avatar>
                         <ion-label>
                             <h3>
-                                {{user.name}}
+                                {{loadProfile?.name}}
                             </h3>
-                            <p>{{user.companyName}}</p>
+                            <p>{{loadProfile?.companyName}}</p>
                         </ion-label>
                         <ion-icon name="arrow-dropright" slot="end" color="primary"></ion-icon>
 

@@ -37,7 +37,7 @@
 
     <div *ngFor="let details of propertyLink">
 
-        <div *ngIf="msg.propertyid == details.propertyid">
+        <div *ngIf="msg.propertyid == details.propertyid" class="cardholder">
             <ion-button float-right (click)='createContact(msg,details)'>save contact</ion-button>
             <br><br>
             <ion-card class="card">
