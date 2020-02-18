@@ -462,7 +462,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\r\n    <ion-item class=\"close-fake\" lines=\"none\" class=\"ion-text-center\">\r\n        <ion-button slot=\"end\" (click)=\"close()\" fill=\"clear\" color=\"Light\">\r\n            <ion-icon name=\"close\" slot=\"start\"></ion-icon>\r\n            <!-- Back -->\r\n        </ion-button>\r\n\r\n        <ion-button slot=\"start\" fill=\"clear\" color=\"Light\" (click)=\"deleteMessage(msg)\">\r\n            <ion-icon name=\"trash\" color=\"danger\"></ion-icon>\r\n        </ion-button>\r\n        <ion-button slot=\"start\" fill=\"clear\" color=\"Light\" (click)=\"updateMessage(msg)\">\r\n            <ion-icon name=\"mail\"></ion-icon>\r\n        </ion-button>\r\n\r\n    </ion-item>\r\n\r\n\r\n\r\n    <!-- <div align=\"center\"> Property ID {{msg.propertyid}}\r\n    </div> -->\r\n    <br>\r\n    <ion-item class=\"ion-float-left\" (click)=save()>\r\n        <ion-avatar slot=\"start\">\r\n            <img src=\"/assets/img/avatar.svg\">\r\n        </ion-avatar>\r\n        <h6> <b>{{msg.name}} : </b>{{msg.number}} &nbsp;&nbsp; {{msg.email}}</h6>\r\n    </ion-item>\r\n\r\n    <br><br><br>\r\n    <ion-slides [options]=\"sliderOpts\" #slider>\r\n        <ion-slide class=\"ion-float-left\">\r\n\r\n            <h4>{{msg.message}}</h4>\r\n\r\n        </ion-slide>\r\n    </ion-slides>\r\n    <ion-button (click)='createContact()'>save</ion-button>\r\n    <div *ngFor=\"let details of propertyLink\">\r\n\r\n        <div *ngIf=\"msg.propertyid == details.propertyid\">\r\n            <ion-card class=\"card\">\r\n                <div class=\"IMGcontainers\">\r\n                    <img src=\"{{details.mainImage}}\" style=\"width:100%\">\r\n\r\n                </div>\r\n\r\n                <ion-card-content>\r\n                    <div class=\"action\">\r\n\r\n                    </div>\r\n                    <p>{{details.price | currency:'R'}}</p>\r\n                    <p>{{details.location}}</p>\r\n                    <div>\r\n                        <i class=\"fa fa-bed\" aria-hidden=\"true\" *ngIf='details.bedrooms!=0'>\r\n                                            <span class=\"pad-value\">{{details.bedrooms}}</span>\r\n                                        </i>\r\n                        <i class=\"fa fa-bath\" aria-hidden=\"true\" *ngIf='details.bathrooms!=0'>\r\n                                            <span class=\"pad-value\"> {{details.bathrooms}}</span>\r\n                                        </i>\r\n                        <i class=\"fa fa-car\" aria-hidden=\"true\" *ngIf='details.garage!=0'>\r\n                                            <span class=\"pad-value\">  {{details.garage}}</span>\r\n                                        </i>\r\n                    </div>\r\n                </ion-card-content>\r\n            </ion-card>\r\n\r\n        </div>\r\n    </div>\r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content>\r\n    <ion-item class=\"close-fake\" lines=\"none\" class=\"ion-text-center\">\r\n        <ion-button slot=\"end\" (click)=\"close()\" fill=\"clear\" color=\"Light\">\r\n            <ion-icon name=\"close\" slot=\"start\"></ion-icon>\r\n            <!-- Back -->\r\n        </ion-button>\r\n\r\n        <ion-button slot=\"start\" fill=\"clear\" color=\"Light\" (click)=\"deleteMessage(msg)\">\r\n            <ion-icon name=\"trash\" color=\"danger\"></ion-icon>\r\n        </ion-button>\r\n        <ion-button slot=\"start\" fill=\"clear\" color=\"Light\" (click)=\"updateMessage(msg)\">\r\n            <ion-icon name=\"mail\"></ion-icon>\r\n        </ion-button>\r\n\r\n    </ion-item>\r\n\r\n\r\n\r\n    <!-- <div align=\"center\"> Property ID {{msg.propertyid}}\r\n    </div> -->\r\n    <br>\r\n    <ion-item class=\"ion-float-left\">\r\n        <ion-avatar slot=\"start\">\r\n            <img src=\"/assets/img/avatar.svg\">\r\n        </ion-avatar>\r\n        <h6> <b>{{msg.name}} : </b>{{msg.number}} &nbsp;&nbsp; {{msg.email}}</h6>\r\n    </ion-item>\r\n\r\n    <br><br><br>\r\n    <ion-slides [options]=\"sliderOpts\" #slider>\r\n        <ion-slide class=\"ion-float-left\">\r\n\r\n            <h4>{{msg.message}}</h4>\r\n\r\n        </ion-slide>\r\n    </ion-slides>\r\n   \r\n    <div *ngFor=\"let details of propertyLink\">\r\n\r\n        <div *ngIf=\"msg.propertyid == details.propertyid\">\r\n            <ion-button (click)='createContact(msg,details)'>save</ion-button>\r\n            <ion-card class=\"card\">\r\n                <div class=\"IMGcontainers\">\r\n                    <img src=\"{{details.mainImage}}\" style=\"width:100%\">\r\n\r\n                </div>\r\n\r\n                <ion-card-content>\r\n                    <div class=\"action\">\r\n\r\n                    </div>\r\n                    <p>{{details.price | currency:'R'}}</p>\r\n                    <p>{{details.location}}</p>\r\n                    <div>\r\n                        <i class=\"fa fa-bed\" aria-hidden=\"true\" *ngIf='details.bedrooms!=0'>\r\n                                            <span class=\"pad-value\">{{details.bedrooms}}</span>\r\n                                        </i>\r\n                        <i class=\"fa fa-bath\" aria-hidden=\"true\" *ngIf='details.bathrooms!=0'>\r\n                                            <span class=\"pad-value\"> {{details.bathrooms}}</span>\r\n                                        </i>\r\n                        <i class=\"fa fa-car\" aria-hidden=\"true\" *ngIf='details.garage!=0'>\r\n                                            <span class=\"pad-value\">  {{details.garage}}</span>\r\n                                        </i>\r\n                    </div>\r\n                </ion-card-content>\r\n            </ion-card>\r\n\r\n        </div>\r\n    </div>\r\n</ion-content>");
 
 /***/ }),
 
@@ -708,6 +708,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _guard_auth_guard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./guard/auth.guard */ "./src/app/guard/auth.guard.ts");
+
 
 
 
@@ -719,11 +721,7 @@ var routes = [
     },
     {
         path: 'home',
-        loadChildren: function () { return __webpack_require__.e(/*! import() | home-home-module */ "home-home-module").then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); }
-    },
-    {
-        path: 'list',
-        loadChildren: function () { return __webpack_require__.e(/*! import() | list-list-module */ "list-list-module").then(__webpack_require__.bind(null, /*! ./list/list.module */ "./src/app/list/list.module.ts")).then(function (m) { return m.ListPageModule; }); }
+        loadChildren: function () { return __webpack_require__.e(/*! import() | home-home-module */ "home-home-module").then(__webpack_require__.bind(null, /*! ./home/home.module */ "./src/app/home/home.module.ts")).then(function (m) { return m.HomePageModule; }); }, canActivate: [_guard_auth_guard__WEBPACK_IMPORTED_MODULE_3__["AuthGuard"]]
     },
     {
         path: 'login',
@@ -1094,6 +1092,60 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/guard/auth.guard.ts":
+/*!*************************************!*\
+  !*** ./src/app/guard/auth.guard.ts ***!
+  \*************************************/
+/*! exports provided: AuthGuard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthGuard", function() { return AuthGuard; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/index.js");
+
+
+
+
+var AuthGuard = /** @class */ (function () {
+    function AuthGuard(nav, afAuth) {
+        this.nav = nav;
+        this.afAuth = afAuth;
+    }
+    AuthGuard.prototype.canActivate = function (route, state) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.afAuth.user.subscribe(function (user) {
+                if (user) {
+                    resolve(true);
+                }
+                else {
+                    _this.nav.navigateRoot(['']);
+                    resolve(false);
+                }
+            });
+        });
+    };
+    AuthGuard.ctorParameters = function () { return [
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] },
+        { type: _angular_fire_auth__WEBPACK_IMPORTED_MODULE_3__["AngularFireAuth"] }
+    ]; };
+    AuthGuard = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _angular_fire_auth__WEBPACK_IMPORTED_MODULE_3__["AngularFireAuth"]])
+    ], AuthGuard);
+    return AuthGuard;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/pages/viewmessage/viewmessage-routing.module.ts":
 /*!*****************************************************************!*\
   !*** ./src/app/pages/viewmessage/viewmessage-routing.module.ts ***!
@@ -1343,19 +1395,13 @@ var ViewmessagePage = /** @class */ (function () {
             _this.modalController.dismiss();
         });
     };
-    // save(){
-    //   let contact = this.contacts.create();
-    //   contact.name = new ContactName(null, this.messageList.name);
-    //   contact.phoneNumbers = [new ContactField('mobile', this.messageList.number)];
-    //   contact.save().then(
-    //     () => console.log('contact saved!', contact),
-    //     (error: any) => console.error('Error saving contact.', error)
-    //   );
-    // }
-    ViewmessagePage.prototype.createContact = function () {
+    ViewmessagePage.prototype.createContact = function (msg, details) {
         var contact = this.contacts.create();
-        contact.name = new _ionic_native_contacts_ngx__WEBPACK_IMPORTED_MODULE_7__["ContactName"](null, 'gaopalelwe', 'gg');
-        contact.phoneNumbers = [new _ionic_native_contacts_ngx__WEBPACK_IMPORTED_MODULE_7__["ContactField"]('mobile', '123456789')];
+        // console.log(this.messageList.name + this.propertyLink.location)
+        console.log(msg.name);
+        console.log(details.location);
+        contact.name = new _ionic_native_contacts_ngx__WEBPACK_IMPORTED_MODULE_7__["ContactName"](null, details.location, msg.name);
+        contact.phoneNumbers = [new _ionic_native_contacts_ngx__WEBPACK_IMPORTED_MODULE_7__["ContactField"]('mobile', msg.number)];
         contact.save().then(function () {
             return console.log('contact saved!');
         }, function (error) {
@@ -1463,7 +1509,6 @@ var MessageService = /** @class */ (function () {
                     case 1:
                         toast = _a.sent();
                         toast.present();
-                        this.router.navigateByUrl('pages/message');
                         return [2 /*return*/];
                 }
             });

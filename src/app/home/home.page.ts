@@ -65,6 +65,7 @@ export class HomePage {
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
   }
+  
   lineChart() {
     this.messageServ.getMessages().subscribe((data: any) => {
       this.messagesList = data.map(e => {

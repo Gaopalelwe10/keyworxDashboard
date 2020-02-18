@@ -49,7 +49,7 @@ export class MessageService {
         duration: 1000
       });
       toast.present();
-      this.router.navigateByUrl('pages/message');
+      // this.router.navigateByUrl('pages/message');
     })
   }
 
@@ -57,6 +57,7 @@ export class MessageService {
   deletethis(messageid){
     return this.afs.collection('message').doc(messageid).delete()
   }
+  
   search_word(query: string) {
     const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
     return this.http.get(url + query + '.json?types=address&country=ZA&access_token=pk.eyJ1IjoibmVvLXB1bGUiLCJhIjoiY2p4cTI0MGF0MGlnajNjbDMzMW9nMzJ6OSJ9.QgND5rJKyVYEmTjBJIrq3g')

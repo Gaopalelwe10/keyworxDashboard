@@ -232,25 +232,12 @@ var AddpropertyPage = /** @class */ (function () {
     };
     AddpropertyPage.prototype.onSelect = function (address, i) {
         this.selectedAddress = address;
-        //  selectedcoodinates=
         console.log("lng:" + JSON.stringify(this.listMabox[i].geometry.coordinates[0]));
         console.log("lat:" + JSON.stringify(this.listMabox[i].geometry.coordinates[1]));
         this.lng = JSON.stringify(this.listMabox[i].geometry.coordinates[0]);
         this.lat = JSON.stringify(this.listMabox[i].geometry.coordinates[1]);
         console.log("index =" + i);
         console.log(this.selectedAddress);
-        //add to FireBase
-        // this.dog.collection('coordinate').add({
-        //   lat: this.temp.coordinates[1],
-        //   lng: this.temp.coordinates[0],
-        //   address: address,
-        // }).then(function (ref) {
-        //   console.log("document was written with ID : " + ref);
-        //   alert("physical address : " + address + " , saved successful..")
-        // }).catch(function (ee) {
-        //   console.log(ee)
-        //   console.log("error while processing ..")
-        // });
         this.addresses = [];
     };
     AddpropertyPage.prototype.uploadFile = function (event) {
