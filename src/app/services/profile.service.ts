@@ -37,9 +37,10 @@ export class ProfileService {
     afAuth.auth.onAuthStateChanged((user) => {
       if (user) {
         this.nav.navigateRoot("home");
-      } else {
-        this.nav.navigateRoot("");
-      }
+      } 
+      // else {
+      //   this.nav.navigateRoot("");
+      // }
     })
 
     this.user = this.afAuth.authState.pipe(
@@ -56,6 +57,7 @@ export class ProfileService {
   async login(email: string, password: string) {
     await this.afAuth.auth.signInWithEmailAndPassword(email, password).then((success) => {
       console.log(success);
+      localStorage.setItem("user",email);
     }).catch((err) => {
       this.alertCtrl.create({
         // message: 'You can not order more than six',
@@ -70,6 +72,7 @@ export class ProfileService {
   async logout() {
     await this.afAuth.auth.signOut().then((success) => {
       console.log(success);
+      localStorage.clear()
       console.log("success");
       this.nav.navigateRoot("login");
     }).catch((error) => {
