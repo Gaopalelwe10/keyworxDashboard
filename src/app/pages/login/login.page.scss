@@ -8,6 +8,7 @@
         padding-left: 15px;
         padding-right: 15px;
         padding-top: 15px;
+        background-color: rgba(250, 246, 246, 0.158);
     }
 }
 
@@ -18,4 +19,35 @@
 
 a {
     color: #a02b2d;
+}
+
+.bgp {
+    --background: url('../../../assets/img/Capture.PNG')0 0/120% 111% no-repeat rgba(0, 0, 0, 0.342);
+}
+
+.mmm {
+    position: relative;
+    // -webkit-text-fill-color: aliceblue;
+    background-color: rgba(0, 0, 0, 0.26);
+    height: 100%;
+}
+
+ion-label {
+    -webkit-text-fill-color: aliceblue;
+}
+
+a {
+    -webkit-text-fill-color: aliceblue;
+}
+
+p {
+    -webkit-text-fill-color: rgb(83, 2, 2);
+}
+
+input {
+    width: 90%;
+}
+
+button {
+    width: 90%;
 }
