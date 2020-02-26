@@ -50,10 +50,11 @@
 
 
                 <form [formGroup]="forgotpasswordForm" *ngIf="!isForgotPassword">
-                    <ion-item color="transparent" class="group">
+                    <div class="group">
                         <ion-label position="floating">Enter Email</ion-label>
-                        <ion-input type="email" formControlName="email"></ion-input>
-                    </ion-item>
+                        <br>
+                        <input type="email" formControlName="email">
+                    </div>
                     <div class="error" *ngIf="forgotpasswordForm.get('email').hasError('required') && forgotpasswordForm.get('email').touched">
                         &nbsp; &nbsp;&nbsp; &nbsp;Please input your email
                     </div>
