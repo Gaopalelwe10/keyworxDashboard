@@ -9,7 +9,7 @@
                 </div>
 
                 <br><br><br>
-                <form [formGroup]="loginForm" *ngIf="isForgotPassword">
+                <form class="ff" [formGroup]="loginForm" *ngIf="isForgotPassword">
                     <div class="shipping-card">
 
                         <ion-item color="transparent" class="group">
@@ -49,7 +49,7 @@
 
 
 
-                <form [formGroup]="forgotpasswordForm" *ngIf="!isForgotPassword">
+                <form class="ff" [formGroup]="forgotpasswordForm" *ngIf="!isForgotPassword">
                     <ion-item color="transparent" class="group">
                         <ion-label position="floating">Enter Email</ion-label>
                         <ion-input type="email" formControlName="email"></ion-input>
