@@ -45,7 +45,15 @@ export class LoginPage implements OnInit {
     });
     (await loading).present();
 
-    this.profileService.login(this.loginForm.value.email, this.loginForm.value.password).then(async () => {
+    this.profileService.login(this.loginForm.value.email, this.loginForm.value.password).then(async (value) => {
+
+      console.log(value);
+      if(value){
+        this.route.navigateByUrl("home")
+      }else{
+        this.route.navigateByUrl("login")
+      }
+      
       (await loading).dismiss();
     });
 

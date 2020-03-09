@@ -159,7 +159,6 @@ ion-card {
 .column {
     float: left;
     width: 50%;
-    padding: 5px;
 }
 
 .row:after {
@@ -179,7 +178,6 @@ ion-card {
     .column {
         float: left;
         width: 50%;
-        padding: 10px;
     }
 }
 
@@ -187,6 +185,10 @@ ion-card {
     .column {
         float: left;
         width: 100%;
-        padding: 10px;
     }
+}
+
+canvas {
+    height: 100%;
+    width: 100%;
 }

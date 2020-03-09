@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar color="primary">
+    <!-- <ion-toolbar color="primary">
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
@@ -7,84 +7,154 @@
     </ion-toolbar>
     <ion-toolbar color="primary">
         <ion-searchbar showcancelbutton="" (ionInput)="search($event)"></ion-searchbar>
-    </ion-toolbar>
+    </ion-toolbar> -->
 
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start" *ngIf="!isSearchbar">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+
+        <ion-title *ngIf="!isSearchbar" align="center">Message</ion-title>
+
+        <ion-searchbar showCancelButton="always" (ionCancel)="isSearchbar=false" *ngIf="isSearchbar" (ionInput)="search($event)" placeholder="Search"></ion-searchbar>
+
+        <ion-buttons slot="end" (click)="isSearchbar= true" *ngIf="!isSearchbar">
+            <ion-icon name="search" slot="end" class="searchIon"></ion-icon>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar *ngIf="isSegment">
+        <ion-segment [(ngModel)]="Segment" color="primary">
+            <ion-segment-button value="unread">
+                <ion-label>New</ion-label>
+
+            </ion-segment-button>
+
+            <ion-segment-button value="opened" color="primary">
+                <ion-label>Opened</ion-label>
+            </ion-segment-button>
+
+        </ion-segment>
+    </ion-toolbar>
 </ion-header>
 
 
-<ion-content>
-    <br>
-    <ion-segment [(ngModel)]="Segment">
-        <ion-segment-button value="unread">
-            <ion-label>New</ion-label>
-
-        </ion-segment-button>
-
-        <ion-segment-button value="opened">
-            <ion-label>Opened</ion-label>
-        </ion-segment-button>
-
-    </ion-segment>
-
+<ion-content [scrollEvents]="true" (ionScroll)="onScroll($event)">
     <div [ngSwitch]="Segment">
         <div *ngSwitchCase="'unread'">
-            <div *ngFor="let msg of messageUnReadList ">
-                <!-- <div *ngIf="msg.isRead; else elseBlock"> -->
+            <ion-list lines='full'>
+                <div *ngFor="let msg of messageUnReadList ">
+                    <!-- <div *ngIf="msg.isRead; else elseBlock"> -->
 
-                <ion-item tappable (click)="OpenPreview(msg)">
-                    <!-- <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"> -->
-                    <table style="width:100%">
+                    <ion-item tappable (click)="OpenPreview(msg)" class="big">
 
-                        <tr>
-                            <th style="width:30%">
+                        <!-- <table style="width:100%">
 
-                                <h6>
-                                    <ion-icon style="zoom:1.1;" color="primary" name="mail"></ion-icon>&nbsp;{{msg.name | slice:0:12}}</h6>
-                            </th>
-                            <th style="width:50%">
-                                <h6>{{msg.message | slice:0:15}}..</h6>
-                            </th>
-                            <th style="width:100%">
-                                <h6 class="ion-float-right">{{msg.date | date:"MMM dd H:mm" }}</h6>
-                            </th>
-                        </tr>
-                    </table>
-                    <!-- </mat-paginator> -->
+                            <tr>
+                                <th style="width:30%">
 
-                </ion-item>
-                <!-- </div> -->
+                                    <h6>
+                                        <ion-icon style="zoom:1.1;" color="primary" name="mail"></ion-icon>&nbsp;{{msg.name | slice:0:12}}</h6>
+                                </th>
+                                <th style="width:50%">
+                                    <h6>{{msg.message | slice:0:15}}..</h6>
+                                </th>
+                                <th style="width:100%">
+                                    <h6 class="ion-float-right">{{this.timeFrame(msg.date) }}</h6>
+                                </th>
+                            </tr>
+                        </table> -->
 
-            </div>
+                        <!-- <div class="table-responsive"> -->
+                        <!-- <table class="table" style="width: 100%; ">
+                            <tbody>
+                                <ion-label>
+                                    <tr>
+                                        <td class="action"><input type="checkbox" /></td>
+                                        <td class="action"><i class="fa fa-envelope"></i></td>
+                                        <td class="name"> {{msg.name | slice:0:12}}</td>
+                                        <td class="subject" style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; ">{{msg.subject}}</td>
+                                        <td class="message" style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; ">{{msg.message }}</td>
+                                        <td class="time">{{this.timeFrame(msg.date) }}</td>
+                                    </tr>
+                                </ion-label>
+                            </tbody>
+                        </table> -->
+                        <!-- </div> -->
+
+                        <ion-avatar slot="start" class="Randomcolor" [ngStyle]="{'background-color': getColor(msg.name)}">
+                            {{msg.name | slice:0:1}}
+                        </ion-avatar>
+
+                        <ion-label>
+                            <span class="font">
+                            <span class="name"> {{this.shorten_text(msg.name)}} </span>
+                            <span class="ion-float-right dateBig">{{this.timeFrame(msg.date) }}</span>
+                            </span>
+                            <span class="font">{{msg.subject}}</span>
+                            <span class="hide "> &nbsp; - &nbsp; </span>
+                            <span class="p">{{msg.message}}</span>
+                        </ion-label>
+                    </ion-item>
+
+
+
+                    <ion-item tappable (click)="OpenPreview(msg)" class="small">
+                        <ion-avatar slot="start" class="Randomcolor" [ngStyle]="{'background-color': getColor(msg.name)}">
+                            {{msg.name | slice:0:1}}
+                        </ion-avatar>
+
+                        <ion-label>
+                            <h2 class="font">{{msg.name}} <span class="ion-float-right dateSmall">{{this.timeFrame(msg.date) }}</span></h2>
+                            <h3 class="font">{{msg.subject}}</h3>
+                            <p>{{msg.message}}</p>
+                        </ion-label>
+
+                    </ion-item>
+
+                </div>
+            </ion-list>
         </div>
 
-        <div *ngSwitchCase="'opened'">
+        <div *ngSwitchCase="'opened'" class="Bg-opend">
+            <ion-list lines='full'>
+                <div *ngFor="let msg of messageReadList">
+                    <!-- <ng-template *ngif="msg.isRead"> -->
+                    <ion-item tappable (click)="OpenPreview(msg)" class="big">
 
-            <div *ngFor="let msg of messageReadList">
-                <!-- <ng-template *ngif="msg.isRead"> -->
-                <ion-item tappable (click)="OpenPreview(msg)">
+                        <ion-avatar slot="start" class="Randomcolor" [ngStyle]="{'background-color': getColor(msg.name)}">
+                            {{msg.name | slice:0:1}}
+                        </ion-avatar>
 
-                    <!-- <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"> -->
-                    <table style="width:100%">
+                        <ion-label>
+                            <span class="font">
+                            <span class="name"> {{this.shorten_text(msg.name)}} </span>
+                            <span class="ion-float-right dateBig">{{this.timeFrame(msg.date) }}</span>
+                            </span>
+                            <span class="font">{{msg.subject}}</span>
+                            <span class="hide "> &nbsp; - &nbsp; </span>
+                            <span class="p">{{msg.message}}</span>
+                        </ion-label>
+                    </ion-item>
 
-                        <tr>
-                            <th style="width:30%">
 
-                                <h6>
-                                    <ion-icon style="zoom:1.1;" color="primary" name="mail-open"></ion-icon>&nbsp;{{msg.name | slice:0:12}}</h6>
-                            </th>
-                            <th style="width:50%">
-                                <h6>{{msg.message | slice:0:15}}..</h6>
-                            </th>
-                            <th style="width:100%">
-                                <h6 class="ion-float-right">{{msg.date | date:"MMM dd H:mm" }}</h6>
-                            </th>
-                        </tr>
-                    </table>
-                    <!-- </mat-paginator> -->
-                </ion-item>
 
-                <!-- </ng-template> -->
-            </div>
+                    <ion-item tappable (click)="OpenPreview(msg)" class="small">
+                        <ion-avatar slot="start" class="Randomcolor" [ngStyle]="{'background-color': getColor(msg.name)}">
+                            {{msg.name | slice:0:1}}
+                        </ion-avatar>
+
+                        <ion-label>
+                            <h2 class="font">{{msg.name}} <span class="ion-float-right dateSmall">{{this.timeFrame(msg.date) }}</span></h2>
+                            <h3 class="font">{{msg.subject}}</h3>
+                            <p>{{msg.message}}</p>
+                        </ion-label>
+
+                    </ion-item>
+                </div>
+            </ion-list>
         </div>
     </div>
+
+
+
 </ion-content>

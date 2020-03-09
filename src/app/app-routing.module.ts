@@ -45,7 +45,11 @@ const routes: Routes = [
   {
     path: 'archived',
     loadChildren: () => import('./pages/archived/archived.module').then( m => m.ArchivedPageModule)
+  },  {
+    path: 'addagent',
+    loadChildren: () => import('./pages/addagent/addagent.module').then( m => m.AddagentPageModule)
   }
+
 
 ];
 

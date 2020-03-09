@@ -24,10 +24,10 @@ export class MessageService {
     return this.afs.collection('message' ,ref=>ref.where('AgentUid', '==' ,this.profileService.getUID() )).snapshotChanges();
   }
   getMessagesUnRead(){
-    return this.afs.collection('message' ,ref=>ref.where('AgentUid', '==' ,this.profileService.getUID()).where('isRead', '==', false )).snapshotChanges();
+    return this.afs.collection('message' ,ref=>ref.where('AgentUid', '==' ,this.profileService.getUID()).where('isRead', '==', false ).orderBy('date')).snapshotChanges();
   }
   getMessagesRead(){
-    return this.afs.collection('message' ,ref=>ref.where('AgentUid', '==' ,this.profileService.getUID()).where('isRead', '==', true )).snapshotChanges();
+    return this.afs.collection('message' ,ref=>ref.where('AgentUid', '==' ,this.profileService.getUID()).where('isRead', '==', true ).orderBy('date')).snapshotChanges();
   }
 
   updateMessage(uid){
@@ -45,6 +45,7 @@ export class MessageService {
   deleteMessaged(messageid){
     return this.afs.collection("message").doc(messageid).delete().then(async () => {
       const toast = await this.toastController.create({
+        color:'primary',
         message: 'Message successfully deleted',
         duration: 1000
       });

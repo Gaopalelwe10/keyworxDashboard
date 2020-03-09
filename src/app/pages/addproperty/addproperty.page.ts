@@ -196,6 +196,7 @@ export class AddpropertyPage implements OnInit {
 
   detectFiles(event) {
     this.selectedFiles = event.target.files;
+    this.uploadMulti()
   }
 
   uploadMulti() {

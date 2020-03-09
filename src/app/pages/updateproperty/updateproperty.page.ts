@@ -241,6 +241,7 @@ export class UpdatepropertyPage implements OnInit {
 
   detectFiles(event) {
     this.selectedFiles = event.target.files;
+    this.uploadMulti()
   }
 
   uploadMulti() {

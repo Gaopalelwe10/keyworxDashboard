@@ -73,7 +73,10 @@ const firebaseConfig = {
     AngularFireStorageModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ViewmessagePageModule, BrowserModule,
+    ViewmessagePageModule,
+    
+    
+    BrowserModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatCheckboxModule,

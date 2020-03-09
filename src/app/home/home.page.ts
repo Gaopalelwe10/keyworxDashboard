@@ -128,13 +128,14 @@ export class HomePage {
             // data: [12, 0, 0, this.Apr, this.May, this.June, this.July, this.Aug, this.Sept, this.Oct, this.Nov, this.Dec],
             fill: true,
             lineTension: 0.2,
-            borderColor: "blue",
-            backgroundColor: 'rgba(105, 0, 132, .2)',
+            borderColor: "#a02b2d",
+            backgroundColor: '#a05f7b',
             borderWidth: 1
           }]
 
         },
         options: {
+          responsive: true,
           title: {
             text: "Line Chart",
             display: true
@@ -220,13 +221,14 @@ export class HomePage {
             // data: [12, 0, 0, this.Apr, this.May, this.June, this.July, 9, this.Sept, this.Oct, this.Nov, this.Dec],
             fill: true,
             lineTension: 0.2,
-            borderColor: "pink",
-            backgroundColor: 'rgba(105, 0, 132, .2)',
+            borderColor: "#a02b2d",
+            backgroundColor: '#6c9377',
             borderWidth: 1
           }]
 
         },
         options: {
+          responsive: true,
           title: {
             text: "Line Chart",
             display: true
@@ -240,6 +242,7 @@ export class HomePage {
           }
         }
       });
+      
       this.value = null
       this.Jan = 0;
       this.Feb = 0;

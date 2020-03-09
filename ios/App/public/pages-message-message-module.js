@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n    <ion-toolbar color=\"primary\">\r\n        <ion-buttons slot=\"start\">\r\n            <ion-menu-button></ion-menu-button>\r\n        </ion-buttons>\r\n        <ion-title align=\"center\">Message</ion-title>\r\n    </ion-toolbar>\r\n    <ion-toolbar color=\"primary\">\r\n        <ion-searchbar showcancelbutton=\"\" (ionInput)=\"search($event)\"></ion-searchbar>\r\n    </ion-toolbar>\r\n\r\n</ion-header>\r\n\r\n\r\n<ion-content>\r\n    <br>\r\n    <ion-segment [(ngModel)]=\"Segment\">\r\n        <ion-segment-button value=\"unread\">\r\n            <ion-label>New</ion-label>\r\n\r\n        </ion-segment-button>\r\n\r\n        <ion-segment-button value=\"opened\">\r\n            <ion-label>Opened</ion-label>\r\n        </ion-segment-button>\r\n\r\n    </ion-segment>\r\n\r\n    <div [ngSwitch]=\"Segment\">\r\n        <div *ngSwitchCase=\"'unread'\">\r\n            <div *ngFor=\"let msg of messageUnReadList \">\r\n                <!-- <div *ngIf=\"msg.isRead; else elseBlock\"> -->\r\n\r\n                <ion-item tappable (click)=\"OpenPreview(msg)\">\r\n                    <!-- <mat-paginator [length]=\"100\" [pageSize]=\"10\" [pageSizeOptions]=\"[5, 10, 25, 100]\"> -->\r\n                    <table style=\"width:100%\">\r\n\r\n                        <tr>\r\n                            <th style=\"width:30%\">\r\n\r\n                                <h6>\r\n                                    <ion-icon style=\"zoom:1.1;\" color=\"primary\" name=\"mail\"></ion-icon>&nbsp;{{msg.name | slice:0:12}}</h6>\r\n                            </th>\r\n                            <th style=\"width:50%\">\r\n                                <h6>{{msg.message | slice:0:15}}..</h6>\r\n                            </th>\r\n                            <th style=\"width:100%\">\r\n                                <h6 class=\"ion-float-right\">{{msg.date | date:\"MMM dd H:mm\" }}</h6>\r\n                            </th>\r\n                        </tr>\r\n                    </table>\r\n                    <!-- </mat-paginator> -->\r\n\r\n                </ion-item>\r\n                <!-- </div> -->\r\n\r\n            </div>\r\n        </div>\r\n\r\n        <div *ngSwitchCase=\"'opened'\">\r\n\r\n            <div *ngFor=\"let msg of messageReadList\">\r\n                <!-- <ng-template *ngif=\"msg.isRead\"> -->\r\n                <ion-item tappable (click)=\"OpenPreview(msg)\">\r\n\r\n                    <!-- <mat-paginator [length]=\"100\" [pageSize]=\"10\" [pageSizeOptions]=\"[5, 10, 25, 100]\"> -->\r\n                    <table style=\"width:100%\">\r\n\r\n                        <tr>\r\n                            <th style=\"width:30%\">\r\n\r\n                                <h6>\r\n                                    <ion-icon style=\"zoom:1.1;\" color=\"primary\" name=\"mail-open\"></ion-icon>&nbsp;{{msg.name | slice:0:12}}</h6>\r\n                            </th>\r\n                            <th style=\"width:50%\">\r\n                                <h6>{{msg.message | slice:0:15}}..</h6>\r\n                            </th>\r\n                            <th style=\"width:100%\">\r\n                                <h6 class=\"ion-float-right\">{{msg.date | date:\"MMM dd H:mm\" }}</h6>\r\n                            </th>\r\n                        </tr>\r\n                    </table>\r\n                    <!-- </mat-paginator> -->\r\n                </ion-item>\r\n\r\n                <!-- </ng-template> -->\r\n            </div>\r\n        </div>\r\n    </div>\r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n    <!-- <ion-toolbar color=\"primary\">\r\n        <ion-buttons slot=\"start\">\r\n            <ion-menu-button></ion-menu-button>\r\n        </ion-buttons>\r\n        <ion-title align=\"center\">Message</ion-title>\r\n    </ion-toolbar>\r\n    <ion-toolbar color=\"primary\">\r\n        <ion-searchbar showcancelbutton=\"\" (ionInput)=\"search($event)\"></ion-searchbar>\r\n    </ion-toolbar> -->\r\n\r\n    <ion-toolbar color=\"primary\">\r\n        <ion-buttons slot=\"start\" *ngIf=\"!isSearchbar\">\r\n            <ion-menu-button></ion-menu-button>\r\n        </ion-buttons>\r\n\r\n        <ion-title *ngIf=\"!isSearchbar\" align=\"center\">Message</ion-title>\r\n\r\n        <ion-searchbar showCancelButton=\"always\" (ionCancel)=\"isSearchbar=false\" *ngIf=\"isSearchbar\" (ionInput)=\"search($event)\" placeholder=\"Search\"></ion-searchbar>\r\n\r\n        <ion-buttons slot=\"end\" (click)=\"isSearchbar= true\" *ngIf=\"!isSearchbar\">\r\n            <ion-icon name=\"search\" slot=\"end\" class=\"searchIon\"></ion-icon>\r\n        </ion-buttons>\r\n    </ion-toolbar>\r\n    <ion-toolbar *ngIf=\"isSegment\">\r\n        <ion-segment [(ngModel)]=\"Segment\" color=\"primary\">\r\n            <ion-segment-button value=\"unread\">\r\n                <ion-label>New</ion-label>\r\n\r\n            </ion-segment-button>\r\n\r\n            <ion-segment-button value=\"opened\" color=\"primary\">\r\n                <ion-label>Opened</ion-label>\r\n            </ion-segment-button>\r\n\r\n        </ion-segment>\r\n    </ion-toolbar>\r\n</ion-header>\r\n\r\n\r\n<ion-content [scrollEvents]=\"true\" (ionScroll)=\"onScroll($event)\">\r\n    <div [ngSwitch]=\"Segment\">\r\n        <div *ngSwitchCase=\"'unread'\">\r\n            <ion-list lines='full'>\r\n                <div *ngFor=\"let msg of messageUnReadList \">\r\n                    <!-- <div *ngIf=\"msg.isRead; else elseBlock\"> -->\r\n\r\n                    <ion-item tappable (click)=\"OpenPreview(msg)\" class=\"big\">\r\n\r\n                        <!-- <table style=\"width:100%\">\r\n\r\n                            <tr>\r\n                                <th style=\"width:30%\">\r\n\r\n                                    <h6>\r\n                                        <ion-icon style=\"zoom:1.1;\" color=\"primary\" name=\"mail\"></ion-icon>&nbsp;{{msg.name | slice:0:12}}</h6>\r\n                                </th>\r\n                                <th style=\"width:50%\">\r\n                                    <h6>{{msg.message | slice:0:15}}..</h6>\r\n                                </th>\r\n                                <th style=\"width:100%\">\r\n                                    <h6 class=\"ion-float-right\">{{this.timeFrame(msg.date) }}</h6>\r\n                                </th>\r\n                            </tr>\r\n                        </table> -->\r\n\r\n                        <!-- <div class=\"table-responsive\"> -->\r\n                        <!-- <table class=\"table\" style=\"width: 100%; \">\r\n                            <tbody>\r\n                                <ion-label>\r\n                                    <tr>\r\n                                        <td class=\"action\"><input type=\"checkbox\" /></td>\r\n                                        <td class=\"action\"><i class=\"fa fa-envelope\"></i></td>\r\n                                        <td class=\"name\"> {{msg.name | slice:0:12}}</td>\r\n                                        <td class=\"subject\" style=\"white-space: nowrap; text-overflow:ellipsis; overflow: hidden; \">{{msg.subject}}</td>\r\n                                        <td class=\"message\" style=\"white-space: nowrap; text-overflow:ellipsis; overflow: hidden; \">{{msg.message }}</td>\r\n                                        <td class=\"time\">{{this.timeFrame(msg.date) }}</td>\r\n                                    </tr>\r\n                                </ion-label>\r\n                            </tbody>\r\n                        </table> -->\r\n                        <!-- </div> -->\r\n\r\n                        <ion-avatar slot=\"start\" class=\"Randomcolor\" [ngStyle]=\"{'background-color': getColor(msg.name)}\">\r\n                            {{msg.name | slice:0:1}}\r\n                        </ion-avatar>\r\n\r\n                        <ion-label>\r\n                            <span class=\"font\">\r\n                            <span class=\"name\"> {{this.shorten_text(msg.name)}} </span>\r\n                            <span class=\"ion-float-right dateBig\">{{this.timeFrame(msg.date) }}</span>\r\n                            </span>\r\n                            <span class=\"font\">{{msg.subject}}</span>\r\n                            <span class=\"hide \"> &nbsp; - &nbsp; </span>\r\n                            <span class=\"p\">{{msg.message}}</span>\r\n                        </ion-label>\r\n                    </ion-item>\r\n\r\n\r\n\r\n                    <ion-item tappable (click)=\"OpenPreview(msg)\" class=\"small\">\r\n                        <ion-avatar slot=\"start\" class=\"Randomcolor\" [ngStyle]=\"{'background-color': getColor(msg.name)}\">\r\n                            {{msg.name | slice:0:1}}\r\n                        </ion-avatar>\r\n\r\n                        <ion-label>\r\n                            <h2 class=\"font\">{{msg.name}} <span class=\"ion-float-right dateSmall\">{{this.timeFrame(msg.date) }}</span></h2>\r\n                            <h3 class=\"font\">{{msg.subject}}</h3>\r\n                            <p>{{msg.message}}</p>\r\n                        </ion-label>\r\n\r\n                    </ion-item>\r\n\r\n                </div>\r\n            </ion-list>\r\n        </div>\r\n\r\n        <div *ngSwitchCase=\"'opened'\" class=\"Bg-opend\">\r\n            <ion-list lines='full'>\r\n                <div *ngFor=\"let msg of messageReadList\">\r\n                    <!-- <ng-template *ngif=\"msg.isRead\"> -->\r\n                    <ion-item tappable (click)=\"OpenPreview(msg)\" class=\"big\">\r\n\r\n                        <ion-avatar slot=\"start\" class=\"Randomcolor\" [ngStyle]=\"{'background-color': getColor(msg.name)}\">\r\n                            {{msg.name | slice:0:1}}\r\n                        </ion-avatar>\r\n\r\n                        <ion-label>\r\n                            <span class=\"font\">\r\n                            <span class=\"name\"> {{this.shorten_text(msg.name)}} </span>\r\n                            <span class=\"ion-float-right dateBig\">{{this.timeFrame(msg.date) }}</span>\r\n                            </span>\r\n                            <span class=\"font\">{{msg.subject}}</span>\r\n                            <span class=\"hide \"> &nbsp; - &nbsp; </span>\r\n                            <span class=\"p\">{{msg.message}}</span>\r\n                        </ion-label>\r\n                    </ion-item>\r\n\r\n\r\n\r\n                    <ion-item tappable (click)=\"OpenPreview(msg)\" class=\"small\">\r\n                        <ion-avatar slot=\"start\" class=\"Randomcolor\" [ngStyle]=\"{'background-color': getColor(msg.name)}\">\r\n                            {{msg.name | slice:0:1}}\r\n                        </ion-avatar>\r\n\r\n                        <ion-label>\r\n                            <h2 class=\"font\">{{msg.name}} <span class=\"ion-float-right dateSmall\">{{this.timeFrame(msg.date) }}</span></h2>\r\n                            <h3 class=\"font\">{{msg.subject}}</h3>\r\n                            <p>{{msg.message}}</p>\r\n                        </ion-label>\r\n\r\n                    </ion-item>\r\n                </div>\r\n            </ion-list>\r\n        </div>\r\n    </div>\r\n\r\n\r\n\r\n</ion-content>");
 
 /***/ }),
 
@@ -107,7 +107,7 @@ var MessagePageModule = /** @class */ (function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".welcome-card img {\n  max-height: 35vh;\n  overflow: hidden;\n}\n\n.card1 {\n  width: 95%;\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.card {\n  border: 0;\n  margin-bottom: 30px;\n  margin-top: 30px;\n  border-radius: 6px;\n  color: #333;\n  background: #ffff;\n  color: #333;\n  width: 100%;\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\n  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);\n}\n\n.card {\n  position: relative;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  color: #333;\n}\n\n.card [class*=card-header-] .card-icon,\n.card [class*=card-header-] .card-text {\n  border-radius: 3px;\n  background-color: #999;\n  padding: 20px;\n  margin-top: -30px;\n  margin-right: 15px;\n  float: left;\n}\n\n.card .card-header-warning .card-icon,\n.card .card-header-warning .card-text,\n.card .card-header-warning:not(.card-header-icon):not(.card-header-text),\n.card.bg-warning,\n.card.card-rotate.card.bg-warning .back,\n.card.card-rotate.bg-warning .front {\n  background: linear-gradient(60deg, #a02b2d, #a02b2d);\n}\n\n*,\n::after,\n::before {\n  box-sizing: border-box;\n}\n\n.card-stats .card-header.card-header-icon,\n.card-stats .card-header.card-header-text {\n  text-align: right;\n}\n\n.card [class*=card-header-],\n.card [class*=card-header-] .card-title,\n.card [class*=card-header-] .card-title a,\n.card [class*=card-header-] .icon i,\n.card[class*=bg-],\n.card[class*=bg-] .card-title,\n.card[class*=bg-] .card-title a,\n.card[class*=bg-] .icon i {\n  color: #fff;\n}\n\n.card-stats .card-header .card-category:not([class*=text-]) {\n  color: #999;\n  font-size: 14px;\n}\n\n.card-stats .card-header.card-header-icon .card-category,\n.card-stats .card-header.card-header-icon .card-title,\n.card-stats .card-header.card-header-text .card-category,\n.card-stats .card-header.card-header-text .card-title {\n  margin: 0;\n}\n\n.card-stats .card-header .card-icon + .card-category,\n.card-stats .card-header .card-icon + .card-title {\n  padding-top: 10px;\n}\n\n.card .card-header.card-header-icon .card-title,\n.card .card-header.card-header-text .card-title {\n  margin-top: 15px;\n  color: #3C4858;\n}\n\n.h3,\nh3 {\n  font-size: 1.5625rem;\n  line-height: 1.4em;\n  margin: 20px 0 10px;\n}\n\n.card .card-header-success .card-icon,\n.card .card-header-success .card-text,\n.card .card-header-success:not(.card-header-icon):not(.card-header-text) {\n  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(76, 175, 80, 0.4);\n}\n\n.card .card-header-success .card-icon,\n.card .card-header-success .card-text,\n.card .card-header-success:not(.card-header-icon):not(.card-header-text),\n.card.bg-success,\n.card.card-rotate.bg-success .back,\n.card.card-rotate.bg-success .front {\n  background: linear-gradient(60deg, #66BB6A, #43A047);\n}\n\n.card .card-header-danger .card-icon,\n.card .card-header-danger .card-text,\n.card .card-header-danger:not(.card-header-icon):not(.card-header-text) {\n  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(244, 67, 54, 0.4);\n}\n\n.card .card-header-danger .card-icon,\n.card .card-header-danger .card-text,\n.card .card-header-danger:not(.card-header-icon):not(.card-header-text),\n.card.bg-danger,\n.card.card-rotate.bg-danger .back,\n.card.card-rotate.bg-danger .front {\n  background: linear-gradient(60deg, #26C6DA, #00ACC1);\n}\n\n.card .card-header-info .card-icon,\n.card .card-header-info .card-text,\n.card .card-header-info:not(.card-header-icon):not(.card-header-text) {\n  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4);\n}\n\n.card .card-header-info .card-icon,\n.card .card-header-info .card-text,\n.card .card-header-info:not(.card-header-icon):not(.card-header-text),\n.card.bg-info,\n.card.card-rotate.bg-info .back,\n.card.card-rotate.bg-info .front {\n  background: linear-gradient(60deg, #E4A9A8, #E4A9A8);\n}\n\nion-content {\n  --background: url(\"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ2XeDhKV_ILzmXjhoZoSX4Po5cssIbK2OixEo6h6Bc4WU0EVD3\") no-repeat fixed center;\n}\n\nion-item {\n  --background: transparent;\n}\n\n.ii {\n  text-align: center;\n  margin-left: auto;\n  margin-right: auto;\n  width: 35%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbWVzc2FnZS9DOlxcVXNlcnNcXENvZGV0cmliZVxcRGVza3RvcFxca2V5d29yeERhc2hib2FyZC9zcmNcXGFwcFxccGFnZXNcXG1lc3NhZ2VcXG1lc3NhZ2UucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9tZXNzYWdlL21lc3NhZ2UucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksZ0JBQUE7RUFDQSxnQkFBQTtBQ0NKOztBREVBO0VBQ0ksVUFBQTtFQUNBLGNBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0FDQ0o7O0FERUE7RUFDSSxTQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0VBQ0EsV0FBQTtFQUNBLGlCQUFBO0VBQ0EsV0FBQTtFQUNBLFdBQUE7RUFDQSwrR0FBQTtFQUNBLDJDQUFBO0FDQ0o7O0FERUE7RUFDSSxrQkFBQTtFQUNBLG9CQUFBO0VBQUEsYUFBQTtFQUNBLDRCQUFBO0VBQUEsNkJBQUE7VUFBQSxzQkFBQTtFQUNBLFlBQUE7RUFDQSxxQkFBQTtFQUNBLFdBQUE7QUNDSjs7QURFQTs7RUFFSSxrQkFBQTtFQUNBLHNCQUFBO0VBQ0EsYUFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxXQUFBO0FDQ0o7O0FERUE7Ozs7OztFQU1JLG9EQUFBO0FDQ0o7O0FERUE7OztFQUdJLHNCQUFBO0FDQ0o7O0FERUE7O0VBRUksaUJBQUE7QUNDSjs7QURFQTs7Ozs7Ozs7RUFRSSxXQUFBO0FDQ0o7O0FERUE7RUFDSSxXQUFBO0VBQ0EsZUFBQTtBQ0NKOztBREVBOzs7O0VBSUksU0FBQTtBQ0NKOztBREVBOztFQUVJLGlCQUFBO0FDQ0o7O0FERUE7O0VBRUksZ0JBQUE7RUFDQSxjQUFBO0FDQ0o7O0FERUE7O0VBRUksb0JBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0FDQ0o7O0FERUE7OztFQUdJLG9GQUFBO0FDQ0o7O0FERUE7Ozs7OztFQU1JLG9EQUFBO0FDQ0o7O0FERUE7OztFQUdJLG9GQUFBO0FDQ0o7O0FERUE7Ozs7OztFQU1JLG9EQUFBO0FDQ0o7O0FERUE7OztFQUdJLG9GQUFBO0FDQ0o7O0FERUE7Ozs7OztFQU1JLG9EQUFBO0FDQ0o7O0FERUE7RUFDSSxzSkFBQTtBQ0NKOztBRE9BO0VBQ0kseUJBQUE7QUNKSjs7QURPQTtFQUNJLGtCQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtFQUNBLFVBQUE7QUNKSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL21lc3NhZ2UvbWVzc2FnZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIud2VsY29tZS1jYXJkIGltZyB7XHJcbiAgICBtYXgtaGVpZ2h0OiAzNXZoO1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxufVxyXG5cclxuLmNhcmQxIHtcclxuICAgIHdpZHRoOiA5NSU7XHJcbiAgICBkaXNwbGF5OiBibG9jaztcclxuICAgIG1hcmdpbi1sZWZ0OiBhdXRvO1xyXG4gICAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xyXG59XHJcblxyXG4uY2FyZCB7XHJcbiAgICBib3JkZXI6IDA7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAzMHB4O1xyXG4gICAgbWFyZ2luLXRvcDogMzBweDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDZweDtcclxuICAgIGNvbG9yOiAjMzMzO1xyXG4gICAgYmFja2dyb3VuZDogI2ZmZmY7XHJcbiAgICBjb2xvcjogIzMzMztcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgYm94LXNoYWRvdzogMCAycHggMnB4IDAgcmdiYSgwLCAwLCAwLCAuMTQpLCAwIDNweCAxcHggLTJweCByZ2JhKDAsIDAsIDAsIC4yKSwgMCAxcHggNXB4IDAgcmdiYSgwLCAwLCAwLCAuMTIpO1xyXG4gICAgYm94LXNoYWRvdzogMCAxcHggNHB4IDAgcmdiYSggMCwgMCwgMCwgLjE0KTtcclxufVxyXG5cclxuLmNhcmQge1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgICBtaW4td2lkdGg6IDA7XHJcbiAgICB3b3JkLXdyYXA6IGJyZWFrLXdvcmQ7XHJcbiAgICBjb2xvcjogIzMzMztcclxufVxyXG5cclxuLmNhcmQgW2NsYXNzKj1jYXJkLWhlYWRlci1dIC5jYXJkLWljb24sXHJcbi5jYXJkIFtjbGFzcyo9Y2FyZC1oZWFkZXItXSAuY2FyZC10ZXh0IHtcclxuICAgIGJvcmRlci1yYWRpdXM6IDNweDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICM5OTk7XHJcbiAgICBwYWRkaW5nOiAyMHB4O1xyXG4gICAgbWFyZ2luLXRvcDogLTMwcHg7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDE1cHg7XHJcbiAgICBmbG9hdDogbGVmdDtcclxufVxyXG5cclxuLmNhcmQgLmNhcmQtaGVhZGVyLXdhcm5pbmcgLmNhcmQtaWNvbixcclxuLmNhcmQgLmNhcmQtaGVhZGVyLXdhcm5pbmcgLmNhcmQtdGV4dCxcclxuLmNhcmQgLmNhcmQtaGVhZGVyLXdhcm5pbmc6bm90KC5jYXJkLWhlYWRlci1pY29uKTpub3QoLmNhcmQtaGVhZGVyLXRleHQpLFxyXG4uY2FyZC5iZy13YXJuaW5nLFxyXG4uY2FyZC5jYXJkLXJvdGF0ZS5jYXJkLmJnLXdhcm5pbmcgLmJhY2ssXHJcbi5jYXJkLmNhcmQtcm90YXRlLmJnLXdhcm5pbmcgLmZyb250IHtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg2MGRlZywgI2EwMmIyZCwgI2EwMmIyZCk7XHJcbn1cclxuXHJcbiosXHJcbiA6OmFmdGVyLFxyXG4gOjpiZWZvcmUge1xyXG4gICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcclxufVxyXG5cclxuLmNhcmQtc3RhdHMgLmNhcmQtaGVhZGVyLmNhcmQtaGVhZGVyLWljb24sXHJcbi5jYXJkLXN0YXRzIC5jYXJkLWhlYWRlci5jYXJkLWhlYWRlci10ZXh0IHtcclxuICAgIHRleHQtYWxpZ246IHJpZ2h0O1xyXG59XHJcblxyXG4uY2FyZCBbY2xhc3MqPWNhcmQtaGVhZGVyLV0sXHJcbi5jYXJkIFtjbGFzcyo9Y2FyZC1oZWFkZXItXSAuY2FyZC10aXRsZSxcclxuLmNhcmQgW2NsYXNzKj1jYXJkLWhlYWRlci1dIC5jYXJkLXRpdGxlIGEsXHJcbi5jYXJkIFtjbGFzcyo9Y2FyZC1oZWFkZXItXSAuaWNvbiBpLFxyXG4uY2FyZFtjbGFzcyo9YmctXSxcclxuLmNhcmRbY2xhc3MqPWJnLV0gLmNhcmQtdGl0bGUsXHJcbi5jYXJkW2NsYXNzKj1iZy1dIC5jYXJkLXRpdGxlIGEsXHJcbi5jYXJkW2NsYXNzKj1iZy1dIC5pY29uIGkge1xyXG4gICAgY29sb3I6ICNmZmY7XHJcbn1cclxuXHJcbi5jYXJkLXN0YXRzIC5jYXJkLWhlYWRlciAuY2FyZC1jYXRlZ29yeTpub3QoW2NsYXNzKj10ZXh0LV0pIHtcclxuICAgIGNvbG9yOiAjOTk5O1xyXG4gICAgZm9udC1zaXplOiAxNHB4O1xyXG59XHJcblxyXG4uY2FyZC1zdGF0cyAuY2FyZC1oZWFkZXIuY2FyZC1oZWFkZXItaWNvbiAuY2FyZC1jYXRlZ29yeSxcclxuLmNhcmQtc3RhdHMgLmNhcmQtaGVhZGVyLmNhcmQtaGVhZGVyLWljb24gLmNhcmQtdGl0bGUsXHJcbi5jYXJkLXN0YXRzIC5jYXJkLWhlYWRlci5jYXJkLWhlYWRlci10ZXh0IC5jYXJkLWNhdGVnb3J5LFxyXG4uY2FyZC1zdGF0cyAuY2FyZC1oZWFkZXIuY2FyZC1oZWFkZXItdGV4dCAuY2FyZC10aXRsZSB7XHJcbiAgICBtYXJnaW46IDA7XHJcbn1cclxuXHJcbi5jYXJkLXN0YXRzIC5jYXJkLWhlYWRlciAuY2FyZC1pY29uKy5jYXJkLWNhdGVnb3J5LFxyXG4uY2FyZC1zdGF0cyAuY2FyZC1oZWFkZXIgLmNhcmQtaWNvbisuY2FyZC10aXRsZSB7XHJcbiAgICBwYWRkaW5nLXRvcDogMTBweDtcclxufVxyXG5cclxuLmNhcmQgLmNhcmQtaGVhZGVyLmNhcmQtaGVhZGVyLWljb24gLmNhcmQtdGl0bGUsXHJcbi5jYXJkIC5jYXJkLWhlYWRlci5jYXJkLWhlYWRlci10ZXh0IC5jYXJkLXRpdGxlIHtcclxuICAgIG1hcmdpbi10b3A6IDE1cHg7XHJcbiAgICBjb2xvcjogIzNDNDg1ODtcclxufVxyXG5cclxuLmgzLFxyXG5oMyB7XHJcbiAgICBmb250LXNpemU6IDEuNTYyNXJlbTtcclxuICAgIGxpbmUtaGVpZ2h0OiAxLjRlbTtcclxuICAgIG1hcmdpbjogMjBweCAwIDEwcHg7XHJcbn1cclxuXHJcbi5jYXJkIC5jYXJkLWhlYWRlci1zdWNjZXNzIC5jYXJkLWljb24sXHJcbi5jYXJkIC5jYXJkLWhlYWRlci1zdWNjZXNzIC5jYXJkLXRleHQsXHJcbi5jYXJkIC5jYXJkLWhlYWRlci1zdWNjZXNzOm5vdCguY2FyZC1oZWFkZXItaWNvbik6bm90KC5jYXJkLWhlYWRlci10ZXh0KSB7XHJcbiAgICBib3gtc2hhZG93OiAwIDRweCAyMHB4IDAgcmdiYSgwLCAwLCAwLCAuMTQpLCAwIDdweCAxMHB4IC01cHggcmdiYSg3NiwgMTc1LCA4MCwgLjQpO1xyXG59XHJcblxyXG4uY2FyZCAuY2FyZC1oZWFkZXItc3VjY2VzcyAuY2FyZC1pY29uLFxyXG4uY2FyZCAuY2FyZC1oZWFkZXItc3VjY2VzcyAuY2FyZC10ZXh0LFxyXG4uY2FyZCAuY2FyZC1oZWFkZXItc3VjY2Vzczpub3QoLmNhcmQtaGVhZGVyLWljb24pOm5vdCguY2FyZC1oZWFkZXItdGV4dCksXHJcbi5jYXJkLmJnLXN1Y2Nlc3MsXHJcbi5jYXJkLmNhcmQtcm90YXRlLmJnLXN1Y2Nlc3MgLmJhY2ssXHJcbi5jYXJkLmNhcmQtcm90YXRlLmJnLXN1Y2Nlc3MgLmZyb250IHtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg2MGRlZywgIzY2QkI2QSwgIzQzQTA0Nyk7XHJcbn1cclxuXHJcbi5jYXJkIC5jYXJkLWhlYWRlci1kYW5nZXIgLmNhcmQtaWNvbixcclxuLmNhcmQgLmNhcmQtaGVhZGVyLWRhbmdlciAuY2FyZC10ZXh0LFxyXG4uY2FyZCAuY2FyZC1oZWFkZXItZGFuZ2VyOm5vdCguY2FyZC1oZWFkZXItaWNvbik6bm90KC5jYXJkLWhlYWRlci10ZXh0KSB7XHJcbiAgICBib3gtc2hhZG93OiAwIDRweCAyMHB4IDAgcmdiYSgwLCAwLCAwLCAuMTQpLCAwIDdweCAxMHB4IC01cHggcmdiYSgyNDQsIDY3LCA1NCwgLjQpO1xyXG59XHJcblxyXG4uY2FyZCAuY2FyZC1oZWFkZXItZGFuZ2VyIC5jYXJkLWljb24sXHJcbi5jYXJkIC5jYXJkLWhlYWRlci1kYW5nZXIgLmNhcmQtdGV4dCxcclxuLmNhcmQgLmNhcmQtaGVhZGVyLWRhbmdlcjpub3QoLmNhcmQtaGVhZGVyLWljb24pOm5vdCguY2FyZC1oZWFkZXItdGV4dCksXHJcbi5jYXJkLmJnLWRhbmdlcixcclxuLmNhcmQuY2FyZC1yb3RhdGUuYmctZGFuZ2VyIC5iYWNrLFxyXG4uY2FyZC5jYXJkLXJvdGF0ZS5iZy1kYW5nZXIgLmZyb250IHtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg2MGRlZywgIzI2QzZEQSwgIzAwQUNDMSk7XHJcbn1cclxuXHJcbi5jYXJkIC5jYXJkLWhlYWRlci1pbmZvIC5jYXJkLWljb24sXHJcbi5jYXJkIC5jYXJkLWhlYWRlci1pbmZvIC5jYXJkLXRleHQsXHJcbi5jYXJkIC5jYXJkLWhlYWRlci1pbmZvOm5vdCguY2FyZC1oZWFkZXItaWNvbik6bm90KC5jYXJkLWhlYWRlci10ZXh0KSB7XHJcbiAgICBib3gtc2hhZG93OiAwIDRweCAyMHB4IDAgcmdiYSgwLCAwLCAwLCAuMTQpLCAwIDdweCAxMHB4IC01cHggcmdiYSgwLCAxODgsIDIxMiwgLjQpO1xyXG59XHJcblxyXG4uY2FyZCAuY2FyZC1oZWFkZXItaW5mbyAuY2FyZC1pY29uLFxyXG4uY2FyZCAuY2FyZC1oZWFkZXItaW5mbyAuY2FyZC10ZXh0LFxyXG4uY2FyZCAuY2FyZC1oZWFkZXItaW5mbzpub3QoLmNhcmQtaGVhZGVyLWljb24pOm5vdCguY2FyZC1oZWFkZXItdGV4dCksXHJcbi5jYXJkLmJnLWluZm8sXHJcbi5jYXJkLmNhcmQtcm90YXRlLmJnLWluZm8gLmJhY2ssXHJcbi5jYXJkLmNhcmQtcm90YXRlLmJnLWluZm8gLmZyb250IHtcclxuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg2MGRlZywgI0U0QTlBOCwgI0U0QTlBOCk7XHJcbn1cclxuXHJcbmlvbi1jb250ZW50IHtcclxuICAgIC0tYmFja2dyb3VuZDogdXJsKCdodHRwczovL2VuY3J5cHRlZC10Ym4wLmdzdGF0aWMuY29tL2ltYWdlcz9xPXRibiUzQUFOZDlHY1EyWGVEaEtWX0lMem1YamhvWm9TWDRQbzVjc3NJYksyT2l4RW82aDZCYzRXVTBFVkQzJykgbm8tcmVwZWF0IGZpeGVkIGNlbnRlcjtcclxuICAgIC8vIC0tYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcclxuICAgIC8vIC0tYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcclxuICAgIC8vIC8vIGJhY2tncm91bmQtYXR0YWNobWVudDogZml4ZWQ7XHJcbiAgICAvLyBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XHJcbiAgICAvLyBiYWNrZ3JvdW5kLXNpemU6IDE1MHB4O1xyXG59XHJcblxyXG5pb24taXRlbSB7XHJcbiAgICAtLWJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xyXG59XHJcblxyXG4uaWkge1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XHJcbiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87XHJcbiAgICB3aWR0aDogMzUlO1xyXG59XHJcblxyXG4vLyBpb24tc2VnbWVudCB7XHJcbi8vICAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbi8vIH0iLCIud2VsY29tZS1jYXJkIGltZyB7XG4gIG1heC1oZWlnaHQ6IDM1dmg7XG4gIG92ZXJmbG93OiBoaWRkZW47XG59XG5cbi5jYXJkMSB7XG4gIHdpZHRoOiA5NSU7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBtYXJnaW4tbGVmdDogYXV0bztcbiAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xufVxuXG4uY2FyZCB7XG4gIGJvcmRlcjogMDtcbiAgbWFyZ2luLWJvdHRvbTogMzBweDtcbiAgbWFyZ2luLXRvcDogMzBweDtcbiAgYm9yZGVyLXJhZGl1czogNnB4O1xuICBjb2xvcjogIzMzMztcbiAgYmFja2dyb3VuZDogI2ZmZmY7XG4gIGNvbG9yOiAjMzMzO1xuICB3aWR0aDogMTAwJTtcbiAgYm94LXNoYWRvdzogMCAycHggMnB4IDAgcmdiYSgwLCAwLCAwLCAwLjE0KSwgMCAzcHggMXB4IC0ycHggcmdiYSgwLCAwLCAwLCAwLjIpLCAwIDFweCA1cHggMCByZ2JhKDAsIDAsIDAsIDAuMTIpO1xuICBib3gtc2hhZG93OiAwIDFweCA0cHggMCByZ2JhKDAsIDAsIDAsIDAuMTQpO1xufVxuXG4uY2FyZCB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgbWluLXdpZHRoOiAwO1xuICB3b3JkLXdyYXA6IGJyZWFrLXdvcmQ7XG4gIGNvbG9yOiAjMzMzO1xufVxuXG4uY2FyZCBbY2xhc3MqPWNhcmQtaGVhZGVyLV0gLmNhcmQtaWNvbixcbi5jYXJkIFtjbGFzcyo9Y2FyZC1oZWFkZXItXSAuY2FyZC10ZXh0IHtcbiAgYm9yZGVyLXJhZGl1czogM3B4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjOTk5O1xuICBwYWRkaW5nOiAyMHB4O1xuICBtYXJnaW4tdG9wOiAtMzBweDtcbiAgbWFyZ2luLXJpZ2h0OiAxNXB4O1xuICBmbG9hdDogbGVmdDtcbn1cblxuLmNhcmQgLmNhcmQtaGVhZGVyLXdhcm5pbmcgLmNhcmQtaWNvbixcbi5jYXJkIC5jYXJkLWhlYWRlci13YXJuaW5nIC5jYXJkLXRleHQsXG4uY2FyZCAuY2FyZC1oZWFkZXItd2FybmluZzpub3QoLmNhcmQtaGVhZGVyLWljb24pOm5vdCguY2FyZC1oZWFkZXItdGV4dCksXG4uY2FyZC5iZy13YXJuaW5nLFxuLmNhcmQuY2FyZC1yb3RhdGUuY2FyZC5iZy13YXJuaW5nIC5iYWNrLFxuLmNhcmQuY2FyZC1yb3RhdGUuYmctd2FybmluZyAuZnJvbnQge1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoNjBkZWcsICNhMDJiMmQsICNhMDJiMmQpO1xufVxuXG4qLFxuOjphZnRlcixcbjo6YmVmb3JlIHtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbn1cblxuLmNhcmQtc3RhdHMgLmNhcmQtaGVhZGVyLmNhcmQtaGVhZGVyLWljb24sXG4uY2FyZC1zdGF0cyAuY2FyZC1oZWFkZXIuY2FyZC1oZWFkZXItdGV4dCB7XG4gIHRleHQtYWxpZ246IHJpZ2h0O1xufVxuXG4uY2FyZCBbY2xhc3MqPWNhcmQtaGVhZGVyLV0sXG4uY2FyZCBbY2xhc3MqPWNhcmQtaGVhZGVyLV0gLmNhcmQtdGl0bGUsXG4uY2FyZCBbY2xhc3MqPWNhcmQtaGVhZGVyLV0gLmNhcmQtdGl0bGUgYSxcbi5jYXJkIFtjbGFzcyo9Y2FyZC1oZWFkZXItXSAuaWNvbiBpLFxuLmNhcmRbY2xhc3MqPWJnLV0sXG4uY2FyZFtjbGFzcyo9YmctXSAuY2FyZC10aXRsZSxcbi5jYXJkW2NsYXNzKj1iZy1dIC5jYXJkLXRpdGxlIGEsXG4uY2FyZFtjbGFzcyo9YmctXSAuaWNvbiBpIHtcbiAgY29sb3I6ICNmZmY7XG59XG5cbi5jYXJkLXN0YXRzIC5jYXJkLWhlYWRlciAuY2FyZC1jYXRlZ29yeTpub3QoW2NsYXNzKj10ZXh0LV0pIHtcbiAgY29sb3I6ICM5OTk7XG4gIGZvbnQtc2l6ZTogMTRweDtcbn1cblxuLmNhcmQtc3RhdHMgLmNhcmQtaGVhZGVyLmNhcmQtaGVhZGVyLWljb24gLmNhcmQtY2F0ZWdvcnksXG4uY2FyZC1zdGF0cyAuY2FyZC1oZWFkZXIuY2FyZC1oZWFkZXItaWNvbiAuY2FyZC10aXRsZSxcbi5jYXJkLXN0YXRzIC5jYXJkLWhlYWRlci5jYXJkLWhlYWRlci10ZXh0IC5jYXJkLWNhdGVnb3J5LFxuLmNhcmQtc3RhdHMgLmNhcmQtaGVhZGVyLmNhcmQtaGVhZGVyLXRleHQgLmNhcmQtdGl0bGUge1xuICBtYXJnaW46IDA7XG59XG5cbi5jYXJkLXN0YXRzIC5jYXJkLWhlYWRlciAuY2FyZC1pY29uICsgLmNhcmQtY2F0ZWdvcnksXG4uY2FyZC1zdGF0cyAuY2FyZC1oZWFkZXIgLmNhcmQtaWNvbiArIC5jYXJkLXRpdGxlIHtcbiAgcGFkZGluZy10b3A6IDEwcHg7XG59XG5cbi5jYXJkIC5jYXJkLWhlYWRlci5jYXJkLWhlYWRlci1pY29uIC5jYXJkLXRpdGxlLFxuLmNhcmQgLmNhcmQtaGVhZGVyLmNhcmQtaGVhZGVyLXRleHQgLmNhcmQtdGl0bGUge1xuICBtYXJnaW4tdG9wOiAxNXB4O1xuICBjb2xvcjogIzNDNDg1ODtcbn1cblxuLmgzLFxuaDMge1xuICBmb250LXNpemU6IDEuNTYyNXJlbTtcbiAgbGluZS1oZWlnaHQ6IDEuNGVtO1xuICBtYXJnaW46IDIwcHggMCAxMHB4O1xufVxuXG4uY2FyZCAuY2FyZC1oZWFkZXItc3VjY2VzcyAuY2FyZC1pY29uLFxuLmNhcmQgLmNhcmQtaGVhZGVyLXN1Y2Nlc3MgLmNhcmQtdGV4dCxcbi5jYXJkIC5jYXJkLWhlYWRlci1zdWNjZXNzOm5vdCguY2FyZC1oZWFkZXItaWNvbik6bm90KC5jYXJkLWhlYWRlci10ZXh0KSB7XG4gIGJveC1zaGFkb3c6IDAgNHB4IDIwcHggMCByZ2JhKDAsIDAsIDAsIDAuMTQpLCAwIDdweCAxMHB4IC01cHggcmdiYSg3NiwgMTc1LCA4MCwgMC40KTtcbn1cblxuLmNhcmQgLmNhcmQtaGVhZGVyLXN1Y2Nlc3MgLmNhcmQtaWNvbixcbi5jYXJkIC5jYXJkLWhlYWRlci1zdWNjZXNzIC5jYXJkLXRleHQsXG4uY2FyZCAuY2FyZC1oZWFkZXItc3VjY2Vzczpub3QoLmNhcmQtaGVhZGVyLWljb24pOm5vdCguY2FyZC1oZWFkZXItdGV4dCksXG4uY2FyZC5iZy1zdWNjZXNzLFxuLmNhcmQuY2FyZC1yb3RhdGUuYmctc3VjY2VzcyAuYmFjayxcbi5jYXJkLmNhcmQtcm90YXRlLmJnLXN1Y2Nlc3MgLmZyb250IHtcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDYwZGVnLCAjNjZCQjZBLCAjNDNBMDQ3KTtcbn1cblxuLmNhcmQgLmNhcmQtaGVhZGVyLWRhbmdlciAuY2FyZC1pY29uLFxuLmNhcmQgLmNhcmQtaGVhZGVyLWRhbmdlciAuY2FyZC10ZXh0LFxuLmNhcmQgLmNhcmQtaGVhZGVyLWRhbmdlcjpub3QoLmNhcmQtaGVhZGVyLWljb24pOm5vdCguY2FyZC1oZWFkZXItdGV4dCkge1xuICBib3gtc2hhZG93OiAwIDRweCAyMHB4IDAgcmdiYSgwLCAwLCAwLCAwLjE0KSwgMCA3cHggMTBweCAtNXB4IHJnYmEoMjQ0LCA2NywgNTQsIDAuNCk7XG59XG5cbi5jYXJkIC5jYXJkLWhlYWRlci1kYW5nZXIgLmNhcmQtaWNvbixcbi5jYXJkIC5jYXJkLWhlYWRlci1kYW5nZXIgLmNhcmQtdGV4dCxcbi5jYXJkIC5jYXJkLWhlYWRlci1kYW5nZXI6bm90KC5jYXJkLWhlYWRlci1pY29uKTpub3QoLmNhcmQtaGVhZGVyLXRleHQpLFxuLmNhcmQuYmctZGFuZ2VyLFxuLmNhcmQuY2FyZC1yb3RhdGUuYmctZGFuZ2VyIC5iYWNrLFxuLmNhcmQuY2FyZC1yb3RhdGUuYmctZGFuZ2VyIC5mcm9udCB7XG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg2MGRlZywgIzI2QzZEQSwgIzAwQUNDMSk7XG59XG5cbi5jYXJkIC5jYXJkLWhlYWRlci1pbmZvIC5jYXJkLWljb24sXG4uY2FyZCAuY2FyZC1oZWFkZXItaW5mbyAuY2FyZC10ZXh0LFxuLmNhcmQgLmNhcmQtaGVhZGVyLWluZm86bm90KC5jYXJkLWhlYWRlci1pY29uKTpub3QoLmNhcmQtaGVhZGVyLXRleHQpIHtcbiAgYm94LXNoYWRvdzogMCA0cHggMjBweCAwIHJnYmEoMCwgMCwgMCwgMC4xNCksIDAgN3B4IDEwcHggLTVweCByZ2JhKDAsIDE4OCwgMjEyLCAwLjQpO1xufVxuXG4uY2FyZCAuY2FyZC1oZWFkZXItaW5mbyAuY2FyZC1pY29uLFxuLmNhcmQgLmNhcmQtaGVhZGVyLWluZm8gLmNhcmQtdGV4dCxcbi5jYXJkIC5jYXJkLWhlYWRlci1pbmZvOm5vdCguY2FyZC1oZWFkZXItaWNvbik6bm90KC5jYXJkLWhlYWRlci10ZXh0KSxcbi5jYXJkLmJnLWluZm8sXG4uY2FyZC5jYXJkLXJvdGF0ZS5iZy1pbmZvIC5iYWNrLFxuLmNhcmQuY2FyZC1yb3RhdGUuYmctaW5mbyAuZnJvbnQge1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoNjBkZWcsICNFNEE5QTgsICNFNEE5QTgpO1xufVxuXG5pb24tY29udGVudCB7XG4gIC0tYmFja2dyb3VuZDogdXJsKFwiaHR0cHM6Ly9lbmNyeXB0ZWQtdGJuMC5nc3RhdGljLmNvbS9pbWFnZXM/cT10Ym4lM0FBTmQ5R2NRMlhlRGhLVl9JTHptWGpob1pvU1g0UG81Y3NzSWJLMk9peEVvNmg2QmM0V1UwRVZEM1wiKSBuby1yZXBlYXQgZml4ZWQgY2VudGVyO1xufVxuXG5pb24taXRlbSB7XG4gIC0tYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG59XG5cbi5paSB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogYXV0bztcbiAgd2lkdGg6IDM1JTtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-buttons {\n  padding-right: 5px;\n}\n\n.Bg-opend ion-item {\n  --background: #f5f7f7;\n}\n\n.Randomcolor {\n  color: white;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n\n.dateBig {\n  margin-left: 0;\n  margin-right: 0;\n  margin-top: 0;\n  margin-top: 2px;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: normal;\n  z-index: -999;\n}\n\n.dateSmall {\n  margin-left: 0;\n  margin-right: 0;\n  margin-top: 0;\n  margin-top: -16px;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: normal;\n  z-index: -999;\n}\n\n.font {\n  font-weight: 500;\n}\n\n.p {\n  color: #666;\n}\n\n.bold {\n  margin-left: 0;\n  margin-right: 0;\n  margin-top: 2px;\n  margin-bottom: 2px;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: normal;\n}\n\n.time {\n  text-align: end !important;\n  float: right;\n}\n\n.small {\n  display: none;\n}\n\n.big {\n  display: block;\n}\n\n.name {\n  font-weight: 500;\n  width: 130px;\n  display: inline-block;\n}\n\n@media screen and (max-width: 750px) {\n  .small {\n    display: block;\n  }\n\n  .big {\n    display: none;\n  }\n\n  span::before {\n    content: \"\\a\";\n    white-space: pre;\n  }\n\n  .hide {\n    display: none;\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbWVzc2FnZS9DOlxcVXNlcnNcXENvZGVUcmliZVxcRGVza3RvcFxcQ29kZVRyaWJlXFxpb25pY1xca2V5d29yeERhc2hib2FyZC9zcmNcXGFwcFxccGFnZXNcXG1lc3NhZ2VcXG1lc3NhZ2UucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9tZXNzYWdlL21lc3NhZ2UucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7QUNDSjs7QURHSTtFQUNJLHFCQUFBO0FDQVI7O0FESUE7RUFFSSxZQUFBO0VBQ0Esb0JBQUE7RUFBQSxhQUFBO0VBQ0EseUJBQUE7VUFBQSxtQkFBQTtFQUNBLHdCQUFBO1VBQUEsdUJBQUE7QUNGSjs7QURLQTtFQUNJLGNBQUE7RUFDQSxlQUFBO0VBQ0EsYUFBQTtFQUNBLGVBQUE7RUFDQSxlQUFBO0VBQ0EsZ0JBQUE7RUFDQSxtQkFBQTtFQUNBLGFBQUE7QUNGSjs7QURLQTtFQUNJLGNBQUE7RUFDQSxlQUFBO0VBQ0EsYUFBQTtFQUNBLGlCQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSxhQUFBO0FDRko7O0FES0E7RUFDSSxnQkFBQTtBQ0ZKOztBREtBO0VBQ0ksV0FBQTtBQ0ZKOztBREtBO0VBQ0ksY0FBQTtFQUNBLGVBQUE7RUFDQSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSxlQUFBO0VBQ0EsZ0JBQUE7RUFDQSxtQkFBQTtBQ0ZKOztBREtBO0VBQ0ksMEJBQUE7RUFDQSxZQUFBO0FDRko7O0FES0E7RUFDSSxhQUFBO0FDRko7O0FES0E7RUFDSSxjQUFBO0FDRko7O0FES0E7RUFDSSxnQkFBQTtFQUNBLFlBQUE7RUFDQSxxQkFBQTtBQ0ZKOztBRFNBO0VBQ0k7SUFDSSxjQUFBO0VDTk47O0VEUUU7SUFDSSxhQUFBO0VDTE47O0VET0U7SUFDSSxhQUFBO0lBQ0EsZ0JBQUE7RUNKTjs7RURNRTtJQUNJLGFBQUE7RUNITjtBQUNGIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvbWVzc2FnZS9tZXNzYWdlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1idXR0b25zIHtcclxuICAgIHBhZGRpbmctcmlnaHQ6IDVweDtcclxufVxyXG5cclxuLkJnLW9wZW5kIHtcclxuICAgIGlvbi1pdGVtIHtcclxuICAgICAgICAtLWJhY2tncm91bmQ6ICNmNWY3Zjc7XHJcbiAgICB9XHJcbn1cclxuXHJcbi5SYW5kb21jb2xvciB7XHJcbiAgICAvLyBiYWNrZ3JvdW5kLWNvbG9yOiBncmVlbjtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXJcclxufVxyXG5cclxuLmRhdGVCaWcge1xyXG4gICAgbWFyZ2luLWxlZnQ6IDA7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDA7XHJcbiAgICBtYXJnaW4tdG9wOiAwO1xyXG4gICAgbWFyZ2luLXRvcDogMnB4O1xyXG4gICAgZm9udC1zaXplOiAxNHB4O1xyXG4gICAgZm9udC13ZWlnaHQ6IDQwMDtcclxuICAgIGxpbmUtaGVpZ2h0OiBub3JtYWw7XHJcbiAgICB6LWluZGV4OiAtOTk5O1xyXG59XHJcblxyXG4uZGF0ZVNtYWxsIHtcclxuICAgIG1hcmdpbi1sZWZ0OiAwO1xyXG4gICAgbWFyZ2luLXJpZ2h0OiAwO1xyXG4gICAgbWFyZ2luLXRvcDogMDtcclxuICAgIG1hcmdpbi10b3A6IC0xNnB4O1xyXG4gICAgZm9udC1zaXplOiAxNHB4O1xyXG4gICAgZm9udC13ZWlnaHQ6IDQwMDtcclxuICAgIGxpbmUtaGVpZ2h0OiBub3JtYWw7XHJcbiAgICB6LWluZGV4OiAtOTk5O1xyXG59XHJcblxyXG4uZm9udCB7XHJcbiAgICBmb250LXdlaWdodDogNTAwO1xyXG59XHJcblxyXG4ucCB7XHJcbiAgICBjb2xvcjogIzY2NjtcclxufVxyXG5cclxuLmJvbGQge1xyXG4gICAgbWFyZ2luLWxlZnQ6IDA7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDA7XHJcbiAgICBtYXJnaW4tdG9wOiAycHg7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAycHg7XHJcbiAgICBmb250LXNpemU6IDE0cHg7XHJcbiAgICBmb250LXdlaWdodDogNDAwO1xyXG4gICAgbGluZS1oZWlnaHQ6IG5vcm1hbDtcclxufVxyXG5cclxuLnRpbWUge1xyXG4gICAgdGV4dC1hbGlnbjogZW5kICFpbXBvcnRhbnQ7XHJcbiAgICBmbG9hdDogcmlnaHQ7XHJcbn1cclxuXHJcbi5zbWFsbCB7XHJcbiAgICBkaXNwbGF5OiBub25lO1xyXG59XHJcblxyXG4uYmlnIHtcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG59XHJcblxyXG4ubmFtZSB7XHJcbiAgICBmb250LXdlaWdodDogNTAwO1xyXG4gICAgd2lkdGg6IDEzMHB4O1xyXG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gICAgLy8gd2hpdGUtc3BhY2U6IG5vd3JhcDtcclxuICAgIC8vIG92ZXJmbG93OiBoaWRkZW47XHJcbiAgICAvLyAvKiA8LSB0aGlzIGRvZXMgc2VlbSB0byBiZSByZXF1aXJlZCAqL1xyXG4gICAgLy8gdGV4dC1vdmVyZmxvdzogZWxsaXBzaXM7XHJcbn1cclxuXHJcbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDc1MHB4KSB7XHJcbiAgICAuc21hbGwge1xyXG4gICAgICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgfVxyXG4gICAgLmJpZyB7XHJcbiAgICAgICAgZGlzcGxheTogbm9uZTtcclxuICAgIH1cclxuICAgIHNwYW46OmJlZm9yZSB7XHJcbiAgICAgICAgY29udGVudDogJ1xcQSc7XHJcbiAgICAgICAgd2hpdGUtc3BhY2U6IHByZTtcclxuICAgIH1cclxuICAgIC5oaWRlIHtcclxuICAgICAgICBkaXNwbGF5OiBub25lO1xyXG4gICAgfVxyXG59IiwiaW9uLWJ1dHRvbnMge1xuICBwYWRkaW5nLXJpZ2h0OiA1cHg7XG59XG5cbi5CZy1vcGVuZCBpb24taXRlbSB7XG4gIC0tYmFja2dyb3VuZDogI2Y1ZjdmNztcbn1cblxuLlJhbmRvbWNvbG9yIHtcbiAgY29sb3I6IHdoaXRlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cblxuLmRhdGVCaWcge1xuICBtYXJnaW4tbGVmdDogMDtcbiAgbWFyZ2luLXJpZ2h0OiAwO1xuICBtYXJnaW4tdG9wOiAwO1xuICBtYXJnaW4tdG9wOiAycHg7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgZm9udC13ZWlnaHQ6IDQwMDtcbiAgbGluZS1oZWlnaHQ6IG5vcm1hbDtcbiAgei1pbmRleDogLTk5OTtcbn1cblxuLmRhdGVTbWFsbCB7XG4gIG1hcmdpbi1sZWZ0OiAwO1xuICBtYXJnaW4tcmlnaHQ6IDA7XG4gIG1hcmdpbi10b3A6IDA7XG4gIG1hcmdpbi10b3A6IC0xNnB4O1xuICBmb250LXNpemU6IDE0cHg7XG4gIGZvbnQtd2VpZ2h0OiA0MDA7XG4gIGxpbmUtaGVpZ2h0OiBub3JtYWw7XG4gIHotaW5kZXg6IC05OTk7XG59XG5cbi5mb250IHtcbiAgZm9udC13ZWlnaHQ6IDUwMDtcbn1cblxuLnAge1xuICBjb2xvcjogIzY2Njtcbn1cblxuLmJvbGQge1xuICBtYXJnaW4tbGVmdDogMDtcbiAgbWFyZ2luLXJpZ2h0OiAwO1xuICBtYXJnaW4tdG9wOiAycHg7XG4gIG1hcmdpbi1ib3R0b206IDJweDtcbiAgZm9udC1zaXplOiAxNHB4O1xuICBmb250LXdlaWdodDogNDAwO1xuICBsaW5lLWhlaWdodDogbm9ybWFsO1xufVxuXG4udGltZSB7XG4gIHRleHQtYWxpZ246IGVuZCAhaW1wb3J0YW50O1xuICBmbG9hdDogcmlnaHQ7XG59XG5cbi5zbWFsbCB7XG4gIGRpc3BsYXk6IG5vbmU7XG59XG5cbi5iaWcge1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLm5hbWUge1xuICBmb250LXdlaWdodDogNTAwO1xuICB3aWR0aDogMTMwcHg7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1heC13aWR0aDogNzUwcHgpIHtcbiAgLnNtYWxsIHtcbiAgICBkaXNwbGF5OiBibG9jaztcbiAgfVxuXG4gIC5iaWcge1xuICAgIGRpc3BsYXk6IG5vbmU7XG4gIH1cblxuICBzcGFuOjpiZWZvcmUge1xuICAgIGNvbnRlbnQ6IFwiXFxhXCI7XG4gICAgd2hpdGUtc3BhY2U6IHByZTtcbiAgfVxuXG4gIC5oaWRlIHtcbiAgICBkaXNwbGF5OiBub25lO1xuICB9XG59Il19 */");
 
 /***/ }),
 
@@ -123,16 +123,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessagePage", function() { return MessagePage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _ionic_native_contacts_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/contacts/ngx */ "./node_modules/@ionic-native/contacts/ngx/index.js");
-/* harmony import */ var src_app_services_message_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/message.service */ "./src/app/services/message.service.ts");
-/* harmony import */ var src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/profile.service */ "./src/app/services/profile.service.ts");
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _viewmessage_viewmessage_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../viewmessage/viewmessage.page */ "./src/app/pages/viewmessage/viewmessage.page.ts");
-/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
-
-
-
+/* harmony import */ var src_app_services_message_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/message.service */ "./src/app/services/message.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _viewmessage_viewmessage_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../viewmessage/viewmessage.page */ "./src/app/pages/viewmessage/viewmessage.page.ts");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
@@ -140,16 +135,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var MessagePage = /** @class */ (function () {
-    function MessagePage(contacts, messageServ, profileServ, route, router, modalController, alertCtrl, firestore) {
+    function MessagePage(messageServ, modalController, platform) {
         var _this = this;
-        this.contacts = contacts;
         this.messageServ = messageServ;
-        this.profileServ = profileServ;
-        this.route = route;
-        this.router = router;
         this.modalController = modalController;
-        this.alertCtrl = alertCtrl;
-        this.firestore = firestore;
+        this.platform = platform;
         this.Segment = "unread";
         this.selectedMessage = null;
         // segmentChanged(ev: any) {
@@ -158,38 +148,41 @@ var MessagePage = /** @class */ (function () {
         //  searchbar = document.querySelector('ion-searchbar');
         //  items = Array.from(document.querySelector('div').children);
         this.message = [];
+        this.isBrowser = false;
+        this.isSearchbar = false;
+        this.isSegment = true;
+        if (this.platform.is("desktop")) {
+            this.isBrowser = true;
+        }
         this.messageServ.getMessages().subscribe(function (data) {
             _this.messageList = data.map(function (e) {
                 return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({ key: e.payload.doc.id }, e.payload.doc.data());
-            });
+            }).reverse();
             _this.messageListLoad = _this.messageList;
             console.log(_this.messageList);
         });
         this.messageServ.getMessagesRead().subscribe(function (data) {
             _this.messageReadList = data.map(function (e) {
                 return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({ key: e.payload.doc.id }, e.payload.doc.data());
-            });
-            _this.messageReadListLoad = _this.messageReadList;
-            console.log(_this.messageReadList);
+            }).reverse();
+            _this.messageReadListLoad = data.map(function (e) {
+                return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({ key: e.payload.doc.id }, e.payload.doc.data());
+            }).reverse();
         });
         this.messageServ.getMessagesUnRead().subscribe(function (data) {
             _this.messageUnReadList = data.map(function (e) {
                 return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({ key: e.payload.doc.id }, e.payload.doc.data());
-            });
-            _this.messageUnReadListLoad = _this.messageUnReadList;
-            console.log(_this.messageUnReadList);
+            }).reverse();
+            _this.messageUnReadListLoad = data.map(function (e) {
+                return tslib__WEBPACK_IMPORTED_MODULE_0__["__assign"]({ key: e.payload.doc.id }, e.payload.doc.data());
+            }).reverse();
         });
-        // let contact: Contact = this.contacts.create();
-        // contact.name = new ContactName (null, '', '');
-        // contact.phoneNumbers = [new ContactField('mobile', '')];
-        // contact.save().then(
-        //   () => console.log('Contact saved!', contact),
-        //   (error: any) => console.error('Error saving contact.', error)
-        // );
     }
+    MessagePage.prototype.ngOnInit = function () {
+    };
     MessagePage.prototype.initializeItems = function () {
-        this.messageReadList = this.messageListLoad;
         this.messageList = this.messageListLoad;
+        this.messageReadList = this.messageReadListLoad;
         this.messageUnReadList = this.messageUnReadListLoad;
     };
     MessagePage.prototype.search = function (event) {
@@ -223,26 +216,112 @@ var MessagePage = /** @class */ (function () {
             }
         });
     };
-    MessagePage.prototype.ngOnInit = function () {
+    MessagePage.prototype.onScroll = function (event) {
+        if (event.detail.deltaY > 0) {
+            console.log("scrolling down, ");
+            // this.foundation.hiddenTabs = true;
+            this.isSegment = false;
+        }
+        else if (event.detail.deltaY < 0) {
+            console.log("scrolling up, ");
+            this.isSegment = true;
+            // this.foundation.hiddenTabs = false;
+        }
+        ;
     };
     MessagePage.prototype.OpenPreview = function (msg) {
         this.messageServ.updateMessage(msg.key);
         this.modalController.create({
-            component: _viewmessage_viewmessage_page__WEBPACK_IMPORTED_MODULE_7__["ViewmessagePage"],
+            component: _viewmessage_viewmessage_page__WEBPACK_IMPORTED_MODULE_4__["ViewmessagePage"],
             componentProps: {
                 msg: msg
             }
         }).then(function (modal) { return modal.present(); });
     };
+    MessagePage.prototype.shorten_text = function (text) {
+        var maxLength = 18;
+        var ret = text;
+        if (ret.length > maxLength) {
+            ret = ret.substr(0, maxLength - 3) + ".";
+        }
+        return ret;
+    };
+    MessagePage.prototype.timeFrame = function (time) {
+        // return moment(time).calendar("HH:mm");
+        var otherDates = moment__WEBPACK_IMPORTED_MODULE_5__(time).fromNow();
+        var calback = function () {
+            return '[' + otherDates + ']';
+        };
+        return moment__WEBPACK_IMPORTED_MODULE_5__(time).calendar(null, {
+            sameDay: 'HH:mm',
+            nextDay: calback,
+            nextWeek: calback,
+            lastDay: "DD MMM",
+            lastWeek: "DD MMM",
+            sameElse: 'DD/MM/YYYY'
+        });
+    };
+    MessagePage.prototype.getColor = function (str) {
+        var letter = str.substring(0, 1).toLowerCase();
+        switch (letter) {
+            case "a":
+                return "#7CB9E8";
+            case "b":
+                return "blue";
+            case "c":
+                return "#81613C";
+            case "d":
+                return "#CD9575";
+            case "e":
+                return "#614051";
+            case "f":
+                return "Firebrick";
+            case "g":
+                return "#B8860B";
+            case "h":
+                return "#915C83";
+            case "i":
+                return "	#568203";
+            case "j":
+                return "#FF91AF	";
+            case "k":
+                return "#C19A6B";
+            case "l":
+                return "#1DACD6";
+            case "m":
+                return "#7F1734";
+            case "n":
+                return "#1974D2";
+            case "o":
+                return "Orange";
+            case "p":
+                return "pink";
+            case "q":
+                return "#436B95";
+            case "r":
+                return "red";
+            case "s":
+                return "#FF3800";
+            case "t":
+                return "#E68FAC";
+            case "u":
+                return "#C95A49";
+            case "v":
+                return "#8806CE";
+            case "w":
+                return "#536878";
+            case "x":
+                return "#856D4D";
+            case "y":
+                return "Yellow";
+            case "z":
+                return "#9932CC";
+        }
+    };
     MessagePage.ctorParameters = function () { return [
-        { type: _ionic_native_contacts_ngx__WEBPACK_IMPORTED_MODULE_2__["Contacts"] },
-        { type: src_app_services_message_service__WEBPACK_IMPORTED_MODULE_3__["MessageService"] },
-        { type: src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_4__["ProfileService"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] },
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ModalController"] },
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"] },
-        { type: _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_8__["AngularFirestore"] }
+        { type: src_app_services_message_service__WEBPACK_IMPORTED_MODULE_2__["MessageService"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"] }
     ]; };
     MessagePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -250,14 +329,9 @@ var MessagePage = /** @class */ (function () {
             template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./message.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/message/message.page.html")).default,
             styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./message.page.scss */ "./src/app/pages/message/message.page.scss")).default]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_contacts_ngx__WEBPACK_IMPORTED_MODULE_2__["Contacts"],
-            src_app_services_message_service__WEBPACK_IMPORTED_MODULE_3__["MessageService"],
-            src_app_services_profile_service__WEBPACK_IMPORTED_MODULE_4__["ProfileService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_6__["ActivatedRoute"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ModalController"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"],
-            _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_8__["AngularFirestore"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_message_service__WEBPACK_IMPORTED_MODULE_2__["MessageService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"]])
     ], MessagePage);
     return MessagePage;
 }());

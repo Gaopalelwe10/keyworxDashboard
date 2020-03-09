@@ -65,12 +65,13 @@ export class AppComponent {
       this.router.navigateByUrl("login");
     }
   }
-
+  
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.statusBar.styleLightContent()
       this.splashScreen.hide();
+      this.menuCtrl.enable(false);
     });
   }
   profile() {

@@ -146,8 +146,9 @@ export class ViewmessagePage implements OnInit {
   }
 
   updateMessage(msg) {
+    this.modalController.dismiss();
     this.messageServ.updateMessageUnread(msg.key).then(() => {
-      this.modalController.dismiss();
+      
     })
   }
 
