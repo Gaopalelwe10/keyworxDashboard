@@ -63,3 +63,13 @@
         -webkit-box-shadow: none;
     }
 }
+
+.MessageModel {
+    ion-backdrop {
+        --backdrop-opacity: 9;
+    }
+}
+
+.modal-wrapper {
+    --backdrop-opacity: 9;
+}
