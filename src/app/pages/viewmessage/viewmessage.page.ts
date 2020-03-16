@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, ModalController, AlertController, Platform } from '@ionic/angular';
+import { NavParams, ModalController, AlertController, Platform, ToastController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'src/app/services/message.service';
 import { PropertyService } from 'src/app/services/property.service';
@@ -35,6 +35,7 @@ export class ViewmessagePage implements OnInit {
     private propertyService: PropertyService,
     private router: Router,
     public platform: Platform,
+    public toastController: ToastController
   ) {
 
 
@@ -169,9 +170,9 @@ export class ViewmessagePage implements OnInit {
 
   async createContact(msg, details) {
     if (this.platform.is('desktop')) {
-      console.log("contacts can only be saved in our mobile app")
+    this.alert();
     } else if (this.platform.is('mobileweb')) {
-      console.log("contacts can only be saved in our mobile app")
+    this.alert();
     } else {
       const alert = await this.alertCtrl.create({
         message: 'Contact Saved!',
@@ -191,5 +192,14 @@ export class ViewmessagePage implements OnInit {
     }
 
 
+  }
+
+  async alert(){
+    const toast = await this.toastController.create({
+      color:'primary',
+      message: 'Contacts can only be saved in our mobile app',
+      duration: 1500
+    });
+    toast.present();
   }
 }

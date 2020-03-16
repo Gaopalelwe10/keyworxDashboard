@@ -1,8 +1,3 @@
-.welcome-card img {
-    max-height: 35vh;
-    overflow: hidden;
-}
-
 .card1 {
     width: 95%;
     display: block;
@@ -167,13 +162,6 @@ ion-card {
     clear: both;
 }
 
-// @media screen and (max-width: 1650px) {
-//     .column {
-//         float: left;
-//         width: 33.33%;
-//         padding: 10px;
-//     }
-// }
 @media screen and (max-width: 1150px) {
     .column {
         float: left;
@@ -186,9 +174,4 @@ ion-card {
         float: left;
         width: 100%;
     }
-}
-
-canvas {
-    height: 100%;
-    width: 100%;
 }
