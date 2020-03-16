@@ -1,45 +1,50 @@
-<ion-content>
-    <ion-item class="close-fake" lines="none" class="ion-text-center">
-        <ion-button slot="end" (click)="close()" fill="clear" color="Light">
-            <ion-icon name="close" slot="start"></ion-icon>
-            <!-- Back -->
-        </ion-button>
+<ion-header no-border no-shadow id="my-ion-header" class="mystyle">
+    <ion-toolbar>
 
-        <ion-button slot="start" fill="clear" color="Light" (click)="deleteMessage(msg)">
+
+
+        <ion-buttons slot="start" class="ion-button-icons" (click)="close()">
+            <ion-icon name="close"></ion-icon>
+        </ion-buttons>
+        <!-- <ion-title>Details</ion-title> -->
+
+        <ion-buttons slot="end" (click)="deleteMessage(msg)">
             <ion-icon name="trash" color="danger"></ion-icon>
-        </ion-button>
-        <ion-button slot="start" fill="clear" color="Light" (click)="updateMessage(msg)">
+        </ion-buttons>
+
+        <ion-buttons slot="end" class="ion-button-icons" (click)="updateMessage(msg)">
             <ion-icon name="mail"></ion-icon>
-        </ion-button>
+        </ion-buttons>
 
-    </ion-item>
+    </ion-toolbar>
+</ion-header>
+<ion-content fullscreen padding [scrollEvents]="true" (ionScroll)="myScroll($event)">
+    <p>
+        <b>{{msg.subject}}</b>
+    </p>
+    <ion-list lines='full' mode="ios">
 
+        <ion-item>
+            <ion-avatar slot="start">
+                <img src="/assets/img/avatar.svg">
+            </ion-avatar>
+            <ion-label>
+                <h6> {{msg.name}} : &nbsp;&nbsp; {{msg.email}}</h6>
+            </ion-label>
+        </ion-item>
+    </ion-list>
 
+    <p>
+        {{msg.message}}
 
-    <!-- <div align="center"> Property ID {{msg.propertyid}}
-    </div> -->
-    <br>
-    <ion-item class="ion-float-left">
-        <ion-avatar slot="start">
-            <img src="/assets/img/avatar.svg">
-        </ion-avatar>
-        <h6> {{msg.name}} : &nbsp;&nbsp; {{msg.email}}</h6>
-    </ion-item>
+    </p>
 
-    <br><br><br>
-    <ion-slides [options]="sliderOpts" #slider>
-        <ion-slide class="ion-float-left">
-
-            <h4>{{msg.message}}</h4>
-
-        </ion-slide>
-    </ion-slides>
 
     <div *ngFor="let details of propertyLink">
 
-        <div *ngIf="msg.propertyid == details.propertyid" class="cardholder">
-            <ion-button float-right (click)='createContact(msg,details)'>save contact</ion-button>
-            <br><br>
+        <div *ngIf="msg.propertyid == details.propertyid">
+            <ion-button expand="block" (click)='createContact(msg,details)'>save contact</ion-button>
+
             <ion-card class="card">
                 <div class="IMGcontainers">
                     <img src="{{details.mainImage}}" style="width:100%">

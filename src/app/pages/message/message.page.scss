@@ -79,6 +79,36 @@ ion-buttons {
     // text-overflow: ellipsis;
 }
 
+// .only-show-on-hover {
+//     margin-left: 0;
+//     margin-right: 0;
+//     margin-top: 0;
+//     margin-top: -16px;
+//     font-size: 14px;
+//     font-weight: 400;
+//     line-height: normal;
+//     z-index: -999;
+// }
+ion-item ion-button.only-show-on-hover {
+    // visibility: hidden;
+    display: none;
+}
+
+ion-item:hover ion-button.only-show-on-hover {
+    // visibility: visible;
+    display: block;
+}
+
+ion-item span.dateBig {
+    // visibility: visible;
+    display: block;
+}
+
+ion-item:hover span.dateBig {
+    // visibility: hidden;
+    display: none;
+}
+
 @media screen and (max-width: 750px) {
     .small {
         display: block;

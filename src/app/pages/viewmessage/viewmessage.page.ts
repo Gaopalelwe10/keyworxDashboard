@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, ModalController, AlertController } from '@ionic/angular';
+import { NavParams, ModalController, AlertController, Platform } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'src/app/services/message.service';
 import { PropertyService } from 'src/app/services/property.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Contacts, ContactName, ContactField, Contact } from '@ionic-native/contacts/ngx';
+
 
 @Component({
   selector: 'app-viewmessage',
@@ -19,8 +20,8 @@ export class ViewmessagePage implements OnInit {
     }
   };
   messageUnReadList: any;
-  propertyLink:any;
-  messageList:any;
+  propertyLink: any;
+  messageList: any;
   messageReadList: any;
 
 
@@ -33,7 +34,9 @@ export class ViewmessagePage implements OnInit {
     private afs: AngularFirestore,
     private propertyService: PropertyService,
     private router: Router,
+    public platform: Platform,
   ) {
+
 
     this.route.queryParams.subscribe(params => {
       if (params && params.messageReadList) {
@@ -85,13 +88,24 @@ export class ViewmessagePage implements OnInit {
   }
 
   ngOnInit() {
-
+    var element = document.getElementById("my-ion-header");
+    element.classList.remove("mystyle");
   }
 
   close() {
     this.modalController.dismiss();
   }
+  myScroll(ev) {
+    var element = document.getElementById("my-ion-header");
+    console.log(ev.detail.scrollTop)
+    if (ev.detail.scrollTop >= 20) {
+      element.classList.add("mystyle");
+    }
+    if (ev.detail.scrollTop < 20) {
+      element.classList.remove("mystyle");
+    }
 
+  }
   deleteMessage(msg) {
 
     this.alertCtrl.create({
@@ -148,27 +162,34 @@ export class ViewmessagePage implements OnInit {
   updateMessage(msg) {
     this.modalController.dismiss();
     this.messageServ.updateMessageUnread(msg.key).then(() => {
-      
+
     })
   }
 
 
- async createContact(msg,details) {
-   const alert = await this.alertCtrl.create({
-     message: 'Contact Saved!',
-     buttons: ['OK']
-   });
-   await alert.present();
-    let contact: Contact = this.contacts.create();
-    console.log(details.location)
-    contact.name = new ContactName(null, '['+ details.location+']', msg.name);
-    contact.phoneNumbers = [new ContactField('mobile', msg.number)];
-    contact.save()
-    .then(() =>
-      console.log('contact saved!', contact),
-      (error: any) =>
-        console.error('Error saving contact.', error)
-    );
+  async createContact(msg, details) {
+    if (this.platform.is('desktop')) {
+      console.log("contacts can only be saved in our mobile app")
+    } else if (this.platform.is('mobileweb')) {
+      console.log("contacts can only be saved in our mobile app")
+    } else {
+      const alert = await this.alertCtrl.create({
+        message: 'Contact Saved!',
+        buttons: ['OK']
+      });
+      await alert.present();
+      let contact: Contact = this.contacts.create();
+      console.log(details.location)
+      contact.name = new ContactName(null, '[' + details.location + ']', msg.name);
+      contact.phoneNumbers = [new ContactField('mobile', msg.number)];
+      contact.save()
+        .then(() =>
+          console.log('contact saved!', contact),
+          (error: any) =>
+            console.error('Error saving contact.', error)
+        );
+    }
+
 
   }
 }

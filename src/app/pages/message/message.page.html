@@ -45,42 +45,7 @@
                 <div *ngFor="let msg of messageUnReadList ">
                     <!-- <div *ngIf="msg.isRead; else elseBlock"> -->
 
-                    <ion-item tappable (click)="OpenPreview(msg)" class="big">
-
-                        <!-- <table style="width:100%">
-
-                            <tr>
-                                <th style="width:30%">
-
-                                    <h6>
-                                        <ion-icon style="zoom:1.1;" color="primary" name="mail"></ion-icon>&nbsp;{{msg.name | slice:0:12}}</h6>
-                                </th>
-                                <th style="width:50%">
-                                    <h6>{{msg.message | slice:0:15}}..</h6>
-                                </th>
-                                <th style="width:100%">
-                                    <h6 class="ion-float-right">{{this.timeFrame(msg.date) }}</h6>
-                                </th>
-                            </tr>
-                        </table> -->
-
-                        <!-- <div class="table-responsive"> -->
-                        <!-- <table class="table" style="width: 100%; ">
-                            <tbody>
-                                <ion-label>
-                                    <tr>
-                                        <td class="action"><input type="checkbox" /></td>
-                                        <td class="action"><i class="fa fa-envelope"></i></td>
-                                        <td class="name"> {{msg.name | slice:0:12}}</td>
-                                        <td class="subject" style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; ">{{msg.subject}}</td>
-                                        <td class="message" style="white-space: nowrap; text-overflow:ellipsis; overflow: hidden; ">{{msg.message }}</td>
-                                        <td class="time">{{this.timeFrame(msg.date) }}</td>
-                                    </tr>
-                                </ion-label>
-                            </tbody>
-                        </table> -->
-                        <!-- </div> -->
-
+                    <ion-item (click)="OpenPreview(msg)" class="big">
                         <ion-avatar slot="start" class="Randomcolor" [ngStyle]="{'background-color': getColor(msg.name)}">
                             {{msg.name | slice:0:1}}
                         </ion-avatar>
@@ -89,27 +54,44 @@
                             <span class="font">
                             <span class="name"> {{this.shorten_text(msg.name)}} </span>
                             <span class="ion-float-right dateBig">{{this.timeFrame(msg.date) }}</span>
+
                             </span>
                             <span class="font">{{msg.subject}}</span>
                             <span class="hide "> &nbsp; - &nbsp; </span>
                             <span class="p">{{msg.message}}</span>
+
                         </ion-label>
+                        <!-- <ion-icon slot="end" color="primary" name="trash"></ion-icon> -->
+                        <ion-button slot="end" class="only-show-on-hover" color="primary" (click)="deleteMessage(msg)">
+                            <ion-icon name="trash"></ion-icon>
+                        </ion-button>
+
                     </ion-item>
 
 
+                    <ion-item-sliding class="small">
+                        <ion-item tappable (click)="OpenPreview(msg)">
+                            <ion-avatar slot="start" class="Randomcolor" [ngStyle]="{'background-color': getColor(msg.name)}">
+                                {{msg.name | slice:0:1}}
+                            </ion-avatar>
 
-                    <ion-item tappable (click)="OpenPreview(msg)" class="small">
-                        <ion-avatar slot="start" class="Randomcolor" [ngStyle]="{'background-color': getColor(msg.name)}">
-                            {{msg.name | slice:0:1}}
-                        </ion-avatar>
+                            <ion-label>
+                                <h2 class="font">{{msg.name}} <span class="ion-float-right dateSmall">{{this.timeFrame(msg.date) }}</span></h2>
+                                <h3 class="font">{{msg.subject}}</h3>
+                                <p>{{msg.message}}</p>
+                            </ion-label>
 
-                        <ion-label>
-                            <h2 class="font">{{msg.name}} <span class="ion-float-right dateSmall">{{this.timeFrame(msg.date) }}</span></h2>
-                            <h3 class="font">{{msg.subject}}</h3>
-                            <p>{{msg.message}}</p>
-                        </ion-label>
+                        </ion-item>
+                        <ion-item-options side="end">
+                            <ion-item-option color="danger" (click)="deleteMessage(msg)">
+                                <ion-icon slot="icon-only" name="trash"></ion-icon>
+                            </ion-item-option>
+                            <ion-item-option>
+                                <ion-icon slot="icon-only" name="star"></ion-icon>
+                            </ion-item-option>
+                        </ion-item-options>
+                    </ion-item-sliding>
 
-                    </ion-item>
 
                 </div>
             </ion-list>
@@ -154,6 +136,7 @@
             </ion-list>
         </div>
     </div>
+
 
 
 

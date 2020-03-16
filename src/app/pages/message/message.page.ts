@@ -6,6 +6,7 @@ import { ModalController, AlertController, Platform } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewmessagePage } from '../viewmessage/viewmessage.page';
 import * as moment from 'moment';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-message',
@@ -40,10 +41,13 @@ export class MessagePage implements OnInit {
   isBrowser = false
   isSearchbar: boolean = false;
   isSegment: boolean = true;
+  isHover: boolean = false;
   constructor(
     private messageServ: MessageService,
     private modalController: ModalController,
-    private platform: Platform
+    private platform: Platform,
+    private alertCtrl: AlertController,
+
   ) {
 
     if (this.platform.is("desktop")) {
@@ -77,7 +81,7 @@ export class MessagePage implements OnInit {
           ...e.payload.doc.data()
         }
       }).reverse()
-      
+
     })
 
     this.messageServ.getMessagesUnRead().subscribe((data: any) => {
@@ -152,10 +156,10 @@ export class MessagePage implements OnInit {
     if (event.detail.deltaY > 0) {
       console.log("scrolling down, ");
       // this.foundation.hiddenTabs = true;
-      this.isSegment=false
+      this.isSegment = false
     } else if (event.detail.deltaY < 0) {
       console.log("scrolling up, ");
-      this.isSegment=true
+      this.isSegment = true
       // this.foundation.hiddenTabs = false;
     };
   }
@@ -170,6 +174,32 @@ export class MessagePage implements OnInit {
       }
     }).then(modal => modal.present())
 
+  }
+  deleteMessage(msg) {
+
+    this.alertCtrl.create({
+      subHeader: 'Are you sure you want to delete this message',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Confirm',
+          handler: () => {
+            this.messageServ.deleteMessaged(msg.key).then(() => {
+
+            });
+          }
+        }
+      ]
+    }).then(
+      alert => alert.present()
+    );
   }
   shorten_text(text) {
     var maxLength = 18;
@@ -252,6 +282,8 @@ export class MessagePage implements OnInit {
         return "Yellow";
       case "z":
         return "#9932CC";
+      default:
+        return "gray";
     }
   }
 }

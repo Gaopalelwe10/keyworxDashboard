@@ -1,42 +1,81 @@
-ion-card {
-    border-radius: 10px;
-    color: black;
-}
-
-.cardholder {
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    ion-card img {
-        background-size: auto 100%;
-        background-repeat: no-repeat;
-        background-position: center;
-        height: 200px;
-    }
-}
-
-i {
-    padding-right: 10px;
-    .pad-value {
-        padding-left: 5px;
-    }
-}
-
-.IMGcontainers {
-    position: relative;
-    .bottom-right {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        background-color: #fff;
-        padding: 12px 24px;
-        border: none;
-        // border-bottom-left-radius: 10px;
-        border-top-left-radius: 10px;
-        ion-icon {
-            padding-left: 10px;
-            font-size: 24px;
-            cursor: pointer;
-        }
-    }
-}
+  ion-toolbar {
+      --background: transparent;
+      --background-color: transparent;
+      --ion-color-base: transparent !important;
+  }
+  
+  .ion-button-icons {
+      color: #a02b2d !important;
+  }
+  
+   :host {
+      .mystyle {
+          ion-toolbar {
+              --background: #a02b2d !important;
+              --background-color: #a02b2d !important;
+              --ion-color-base: #a02b2d !important;
+          }
+          .ion-button-icons {
+              color: white !important
+          }
+      }
+  }
+  
+  ion-buttons {
+      padding-left: 11px;
+      padding-right: 12px;
+      font-size: 25px !important;
+  }
+  
+  ion-card {
+      border-radius: 10px;
+      color: black;
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: 0;
+      margin-right: 0;
+      img {
+          background-size: auto 100%;
+          background-repeat: no-repeat;
+          background-position: center;
+          height: 200px;
+      }
+  }
+  
+  .cardholder {
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      ion-card img {
+          background-size: auto 100%;
+          background-repeat: no-repeat;
+          background-position: center;
+          height: 200px;
+      }
+  }
+  
+  i {
+      padding-right: 10px;
+      .pad-value {
+          padding-left: 5px;
+      }
+  }
+  
+  .IMGcontainers {
+      position: relative;
+      .bottom-right {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          background-color: #fff;
+          padding: 12px 24px;
+          border: none;
+          // border-bottom-left-radius: 10px;
+          border-top-left-radius: 10px;
+          ion-icon {
+              padding-left: 10px;
+              font-size: 24px;
+              cursor: pointer;
+          }
+      }
+  }
